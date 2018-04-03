@@ -1,0 +1,423 @@
+swagger: '2.0'
+info:
+  description: This is a simple API
+  version: 1.0.0
+  title: Simple Inventory API
+  # put the contact info for your development or API team
+  contact:
+    email: pfjhyyj@qq.com
+
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+
+# tags are used for organizing operations
+tags:
+- name: Authentication
+  description: Authentication in WeChat
+- name: user
+  description: current user
+- name: Lend
+  description: Lend book
+- name: borrow
+  description: borrow book
+paths:
+  /auth:
+    post:
+        tags:
+        - Authentication
+        summary: Log in in WeChat
+        operationId: auth
+        description: Log in in WeChat
+        consumes:
+        - application/json
+        produces:
+        - application/json
+        parameters:
+        - in: body
+          name: Authentication code
+          description: Authentication code used by developer server
+          schema:
+            type: object
+            properties:
+              code:
+                type: string
+                example: xxxxxxx
+        responses:
+          200:
+            description: login success
+            schema:
+              type: object
+              properties:
+                session:
+                  type: string
+                  example: sdfasfdasdfafdasfdas
+          400:
+            description: invalid input, object invalid
+          404:
+            description: user not found
+  /user:
+    get:
+      tags:
+      - user
+      summary: get current user detail
+      operationId: getUser
+      description: get current user detail
+      produces:
+      - application/json
+      responses:
+        200:
+          description: return current user detail
+          schema:
+            $ref: '#/definitions/UserVO'
+        401:
+          description: unauthorized
+        404:
+          description: invalid input, object invalid
+    post:
+      tags:
+      - user
+      summary: add user
+      operationId: addUser
+      description: get current user detail
+      produces:
+      - application/json
+      parameters:
+      - in: body
+        name: user object
+        description: user detail
+        schema:
+          $ref: '#/definitions/UserVO'
+      responses:
+        200:
+          description: return current user detail
+          schema:
+            $ref: '#/definitions/UserVO'
+        401:
+          description: unauthorized
+        404:
+          description: invalid input, object invalid
+        409:
+          description: duplicate user name
+    put:
+      tags:
+      - user
+      summary: update user
+      operationId: updateUser
+      description: update current user detail
+      produces:
+      - application/json
+      parameters:
+      - in: body
+        name: user object
+        description: user detail
+        schema:
+          $ref: '#/definitions/UserVO'
+      responses:
+        200:
+          description: return current user detail
+          schema:
+            $ref: '#/definitions/UserVO'
+        401:
+          description: unauthorized
+        404:
+          description: invalid input, object invalid
+    delete:
+      tags:
+      - user
+      summary: delete user
+      operationId: deleteUser
+      description: delete current user
+      produces:
+      - application/json
+      responses:
+        200:
+          description: return success message
+          schema:
+            type: object
+            properties:
+              message:
+                type: string
+                example: success
+        401:
+          description: unauthorized
+        404:
+          description: invalid input, object invalid
+  /lend/{lendId}:
+    get:
+      tags:
+      - Lend
+      summary: get lend book detail
+      operationId: getLend
+      description: get lend book detail
+      produces:
+      - application/json
+      parameters:
+      - in: path
+        description: lend book id
+        name: lendId
+        required: true
+        type: integer
+        minimum: 1
+      responses:
+        200:
+          description: return current lend book detail
+          schema:
+            $ref: '#/definitions/LendVO'
+        401:
+          description: unauthorized
+        404:
+          description: lend book not found
+    post:
+      tags:
+      - Lend
+      summary: add lend book
+      operationId: addLend
+      description: add lend book
+      produces:
+      - application/json
+      parameters:
+      - in: path
+        description: lend book id
+        name: lendId
+        required: true
+        type: integer
+        minimum: 1
+      - in: body
+        name: lend book object
+        description: lend book detail
+        schema:
+          $ref: '#/definitions/LendVO'
+      responses:
+        200:
+          description: return current lend book detail
+          schema:
+            $ref: '#/definitions/LendVO'
+        401:
+          description: unauthorized
+        404:
+          description: invalid input, object invalid
+        409:
+          description: duplicate lend book
+    put:
+      tags:
+      - Lend
+      summary: update lend book
+      operationId: updateLend
+      description: update lend book
+      produces:
+      - application/json
+      parameters:
+      - in: path
+        description: lend book id
+        name: lendId
+        required: true
+        type: integer
+        minimum: 1
+      - in: body
+        name: lend book object
+        description: lend book detail
+        schema:
+          $ref: '#/definitions/LendVO'
+      responses:
+        200:
+          description: return current lend book detail
+          schema:
+            $ref: '#/definitions/LendVO'
+        401:
+          description: unauthorized
+        404:
+          description: invalid input, object invalid
+        409:
+          description: duplicate lend book
+    delete:
+      tags:
+      - Lend
+      summary: delete lend book
+      operationId: deleteLend
+      description: delete current lend book
+      produces:
+      - application/json
+      parameters:
+      - in: path
+        description: lend book id
+        name: lendId
+        required: true
+        type: integer
+        minimum: 1
+      responses:
+        200:
+          description: return success message
+          schema:
+            type: object
+            properties:
+              message:
+                type: string
+                example: success
+        401:
+          description: unauthorized
+        404:
+          description: invalid input, object invalid
+  /borrow/{borrowId}:
+    get:
+      tags:
+      - borrow
+      summary: get borrow book detail
+      operationId: getborrow
+      description: get borrow book detail
+      produces:
+      - application/json
+      parameters:
+      - in: path
+        name: borrowId
+        description: borrow book id
+        required: true
+        type: integer
+        minimum: 1
+      responses:
+        200:
+          description: return current borrow book detail
+          schema:
+            $ref: '#/definitions/BorrowVO'
+        401:
+          description: unauthorized
+        404:
+          description: borrow book not found
+    post:
+      tags:
+      - borrow
+      summary: add borrow book
+      operationId: addborrow
+      description: add borrow book
+      produces:
+      - application/json
+      parameters:
+      - in: path
+        name: borrowId
+        description: borrow book id
+        required: true
+        type: integer
+        minimum: 1
+      - in: body
+        name: borrow book object
+        description: borrow book detail
+        schema:
+          $ref: '#/definitions/BorrowVO'
+      responses:
+        201:
+          description: return current borrow book detail
+          schema:
+            $ref: '#/definitions/BorrowVO'
+        401:
+          description: unauthorized
+        404:
+          description: invalid input, object invalid
+        409:
+          description: duplicate borrow book
+    put:
+      tags:
+      - borrow
+      summary: update borrow book
+      operationId: updateborrow
+      description: update borrow book
+      produces:
+      - application/json
+      parameters:
+      - in: path
+        name: borrowId
+        description: borrow book id
+        required: true
+        type: integer
+        minimum: 1
+      - in: body
+        name: borrow book object
+        description: borrow book detail
+        schema:
+          $ref: '#/definitions/BorrowVO'
+      responses:
+        200:
+          description: return current borrow book detail
+          schema:
+            $ref: '#/definitions/BorrowVO'
+        401:
+          description: unauthorized
+        404:
+          description: invalid input, object invalid
+        409:
+          description: duplicate borrow book
+    delete:
+      tags:
+      - borrow
+      summary: delete borrow book
+      operationId: deleteborrow
+      description: delete current borrow book
+      produces:
+      - application/json
+      parameters:
+      - in: path
+        name: borrowId
+        description: borrow book id
+        required: true
+        type: integer
+        minimum: 1
+      responses:
+        200:
+          description: return success message
+          schema:
+            type: object
+            properties:
+              message:
+                type: string
+                example: success
+        401:
+          description: unauthorized
+        404:
+          description: invalid input, object invalid
+definitions:
+  UserVO:
+    type: object
+    required: 
+    - id
+    - name
+    properties:
+      id:
+        type: integer
+        format: int64
+        example: 1
+      name:
+        type: string
+        example: test_user
+  LendVO:
+    type: object
+    properties:
+      id:
+        type: integer
+        format: int64
+        example: 1
+      name:
+        type: string
+        example: 1984
+      userId:
+        type: integer
+        format: int64
+        example: 1
+  BorrowVO:
+    type: object
+    properties:
+      id:
+        type: integer
+        format: int64
+        example: 1
+      name:
+        type: string
+        example: 1984
+      userId:
+        type: integer
+        format: int64
+        example: 1
+  
+# Added by API Auto Mocking Plugin
+host: virtserver.swaggerhub.com
+basePath: /pfjhyyj/DeepBookFantasy/1.0.0
+schemes:
+ - https
