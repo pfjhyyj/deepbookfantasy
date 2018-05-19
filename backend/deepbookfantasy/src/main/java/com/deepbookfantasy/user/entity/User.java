@@ -24,13 +24,24 @@ public class User implements Serializable {
     @GeneratedValue(generator = "user_generator")
     private Long id;
 
+    @Column(unique=true)
     private String wxOpenId;
     private String wxUnionId;
 
     private String name;
+    private Integer gender;
+    private String description;
+    private String email;
+    private String wechatID;
+    private Integer enable;
 
     public User(Map<String, String> userVO) {
         this.name = userVO.get("name");
+        this.wxOpenId = userVO.get("wxOpenId");
+        this.gender = Integer.valueOf(userVO.get("gender"));
+        this.description = userVO.get("description");
+        this.email = userVO.get("email");
+        this.wechatID = userVO.get("wechatID");
     }
 
 

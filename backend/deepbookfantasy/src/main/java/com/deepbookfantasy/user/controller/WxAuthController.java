@@ -2,6 +2,7 @@ package com.deepbookfantasy.user.controller;
 
 import com.deepbookfantasy.common.util.AES;
 import com.deepbookfantasy.user.service.WxAuthService;
+import com.google.common.collect.ImmutableMap;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiOperation;
 import org.apache.commons.codec.binary.Base64;
@@ -24,10 +25,9 @@ public class WxAuthController {
     @Autowired
     private WxAuthService wxAuthService;
 
-    @ApiOperation(value = "获取sessionId", notes = "小用户允许登录后，使用code 换取 session_key api，将 code 换成 openid 和 session_key")
-    @ApiImplicitParam(name = "code", value = "用户登录回调内容会带上 ", required = true, dataType = "String")
-    @RequestMapping("/auth/getSession")
-    public Map<String,Object> cookie(@RequestParam(required = true,value = "code") String wxCode, HttpSession session) {
+    @RequestMapping(value="/auth/getSession", method = RequestMethod.GET, produces = "application/json")
+    public Map<String,Object> getSession(@RequestParam(required = true,value = "code") String wxCode, HttpSession session) {
+
         System.out.println(wxCode);
         Map<String, Object> wxSessionMap = wxAuthService.getWxSession(wxCode);
         if (null == wxSessionMap) {
@@ -46,7 +46,7 @@ public class WxAuthController {
             Integer expires = Integer.valueOf(String.valueOf(wxSessionMap.get("expires_in")));
             session.setMaxInactiveInterval(expires);
         }
-        return wxReply(0, null);
+        return wxReply(0, ImmutableMap.of("session", session.getId()));
     }
 
     @RequestMapping(value = "/auth/decodeUserInfo", method = RequestMethod.GET, produces = "application/json")
@@ -70,5 +70,12 @@ public class WxAuthController {
             e.printStackTrace();
         }
         return wxReply(50021, null);
+    }
+
+    @RequestMapping(value = "/test", method = RequestMethod.GET, produces = "application/json")
+    public Map<String,Object> test(HttpSession session){
+        System.out.println("Current sessionId:"+session.getId());
+        System.out.println("Current user"+session.getAttribute("wx_openid"));
+        return wxReply(0, ImmutableMap.of("url", "adsadadads"));
     }
 }

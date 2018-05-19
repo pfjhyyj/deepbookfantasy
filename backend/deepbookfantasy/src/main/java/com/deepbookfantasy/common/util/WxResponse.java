@@ -16,7 +16,7 @@ public class WxResponse {
                     .build();
         } else {
             // TODO: Add Error Message
-            return ImmutableMap.of("errorCode", code, "msg", "Error Message");
+            return ImmutableMap.of("errorCode", code, "msg", data);
         }
     }
 }

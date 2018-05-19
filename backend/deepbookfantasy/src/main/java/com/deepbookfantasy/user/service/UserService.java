@@ -5,8 +5,8 @@ import com.deepbookfantasy.user.entity.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.util.Assert;
 
+import javax.persistence.EntityNotFoundException;
 import java.util.Map;
 import java.util.Optional;
 
@@ -19,27 +19,36 @@ public class UserService {
     @Autowired
     private UserDAO userDAO;
 
-    public User getUserById(Long id) throws Exception {
-        Assert.notNull(id, "ID can't be null");
-        Optional<User> user = this.userDAO.findById(id);
-        if (!user.isPresent()) {
-            throw new Exception("用户不存在");
-        }
-        return user.get();
+    public User getUserById(Long id) {
+        return userDAO.findById(id).orElseThrow(() ->  new EntityNotFoundException("未找到用户"));
+    }
+
+    public User getUserByWxOpenId(String wxOpenId) {
+        return userDAO.findByWxOpenId(wxOpenId).orElseThrow(() ->  new EntityNotFoundException("未找到用户"));
     }
 
     public void addUser(Map<String, String> userVO) {
-        // TODO: check user detail
         User newUser = new User(userVO);
         userDAO.save(newUser);
     }
 
-    public void updateUser(Map<String, String> userVO) throws Exception {
+    public void updateUser(Map<String, String> userVO) {
+        validateUser(Long.valueOf(userVO.get("id")));
         User newUser = new User(userVO);
-        Optional<User> user = this.userDAO.findById(Long.parseLong(userVO.get("id")));
-        if (!user.isPresent()) {
-            throw new Exception("用户不存在");
-        }
         userDAO.save(newUser);
+    }
+
+    public void deleteUser(Long id, String wxOpenId) {
+        this.userDAO.findById(id).ifPresent(user1 -> {
+            if (!user1.getWxOpenId().equals(wxOpenId)) {
+                throw new RuntimeException("非本人删除用户");
+            }
+            userDAO.delete(user1);
+        });
+    }
+
+    public void validateUser(Long id) {
+        Optional<User> user = this.userDAO.findById(id);
+        user.orElseThrow(() ->  new EntityNotFoundException("未找到用户"));
     }
 }
