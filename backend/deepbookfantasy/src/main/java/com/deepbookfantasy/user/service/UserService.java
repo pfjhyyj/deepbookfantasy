@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.EntityNotFoundException;
+import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
@@ -27,13 +28,17 @@ public class UserService {
         return userDAO.findByWxOpenId(wxOpenId).orElseThrow(() ->  new EntityNotFoundException("未找到用户"));
     }
 
-    public void addUser(Map<String, String> userVO) {
+    public List<User> getUsersByName(String name) {
+        return userDAO.findByNameContaining(name);
+    }
+
+    public void addUser(Map<String, Object> userVO) {
         User newUser = new User(userVO);
         userDAO.save(newUser);
     }
 
-    public void updateUser(Map<String, String> userVO) {
-        validateUser(Long.valueOf(userVO.get("id")));
+    public void updateUser(Map<String, Object> userVO) {
+        validateUser(Long.valueOf(userVO.get("id").toString()));
         User newUser = new User(userVO);
         userDAO.save(newUser);
     }

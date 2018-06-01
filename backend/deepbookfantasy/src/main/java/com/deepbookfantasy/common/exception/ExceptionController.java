@@ -15,7 +15,7 @@ import static com.deepbookfantasy.common.util.WxResponse.wxReply;
 public class ExceptionController {
     @ExceptionHandler(EntityNotFoundException.class)
     public Map<String, Object> notFound(EntityNotFoundException e) {
-        return wxReply(404, "数据不存在");
+        return wxReply(404, e.getMessage());
     }
     @ExceptionHandler(DataAccessException.class)
     public Map<String, Object> notFound(DataAccessException e) {

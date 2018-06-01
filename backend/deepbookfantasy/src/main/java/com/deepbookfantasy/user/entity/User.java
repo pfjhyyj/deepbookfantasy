@@ -35,13 +35,13 @@ public class User implements Serializable {
     private String wechatID;
     private Integer enable;
 
-    public User(Map<String, String> userVO) {
-        this.name = userVO.get("name");
-        this.wxOpenId = userVO.get("wxOpenId");
-        this.gender = Integer.valueOf(userVO.get("gender"));
-        this.description = userVO.get("description");
-        this.email = userVO.get("email");
-        this.wechatID = userVO.get("wechatID");
+    public User(Map<String, Object> userVO) {
+        this.name = userVO.get("name").toString();
+        this.wxOpenId = userVO.get("wxOpenId").toString();
+        this.gender = Integer.valueOf(userVO.get("gender").toString());
+        this.description = userVO.get("description").toString();
+        this.email = userVO.get("email").toString();
+        this.wechatID = userVO.get("wechatID").toString();
     }
 
 

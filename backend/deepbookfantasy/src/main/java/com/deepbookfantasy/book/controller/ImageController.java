@@ -38,7 +38,7 @@ public class ImageController {
         try {
             String uploadDirName = imgLocalPath.substring(imgLocalPath.lastIndexOf("/"), imgLocalPath.length());
             FileCopyUtils.copy(image.getBytes(), new File(imgLocalPath + "/", fileName));
-            return wxReply(0, ImmutableMap.of("url", imgHost + uploadDirName + "/" + fileName));
+            return wxReply(0, ImmutableMap.of("image", imgHost + uploadDirName + "/" + fileName));
         } catch (IOException e) {
             e.printStackTrace();
         }

@@ -25,7 +25,7 @@ public class UserController {
      * @return 操作消息内容
      */
     @RequestMapping(value="/user", method = RequestMethod.POST, produces = "application/json")
-    public Map<String, Object> createUser(@RequestBody Map<String,String> reqMap, HttpSession session) {
+    public Map<String, Object> createUser(@RequestBody Map<String,Object> reqMap, HttpSession session) {
         String wxOpenId = String.valueOf(session.getAttribute("wx_openid"));
         reqMap.put("wxOpenId", wxOpenId);
         userService.addUser(reqMap);
@@ -54,7 +54,7 @@ public class UserController {
      * @return 操作消息内容
      */
     @RequestMapping(value="/user/{userid}", method = RequestMethod.PUT, produces = "application/json")
-    public Map<String, Object> updateUser(@PathVariable String userid, @RequestBody Map<String,String> reqMap, HttpSession session) {
+    public Map<String, Object> updateUser(@PathVariable String userid, @RequestBody Map<String,Object> reqMap, HttpSession session) {
         userService.validateUser(Long.valueOf(userid));
         reqMap.put("wxOpenId", String.valueOf(session.getAttribute("wx_openid")));
         reqMap.put("id", userid);
@@ -73,6 +73,5 @@ public class UserController {
         userService.deleteUser(Long.valueOf(userid), String.valueOf(session.getAttribute("wx_openid")));
         return wxReply(0, "success");
     }
-
 
 }
