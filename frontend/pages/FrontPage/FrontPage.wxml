@@ -1,0 +1,38 @@
+<!--index.wxml-->
+<!--<view class="container">-->
+
+<view class="page">
+
+  <view class="nav-header"> 
+      <mask hidden="{{hidden1}}" bindtap="mask1" hover-style="none"/>
+      <view class="saoyisao"  bindtap="tap1">
+      <!--<image src="../../../image/API.png" width="10" height="10"></image>-->
+        <view style="display:inline-block;"></view>
+      </view>
+      <view class="search"> 
+        <input class="search-input" placeholder="请输入" bindtap="bindFocus" auto-focus >
+          <icon type="search" size="20" color="purple" class="search-icon inside"/>
+        </input>
+       </view>
+
+  </view>
+
+  <!-- 1,是否显示面板指示点  2,是否自动切换  3,自动切换时间间隔 4,滑动动画时长-->
+  <swiper  indicator-dots='{{indicatorDots}}' autoplay='{{autoplay}}' interval='{{interval}}' duration='{{duration}}'>
+    <block wx:for="{{imgUrls}}"wx:key="imgUrls">
+      <swiper-item>
+        <!--设置图片长宽-->
+        <image src="{{item}}" class="slide-image" width="355" height="150"/>
+      </swiper-item>
+    </block>
+  </swiper> 
+  <view class='viewclass'>  
+    <text class='viewview'>图书推荐</text>  
+   </view>
+
+</view>
+<button bindtap='goFrontPage'>首页</button>
+<button bindtap='goBook'>预订</button>
+<button bindtap='goIssue'>发布</button>
+<button bindtap='goOrder'>订单</button>
+<button bindtap='goProfile'>我的</button>

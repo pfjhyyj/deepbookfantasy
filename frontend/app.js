@@ -16,6 +16,7 @@ App({
             code: res.code
           },
           success: res => {
+              console.log(res);
               wx.setStorageSync('session', res.header["Set-Cookie"])
           }
         })

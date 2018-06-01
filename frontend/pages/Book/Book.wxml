@@ -1,0 +1,10 @@
+<view class="container">
+  <view>
+    <text>This is Book page!</text>
+  </view>
+</view>
+<button bindtap='goFrontPage'>首页</button>
+<button bindtap='goBook'>预订</button>
+<button bindtap='goIssue'>发布</button>
+<button bindtap='goOrder'>订单</button>
+<button bindtap='goProfile'>我的</button>

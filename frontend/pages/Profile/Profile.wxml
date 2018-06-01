@@ -1,0 +1,13 @@
+<!--Welcome.wxml-->
+<view class="container">
+  <view>
+    <text> This is my Profile! </text>
+  </view>
+</view>
+<text>{{nickName}}</text>
+<image src="{{avatarUrl}}" background-size="cover"></image>
+<button bindtap='goFrontPage'>首页</button>
+<button bindtap='goBook'>预订</button>
+<button bindtap='goIssue'>发布</button>
+<button bindtap='goOrder'>订单</button>
+<button bindtap='goProfile'>我的</button>
