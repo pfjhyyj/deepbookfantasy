@@ -1,17 +1,46 @@
 {
   "pages":[
-    "pages/Login/Login",
     "pages/FrontPage/FrontPage",
     "pages/logs/logs",
     "pages/Book/Book",
     "pages/Profile/Profile",
     "pages/Issue/Issue",
-    "pages/Order/Order"
+    "pages/Order/Order",
+    "pages/Login/Login"
   ],
   "window":{
     "backgroundTextStyle":"light",
     "navigationBarBackgroundColor": "#fff",
     "navigationBarTitleText": "WeChat",
     "navigationBarTextStyle":"black"
+  },
+  "tabBar": {
+    "position": "bottom",
+    "list": [{
+      "pagePath": "pages/FrontPage/FrontPage",
+      "iconPath": "images/icons/baseline_home_black_48dp.png",
+      "selectedIconPath": "images/icons/baseline_home_black_48dp.png",
+      "text": "首页"
+    }, {
+      "pagePath": "pages/Order/Order",
+      "text": "预定",
+      "iconPath": "images/icons/baseline_shopping_cart_black_48dp.png",
+      "selectedIconPath": "images/icons/baseline_shopping_cart_black_48dp.png"
+    }, {
+      "pagePath": "pages/Order/Order",
+      "text": "发布",
+      "iconPath": "images/icons/baseline_add_circle_outline_black_48dp.png",
+      "selectedIconPath": "images/icons/baseline_add_circle_outline_black_48dp.png"
+    }, {
+      "pagePath": "pages/Order/Order",
+      "text": "订单",
+      "iconPath": "images/icons/baseline_assignment_black_48dp.png",
+      "selectedIconPath": "images/icons/baseline_assignment_black_48dp.png"
+    }, {
+      "pagePath": "pages/Order/Order",
+      "text": "我的",
+      "iconPath": "images/icons/baseline_person_black_48dp.png",
+      "selectedIconPath": "images/icons/baseline_person_black_48dp.png"
+    }]
   }
 }

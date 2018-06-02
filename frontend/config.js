@@ -2,7 +2,7 @@
 /**
  * 小程序配置文件
  */
-var host = 'http://staging-api.example.com';
+var host = 'http://127.0.0.1:8080';
 
 
 var config = {

@@ -10,16 +10,15 @@ App({
     wx.login({
       success: res => {
         // 发送 res.code 到后台换取 openId, sessionKey, unionId
-        wx.request({
-          url: 'http://localhost:8080/auth/getSession',
-          data: {
-            code: res.code
-          },
-          success: res => {
-              console.log(res);
-              wx.setStorageSync('session', res.header["Set-Cookie"])
-          }
-        })
+        // wx.request({
+        //   url: 'http://localhost:8080/auth/getSession',
+        //   data: {
+        //     code: res.code
+        //   },
+        //   success: res => {
+        //       wx.setStorageSync('session', res.header["Set-Cookie"])
+        //   }
+        // })
       }
     })
     // 获取用户信息
