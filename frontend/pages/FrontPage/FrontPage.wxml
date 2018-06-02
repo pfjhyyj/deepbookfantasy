@@ -10,7 +10,6 @@
         <!-- <view style="display:inline-block;"></view>
       </view> -->
       <search-bar></search-bar>
-
   </view>
 
   <!-- 1,是否显示面板指示点  2,是否自动切换  3,自动切换时间间隔 4,滑动动画时长-->
@@ -24,6 +23,11 @@
   </swiper> 
   <view class='viewclass'>  
     <text class='viewview'>图书推荐</text>  
-   </view>
+  </view>
+
+  <view>
+    <booklist></booklist>
+  </view>
+
 
 </view>

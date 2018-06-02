@@ -1,5 +1,6 @@
 {
   "usingComponents":{
-    "search-bar": "../../components/Search-bar/Search-bar"
+    "search-bar": "../../components/Search-bar/Search-bar",
+    "booklist": "../../components/List/List"
   }
 }

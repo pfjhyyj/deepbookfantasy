@@ -1,0 +1,11 @@
+<!--components/Item/Item.wxml-->
+<view class="item-ans">
+    <image class="avatar" lazy-load="true" src="../../images/headimage1.jpg"></image> 
+    <view class="expertInfo">
+      <text class="text">书籍名称</text>
+      <text class="text">下单时间</text>
+      <text class="text">交换时间</text>
+      <text class="text">交换至</text>
+    </view>
+</view> 
+

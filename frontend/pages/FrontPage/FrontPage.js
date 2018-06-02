@@ -40,5 +40,7 @@ Page({
       url: '../Profile/Profile'
     })
   },
-  onLoad: function () { }
+  onLoad: function () {
+
+   }
 })
