@@ -27,13 +27,22 @@ public class Book {
     @GeneratedValue(generator = "book_generator")
     private Long id;
 
+    @Column(nullable = false)
     private String name;
     private String ISBN;
     private String description;
     private String image;
+
+    @Column(nullable = false)
     private Date start;
+
+    @Column(nullable = false)
     private Date end;
+
+    @Column(nullable = false)
     private Integer enable;
+
+    @Column(nullable = false)
     private Integer type;
 
     @ManyToOne(fetch = FetchType.LAZY)

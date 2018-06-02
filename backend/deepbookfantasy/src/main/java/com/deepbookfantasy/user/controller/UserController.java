@@ -1,11 +1,18 @@
 package com.deepbookfantasy.user.controller;
 
+import com.deepbookfantasy.common.util.AES;
 import com.deepbookfantasy.user.entity.User;
 import com.deepbookfantasy.user.service.UserService;
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import org.apache.commons.codec.binary.Base64;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpSession;
+import java.io.UnsupportedEncodingException;
+import java.security.InvalidAlgorithmParameterException;
+import java.util.HashMap;
 import java.util.Map;
 
 import static com.deepbookfantasy.common.util.WxResponse.wxReply;
@@ -32,6 +39,13 @@ public class UserController {
         User newUser = null;
         newUser = userService.getUserByWxOpenId(wxOpenId);
         return wxReply(0,newUser);
+    }
+
+    @RequestMapping(value = "/user", method = RequestMethod.GET, produces = "application/json")
+    public Map<String, Object> getUserByWxopenid(HttpSession session) {
+        String wxOpenId = String.valueOf(session.getAttribute("wx_openid"));
+        User user = userService.getUserByWxOpenId(wxOpenId);
+        return wxReply(0, user);
     }
 
     /**
@@ -72,6 +86,31 @@ public class UserController {
     public Map<String, Object> deleteUser(@PathVariable String userid, HttpSession session) {
         userService.deleteUser(Long.valueOf(userid), String.valueOf(session.getAttribute("wx_openid")));
         return wxReply(0, "success");
+    }
+
+    @RequestMapping(value = "/decode", method = RequestMethod.GET, produces = "application/json")
+    public Map<String, Object> addUserByWX(@RequestParam(required = true,value = "encryptedData")String encryptedData,
+                                           @RequestParam(required = true,defaultValue = "iv")String iv,
+                                           HttpSession httpSession) {
+        String session_key = (String) httpSession.getAttribute("wx_session_key");
+        if (session_key == null) {
+            return wxReply(403, "未登录");
+        }
+
+        try {
+            AES aes = new AES();
+            byte[] resultByte = aes.decrypt(Base64.decodeBase64(encryptedData), Base64.decodeBase64(session_key), Base64.decodeBase64(iv));
+            if(null != resultByte && resultByte.length > 0){
+                String userInfo = new String(resultByte, "UTF-8");
+                ObjectMapper mapper = new ObjectMapper();
+                Map<String, Object> rawUserData = new HashMap<>();
+                rawUserData = mapper.readValue(userInfo, new TypeReference<Map<String, String>>(){});
+                return wxReply(0, "success");
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return wxReply(500, "server error");
     }
 
 }

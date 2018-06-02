@@ -56,4 +56,5 @@ public class UserService {
         Optional<User> user = this.userDAO.findById(id);
         user.orElseThrow(() ->  new EntityNotFoundException("未找到用户"));
     }
+
 }
