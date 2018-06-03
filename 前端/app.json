@@ -1,0 +1,63 @@
+{
+  "pages": [
+    "pages/personalinfo/personalinfo",
+    "pages/personalinfo/mypublish/publishInformation/publishInformation",
+    "pages/personalinfo/privatedata/privatedata",
+    "pages/myorder/myorder",
+    "pages/orderInformation/orderInformation",
+    "pages/index/index",
+    "pages/logs/logs",
+    "pages/bookrelease/bookrelease",
+    "pages/index/search/search",
+    "pages/index/result/result",
+    "pages/personalinfo/unreadinfo/unreadinfo",
+    "pages/personalinfo/mypublish/mypublish",
+    "pages/personalinfo/mybooking/mybooking",
+    "pages/personalinfo/myorders/myorders",
+    "pages/book/book"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#3A393F",
+    "navigationBarTitleText": "中大图书",
+    "navigationBarTextStyle": "white",
+    "backgroundColor": "#FAFAFA"
+  },
+  "tabBar": {
+    "color": "#a9b7b7",
+    "selectedColor": "#339966",
+    "borderStyle": "white",
+    "list": [
+      {
+        "selectdIconPath": "images/4.png",
+        "iconPath": "images/4.png",
+        "pagePath": "pages/index/index",
+        "text": "首页"
+      },
+      {
+        "selectdIconPath": "images/3.png",
+        "iconPath": "images/3.png",
+        "pagePath": "pages/book/book",
+        "text": "预定"
+      },
+      {
+        "selectdIconPath": "images/1.png",
+        "iconPath": "images/1.png",
+        "pagePath": "pages/bookrelease/bookrelease",
+        "text":"发布"
+      },
+      {
+        "selectdIconPath": "images/5.png",
+        "iconPath": "images/5.png",
+        "pagePath": "pages/myorder/myorder",
+        "text": "订单"
+      },
+      {
+        "selectdIconPath": "images/6.png",
+        "iconPath": "images/6.png",
+        "pagePath": "pages/personalinfo/personalinfo",
+        "text": "个人信息"
+      }
+    ]
+  }
+}
