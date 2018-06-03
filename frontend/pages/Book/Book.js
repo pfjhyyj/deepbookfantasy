@@ -1,29 +1,68 @@
-const app = getApp()
+// pages/book/book.js
 Page({
-  goFrontPage: function () {
-    wx.redirectTo({
-      url: '../FrontPage/FrontPage'
-    })
+
+  /**
+   * 页面的初始数据
+   */
+  data: {
+    name: "书名",
+    order_time: "预定时间",
+    exchange_to: "下次归还时间"
   },
-  goBook: function () {
-    wx.redirectTo({
-      url: '../Book/Book'
-    })
+
+  /**
+   * 生命周期函数--监听页面加载
+   */
+  onLoad: function (options) {
+  
   },
-  goIssue: function () {
-    wx.redirectTo({
-      url: '../Issue/Issue'
-    })
+
+  /**
+   * 生命周期函数--监听页面初次渲染完成
+   */
+  onReady: function () {
+  
   },
-  goOrder: function () {
-    wx.redirectTo({
-      url: '../Order/Order'
-    })
+
+  /**
+   * 生命周期函数--监听页面显示
+   */
+  onShow: function () {
+  
   },
-  goProfile: function () {
-    wx.redirectTo({
-      url: '../Profile/Profile'
-    })
+
+  /**
+   * 生命周期函数--监听页面隐藏
+   */
+  onHide: function () {
+  
   },
-  onLoad: function () {}
+
+  /**
+   * 生命周期函数--监听页面卸载
+   */
+  onUnload: function () {
+  
+  },
+
+  /**
+   * 页面相关事件处理函数--监听用户下拉动作
+   */
+  onPullDownRefresh: function () {
+  
+  },
+
+  /**
+   * 页面上拉触底事件的处理函数
+   */
+  onReachBottom: function () {
+  
+  },
+
+  /**
+   * 用户点击右上角分享
+   */
+  onShareAppMessage: function () {
+  
+  }
 })

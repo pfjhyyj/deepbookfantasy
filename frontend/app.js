@@ -10,15 +10,26 @@ App({
     wx.login({
       success: res => {
         // 发送 res.code 到后台换取 openId, sessionKey, unionId
-        // wx.request({
-        //   url: 'http://localhost:8080/auth/getSession',
-        //   data: {
-        //     code: res.code
-        //   },
-        //   success: res => {
-        //       wx.setStorageSync('session', res.header["Set-Cookie"])
-        //   }
-        // })
+        wx.request({
+          url: 'http://localhost:8080/auth/getSession',
+          data: {
+            code: res.code
+          },
+          success: res => {
+            wx.setStorageSync('session', res.header["Set-Cookie"]);
+            wx.request({
+              url: 'http://localhost:8080/user',
+              header: {
+                'cookie': wx.getStorageSync("session")
+              },
+              fail: res => {
+                wx.switchTab({
+                  url: '/pages/register/register',
+                })
+              }
+            })
+          }
+        })
       }
     })
     // 获取用户信息
@@ -42,7 +53,28 @@ App({
       }
     })
   },
+  getUserInfo: function (cb) {
+    var that = this
+    if (this.globalData.userInfo) {
+      typeof cb == "function" && cb(this.globalData.userInfo)
+    } else {
+      //调用登录接口
+      wx.login({
+        success: function () {
+          wx.getUserInfo({
+            success: function (res) {
+              that.globalData.userInfo = res.userInfo
+              typeof cb == "function" && cb(that.globalData.userInfo)
+            }
+          })
+        }
+      })
+    }
+  },
   globalData: {
-    userInfo: null
+    userInfo: null,
+    userId: null,
+    lendID: null,
+    borrowID: null
   }
 })

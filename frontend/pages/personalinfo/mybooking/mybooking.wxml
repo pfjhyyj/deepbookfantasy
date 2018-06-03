@@ -1,0 +1,24 @@
+<!--pages/personalinfo/mybooking/mybooking.wxml-->
+<view class="jx_card">
+    <text class="jx_title">预订列表</text>
+</view>
+
+ <swiper class="tab-content" style="height:900rpx">
+    <swiper-item>
+        <scroll-view class="scoll-h" scroll-y="true"  >
+            <block wx:for="{{[1,2,3,4,5]}}" wx:key="*this">
+                <view class="item-ans">
+                    <image class="avatar" src="https://wx2.sinaimg.cn/mw690/8b336269ly1frt450daelj202i02i0sr.jpg">
+                    </image> 
+                    <view class="expertInfo">
+                      <text class="text">书名：</text>
+                      <text class="text">预订时间：</text>
+                      <text class="text">下次归还时间:</text>
+                    </view>
+                </view>              
+            </block>
+         </scroll-view>
+    </swiper-item>
+</swiper>
+
+

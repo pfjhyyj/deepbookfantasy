@@ -1,0 +1,49 @@
+<!--pages/personalinfo/mypublish/publishInformation/publishInformation.wxml-->
+<view class="jx_card">
+    <text class="jx_title">发布书籍</text>
+</view>
+
+<view class="content">
+  <view class="item-ans" >
+    <input class="ttexttt" placeholder="书籍名称" ></input>
+  </view>
+</view>
+
+<view class="content" style="margin-top: 20rpx">
+  <view class="item-ans">
+    <text style="margin-left:20rpx">书籍类型:</text> 
+    <view class="picker">
+      <picker bindchange="bindPickerChange" value="{{index}}" range="{{array}}">
+        <view class="chooseText">
+          {{array[index]}}
+        </view>
+      </picker>
+    </view>
+  </view>  
+</view>
+
+<view class="content" style="margin-top: 20rpx">
+  <view class="item-ans2">
+    <view class="des">简介：</view>
+    <textarea class="des2" placeholder="描述你的书本" ></textarea>
+    <button class="btn">点击上传照片</button>
+    
+  </view>  
+</view>
+
+<view class="content" style="margin-top: 20rpx">
+  <view class="item-ans">
+    <text style="margin-left:20rpx">交换时长</text> 
+    <view class="picker">
+      <picker bindchange="bindPickerChange2" value="{{index2}}" range="{{array2}}">
+        <view class="chooseText">
+          {{array2[index2]}}
+        </view>
+      </picker>
+    </view>
+  </view>  
+</view>
+
+<button class="btn-card" style="margin-top:10rpx">
+  <view class="jx_text">发布</view>
+</button>

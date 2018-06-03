@@ -1,5 +1,8 @@
 {
 	"description": "项目配置文件。",
+	"packOptions": {
+		"ignore": []
+	},
 	"setting": {
 		"urlCheck": false,
 		"es6": true,
@@ -8,9 +11,9 @@
 		"newFeature": true
 	},
 	"compileType": "miniprogram",
-	"libVersion": "1.9.91",
-	"appid": "wxf8f4b91af4634e79",
-	"projectname": "My",
+	"libVersion": "1.9.94",
+	"appid": "touristappid",
+	"projectname": "1234",
 	"isGameTourist": false,
 	"condition": {
 		"search": {

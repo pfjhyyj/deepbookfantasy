@@ -1,46 +1,64 @@
 {
-  "pages":[
-    "pages/FrontPage/FrontPage",
+  "pages": [
+    "pages/index/index",
+    "pages/personalinfo/personalinfo",
+    "pages/personalinfo/mypublish/publishInformation/publishInformation",
+    "pages/personalinfo/privatedata/privatedata",
+    "pages/myorder/myorder",
+    "pages/orderInformation/orderInformation",
     "pages/logs/logs",
-    "pages/Book/Book",
-    "pages/Profile/Profile",
-    "pages/Issue/Issue",
-    "pages/Order/Order",
-    "pages/Login/Login"
+    "pages/bookrelease/bookrelease",
+    "pages/index/search/search",
+    "pages/index/result/result",
+    "pages/personalinfo/unreadinfo/unreadinfo",
+    "pages/personalinfo/mypublish/mypublish",
+    "pages/personalinfo/mybooking/mybooking",
+    "pages/personalinfo/myorders/myorders",
+    "pages/book/book",
+    "pages/register/register"
   ],
-  "window":{
-    "backgroundTextStyle":"light",
-    "navigationBarBackgroundColor": "#fff",
-    "navigationBarTitleText": "WeChat",
-    "navigationBarTextStyle":"black"
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#3A393F",
+    "navigationBarTitleText": "中大图书",
+    "navigationBarTextStyle": "white",
+    "backgroundColor": "#FAFAFA"
   },
   "tabBar": {
-    "position": "bottom",
-    "list": [{
-      "pagePath": "pages/FrontPage/FrontPage",
-      "iconPath": "images/icons/baseline_home_black_48dp.png",
-      "selectedIconPath": "images/icons/baseline_home_black_48dp.png",
-      "text": "首页"
-    }, {
-      "pagePath": "pages/Order/Order",
-      "text": "预定",
-      "iconPath": "images/icons/baseline_shopping_cart_black_48dp.png",
-      "selectedIconPath": "images/icons/baseline_shopping_cart_black_48dp.png"
-    }, {
-      "pagePath": "pages/Order/Order",
-      "text": "发布",
-      "iconPath": "images/icons/baseline_add_circle_outline_black_48dp.png",
-      "selectedIconPath": "images/icons/baseline_add_circle_outline_black_48dp.png"
-    }, {
-      "pagePath": "pages/Order/Order",
-      "text": "订单",
-      "iconPath": "images/icons/baseline_assignment_black_48dp.png",
-      "selectedIconPath": "images/icons/baseline_assignment_black_48dp.png"
-    }, {
-      "pagePath": "pages/Order/Order",
-      "text": "我的",
-      "iconPath": "images/icons/baseline_person_black_48dp.png",
-      "selectedIconPath": "images/icons/baseline_person_black_48dp.png"
-    }]
+    "color": "#a9b7b7",
+    "selectedColor": "#339966",
+    "borderStyle": "white",
+    "list": [
+      {
+        "selectedIconPath": "images/4.png",
+        "iconPath": "images/4.png",
+        "pagePath": "pages/index/index",
+        "text": "首页"
+      },
+      {
+        "selectedIconPath": "images/3.png",
+        "iconPath": "images/3.png",
+        "pagePath": "pages/book/book",
+        "text": "预定"
+      },
+      {
+        "selectedIconPath": "images/1.png",
+        "iconPath": "images/1.png",
+        "pagePath": "pages/bookrelease/bookrelease",
+        "text": "发布"
+      },
+      {
+        "selectedIconPath": "images/5.png",
+        "iconPath": "images/5.png",
+        "pagePath": "pages/myorder/myorder",
+        "text": "订单"
+      },
+      {
+        "selectedIconPath": "images/6.png",
+        "iconPath": "images/6.png",
+        "pagePath": "pages/personalinfo/personalinfo",
+        "text": "个人信息"
+      }
+    ]
   }
 }

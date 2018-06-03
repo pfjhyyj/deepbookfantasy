@@ -1,0 +1,102 @@
+/* pages/personalinfo/mypublish/publishInformation/publishInformation.wxss */
+page{
+  background: #e4e4e4;
+}
+
+.jx_card{
+  width: 100%;
+  height: 166.14rpx;
+  background:#339966;
+  position: relative;
+}
+
+
+.jx_title{
+  margin-left:35%;
+  padding-top:40rpx;
+  position: absolute;
+  color:white;
+  font-size:24px;
+  font-weight: bold;
+  font-family: 微软雅黑;
+}
+
+
+
+.item-ans{ 
+  background: #fff;
+  width: 100%;
+  display: flex; 
+  flex-grow: row no-wrap;
+  justify-content: space-between; 
+  box-sizing: border-box; 
+  height: 150rpx;
+  align-items: center;
+}
+
+.item-ans2{ 
+  background: #fff;
+  width: 100%;
+  justify-content: space-between; 
+  box-sizing: border-box; 
+  height: 400rpx;
+}
+
+.ttexttt{
+  margin-left:170rpx;
+  text-align: center;
+}
+
+.des{
+  position:relative;
+  padding-top:20rpx;
+  margin-left: 20rpx;
+}
+
+.des2{
+  position:absolute;
+  padding-top:10rpx;
+  margin-left:50rpx;
+}
+
+.content{
+  background: white;
+}
+
+.picker{
+  background:#e4e4e4;
+  height:100rpx;
+  width:400rpx;
+  box-sizing: border-box; 
+  position: absolute;
+  margin-left: 250rpx;
+}
+
+.chooseText{
+  margin-top:25rpx;
+  text-align:center;
+}
+
+.btn{
+  position: relative;
+  margin-top: 120rpx;
+  margin-left: 50rpx;
+  width:85px;
+  height:85px;
+}
+
+.btn-card{
+  width: 100%;
+  height: 100rpx;
+  background:#339966;
+  position: relative;
+}
+
+.jx_text{
+  text-align:center;
+  position: positive;
+  color:white;
+  font-size:18px;
+  font-weight: bold;
+  font-family: 微软雅黑;
+}
