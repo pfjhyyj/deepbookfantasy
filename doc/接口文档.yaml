@@ -1,423 +1,359 @@
-swagger: '2.0'
+openapi: 3.0.0
 info:
-  description: This is a simple API
+  title: 中大图书 API
+  description: 中大图书 API 的Swaager界面
   version: 1.0.0
-  title: Simple Inventory API
-  # put the contact info for your development or API team
-  contact:
-    email: pfjhyyj@qq.com
 
-  license:
-    name: Apache 2.0
-    url: http://www.apache.org/licenses/LICENSE-2.0.html
+servers:
+  - url: http://api.example.com/v1
+    description: Optional server description, e.g. Main (production) server
+  - url: http://staging-api.example.com
+    description: Optional server description, e.g. Internal staging server for testing
 
-# tags are used for organizing operations
 tags:
-- name: Authentication
-  description: Authentication in WeChat
-- name: user
-  description: current user
-- name: Lend
-  description: Lend book
-- name: borrow
-  description: borrow book
+- name: "auth"
+  description: "处理微信小程序登录相关代码"
+  externalDocs:
+    description: "更多"
+    url: "https://developers.weixin.qq.com/miniprogram/dev/api/"
+- name: "user"
+  description: "处理用户信息逻辑"
+- name: "book"
+  description: "处理订单信息逻辑"
+
 paths:
-  /auth:
+  /auth/getSession:
     post:
-        tags:
-        - Authentication
-        summary: Log in in WeChat
-        operationId: auth
-        description: Log in in WeChat
-        consumes:
-        - application/json
-        produces:
-        - application/json
-        parameters:
-        - in: body
-          name: Authentication code
-          description: Authentication code used by developer server
-          schema:
-            type: object
-            properties:
-              code:
-                type: string
-                example: xxxxxxx
-        responses:
-          200:
-            description: login success
+      tags:
+      - "auth"
+      summary: "用微信code换取小程序session"
+      description: ""
+      operationId: "getSession"
+      requestBody:
+        content:
+          application/json:
             schema:
               type: object
               properties:
-                session:
+                wxcode:
                   type: string
-                  example: sdfasfdasdfafdasfdas
-          400:
-            description: invalid input, object invalid
-          404:
-            description: user not found
-  /user:
-    get:
-      tags:
-      - user
-      summary: get current user detail
-      operationId: getUser
-      description: get current user detail
-      produces:
-      - application/json
       responses:
-        200:
-          description: return current user detail
-          schema:
-            $ref: '#/definitions/UserVO'
-        401:
-          description: unauthorized
-        404:
-          description: invalid input, object invalid
+        '200':
+          description: "成功登陆返回session"
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  session: 
+                    type: string
+        '403':
+          description: "非法登录"
+          
+  /user:
     post:
       tags:
-      - user
-      summary: add user
-      operationId: addUser
-      description: get current user detail
-      produces:
-      - application/json
+      - "user"
+      summary: "创建用户信息"
+      description: ""
+      operationId: "createUser"
       parameters:
-      - in: body
-        name: user object
-        description: user detail
-        schema:
-          $ref: '#/definitions/UserVO'
-      responses:
-        200:
-          description: return current user detail
+        - in: cookie
+          name: session
+          description: 有效session
           schema:
-            $ref: '#/definitions/UserVO'
-        401:
-          description: unauthorized
-        404:
-          description: invalid input, object invalid
-        409:
-          description: duplicate user name
-    put:
-      tags:
-      - user
-      summary: update user
-      operationId: updateUser
-      description: update current user detail
-      produces:
-      - application/json
-      parameters:
-      - in: body
-        name: user object
-        description: user detail
-        schema:
-          $ref: '#/definitions/UserVO'
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/User"
       responses:
-        200:
-          description: return current user detail
-          schema:
-            $ref: '#/definitions/UserVO'
-        401:
-          description: unauthorized
-        404:
-          description: invalid input, object invalid
-    delete:
-      tags:
-      - user
-      summary: delete user
-      operationId: deleteUser
-      description: delete current user
-      produces:
-      - application/json
-      responses:
-        200:
-          description: return success message
-          schema:
-            type: object
-            properties:
-              message:
-                type: string
-                example: success
-        401:
-          description: unauthorized
-        404:
-          description: invalid input, object invalid
-  /lend/{lendId}:
+        '201':
+          description: "用户创建成功"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/User"
+  /user/{userid}:
     get:
       tags:
-      - Lend
-      summary: get lend book detail
-      operationId: getLend
-      description: get lend book detail
-      produces:
-      - application/json
+      - "user"
+      summary: "根据用户ID获得用户信息"
+      description: ""
+      operationId: "getUserById"
+      parameters:
+      - name: "userid"
+        in: "path"
+        description: "用户id "
+        required: true
+        schema:
+            type: integer
+      responses:
+        '200':
+          description: "获得用户信息成功"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/User"
+        '400':
+          description: "用户ID无效"
+        '404':
+          description: "用户未找到"
+    put:
+      tags:
+      - "user"
+      summary: "更新用户信息"
+      description: ""
+      operationId: "updateUser"
+      parameters:
+        - in: cookie
+          name: session
+          description: 有效session
+          schema:
+            type: string
+        - name: "userid"
+          in: "path"
+          description: "用户id "
+          required: true
+          schema:
+              type: integer
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/User"
+      responses:
+        '400':
+          description: "Invalid user supplied"
+        '404':
+          description: "User not found"
+    delete:
+      tags:
+      - "user"
+      summary: "删除用户"
+      description: ""
+      operationId: "deleteUser"
+      parameters:
+        - name: "userid"
+          in: "path"
+          description: "用户id "
+          required: true
+          schema:
+              type: integer
+        - in: cookie
+          name: session
+          description: 有效session
+          schema:
+            type: string
+      responses:
+        '400':
+          description: "Invalid username supplied"
+        '404':
+          description: "User not found"
+  /book/{bookid}:
+    get:
+      tags:
+      - "book"
+      summary: 获取订单信息
+      operationId: getBook
+      description: ""
       parameters:
       - in: path
-        description: lend book id
-        name: lendId
+        description: 订单id
+        name: bookid
         required: true
-        type: integer
-        minimum: 1
+        schema:
+          type: integer
       responses:
-        200:
-          description: return current lend book detail
-          schema:
-            $ref: '#/definitions/LendVO'
-        401:
+        '200':
+          description: 订单详细信息
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Book'
+        '401':
           description: unauthorized
-        404:
+        '404':
           description: lend book not found
     post:
       tags:
-      - Lend
-      summary: add lend book
-      operationId: addLend
-      description: add lend book
-      produces:
-      - application/json
+      - "book"
+      summary: 添加订单信息
+      operationId: addBook
+      description: ""
       parameters:
       - in: path
         description: lend book id
-        name: lendId
+        name: bookid
         required: true
-        type: integer
-        minimum: 1
-      - in: body
-        name: lend book object
-        description: lend book detail
         schema:
-          $ref: '#/definitions/LendVO'
+          type: integer
+      - in: cookie
+        name: session
+        description: 有效session
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/User"
       responses:
-        200:
-          description: return current lend book detail
-          schema:
-            $ref: '#/definitions/LendVO'
-        401:
+        '200':
+          description: 订单详细信息
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Book'
+        '401':
           description: unauthorized
-        404:
+        '404':
           description: invalid input, object invalid
-        409:
+        '409':
           description: duplicate lend book
     put:
       tags:
-      - Lend
-      summary: update lend book
+      - "book"
+      summary: 更新订单信息
       operationId: updateLend
-      description: update lend book
-      produces:
-      - application/json
+      description: ""
       parameters:
       - in: path
         description: lend book id
-        name: lendId
+        name: bookid
         required: true
-        type: integer
-        minimum: 1
-      - in: body
-        name: lend book object
-        description: lend book detail
         schema:
-          $ref: '#/definitions/LendVO'
+          type: integer
+      - in: cookie
+        name: session
+        description: 有效session
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/User"
       responses:
-        200:
-          description: return current lend book detail
-          schema:
-            $ref: '#/definitions/LendVO'
-        401:
+        '200':
+          description: 订单详细信息
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Book'
+        '401':
           description: unauthorized
-        404:
+        '404':
           description: invalid input, object invalid
-        409:
+        '409':
           description: duplicate lend book
     delete:
       tags:
-      - Lend
-      summary: delete lend book
+      - "book"
+      summary: 删除订单信息
       operationId: deleteLend
-      description: delete current lend book
-      produces:
-      - application/json
+      description: ""
       parameters:
       - in: path
         description: lend book id
-        name: lendId
+        name: bookid
         required: true
-        type: integer
-        minimum: 1
-      responses:
-        200:
-          description: return success message
-          schema:
-            type: object
-            properties:
-              message:
-                type: string
-                example: success
-        401:
-          description: unauthorized
-        404:
-          description: invalid input, object invalid
-  /borrow/{borrowId}:
-    get:
-      tags:
-      - borrow
-      summary: get borrow book detail
-      operationId: getborrow
-      description: get borrow book detail
-      produces:
-      - application/json
-      parameters:
-      - in: path
-        name: borrowId
-        description: borrow book id
-        required: true
-        type: integer
-        minimum: 1
-      responses:
-        200:
-          description: return current borrow book detail
-          schema:
-            $ref: '#/definitions/BorrowVO'
-        401:
-          description: unauthorized
-        404:
-          description: borrow book not found
-    post:
-      tags:
-      - borrow
-      summary: add borrow book
-      operationId: addborrow
-      description: add borrow book
-      produces:
-      - application/json
-      parameters:
-      - in: path
-        name: borrowId
-        description: borrow book id
-        required: true
-        type: integer
-        minimum: 1
-      - in: body
-        name: borrow book object
-        description: borrow book detail
         schema:
-          $ref: '#/definitions/BorrowVO'
-      responses:
-        201:
-          description: return current borrow book detail
-          schema:
-            $ref: '#/definitions/BorrowVO'
-        401:
-          description: unauthorized
-        404:
-          description: invalid input, object invalid
-        409:
-          description: duplicate borrow book
-    put:
-      tags:
-      - borrow
-      summary: update borrow book
-      operationId: updateborrow
-      description: update borrow book
-      produces:
-      - application/json
-      parameters:
-      - in: path
-        name: borrowId
-        description: borrow book id
-        required: true
-        type: integer
-        minimum: 1
-      - in: body
-        name: borrow book object
-        description: borrow book detail
+          type: integer
+      - in: cookie
+        name: session
+        description: 有效session
         schema:
-          $ref: '#/definitions/BorrowVO'
+          type: string
       responses:
-        200:
-          description: return current borrow book detail
-          schema:
-            $ref: '#/definitions/BorrowVO'
-        401:
-          description: unauthorized
-        404:
-          description: invalid input, object invalid
-        409:
-          description: duplicate borrow book
-    delete:
-      tags:
-      - borrow
-      summary: delete borrow book
-      operationId: deleteborrow
-      description: delete current borrow book
-      produces:
-      - application/json
-      parameters:
-      - in: path
-        name: borrowId
-        description: borrow book id
-        required: true
-        type: integer
-        minimum: 1
-      responses:
-        200:
+        '200':
           description: return success message
-          schema:
-            type: object
-            properties:
-              message:
-                type: string
-                example: success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: success
         401:
           description: unauthorized
         404:
           description: invalid input, object invalid
-definitions:
-  UserVO:
-    type: object
-    required: 
-    - id
-    - name
-    properties:
-      id:
-        type: integer
-        format: int64
-        example: 1
-      name:
-        type: string
-        example: test_user
-  LendVO:
-    type: object
-    properties:
-      id:
-        type: integer
-        format: int64
-        example: 1
-      name:
-        type: string
-        example: 1984
-      userId:
-        type: integer
-        format: int64
-        example: 1
-  BorrowVO:
-    type: object
-    properties:
-      id:
-        type: integer
-        format: int64
-        example: 1
-      name:
-        type: string
-        example: 1984
-      userId:
-        type: integer
-        format: int64
-        example: 1
   
-# Added by API Auto Mocking Plugin
-host: virtserver.swaggerhub.com
-basePath: /pfjhyyj/DeepBookFantasy/1.0.0
-schemes:
- - https
+components:
+  schemas:
+    User:
+      type: "object"
+      properties:
+        id:
+          type: "integer"
+          format: "int64"
+        name:
+          type: "string"
+        gender:
+          type: "integer"
+          format: "int32"
+          description: "0为女，1为男"
+        description:
+          type: "string"
+        email:
+          type: "string"
+        wechat:
+          type: "string"
+      required:
+        - name
+        - gender
+    Book:
+      type: object
+      properties:
+        id:
+          type: "integer"
+          format: "int64"
+          example: 1
+        name:
+          type: "string"
+          example: "1984"
+        isbn:
+          type: "string"
+          example: "123"
+        description:
+          type: "string"
+          example: "书的简介"
+        image:
+          type: "string"
+          example: "localhost/images/a.jpg"
+        start:
+          type: "object"
+        end:
+          type: "object"
+        enable:
+          type: "integer"
+        booktype:
+          type: "integer"
+          description: "0表示借出，1表示借入"
+        userId:
+          type: "integer"
+          format: "int64"
+          example: 1
+        
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  

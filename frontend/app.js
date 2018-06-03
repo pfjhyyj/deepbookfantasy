@@ -16,11 +16,24 @@ App({
             code: res.code
           },
           success: res => {
-              wx.setStorageSync('session', res.header["Set-Cookie"])
+            wx.setStorageSync('session', res.header["Set-Cookie"]);
+            wx.request({
+              url: 'http://localhost:8080/user',
+              header: {
+                'cookie': wx.getStorageSync("session")
+              },
+              success: res => {
+                if (res.data.errorCode != 0) {
+                  wx.redirectTo({
+                    url: '/pages/register/register',
+                  })
+                }
+              }
+            })
           }
         })
       }
-    })
+    });
     // 获取用户信息
     wx.getSetting({
       success: res => {
@@ -42,7 +55,28 @@ App({
       }
     })
   },
+  getUserInfo: function (cb) {
+    var that = this
+    if (this.globalData.userInfo) {
+      typeof cb == "function" && cb(this.globalData.userInfo)
+    } else {
+      //调用登录接口
+      wx.login({
+        success: function () {
+          wx.getUserInfo({
+            success: function (res) {
+              that.globalData.userInfo = res.userInfo
+              typeof cb == "function" && cb(that.globalData.userInfo)
+            }
+          })
+        }
+      })
+    }
+  },
   globalData: {
-    userInfo: null
+    userInfo: null,
+    userId: null,
+    lendID: null,
+    borrowID: null
   }
 })

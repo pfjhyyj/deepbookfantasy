@@ -1,0 +1,6 @@
+<!--components/Search-bar/Search-bar.wxml-->
+<view class="search-bar"> 
+  <input class="search-input" placeholder="请输入" bindtap="bindFocus" auto-focus >
+    <icon type="search" size="20" color="purple" class="search-icon inside"/>
+  </input>
+</view>

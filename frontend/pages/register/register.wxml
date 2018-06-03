@@ -1,0 +1,40 @@
+<!--pages/register/register.wxml-->
+<import src="../../components/toast/toast.wxml"/>
+
+<template is="toast" data="{{ ...$wux.toast }}"/>
+<view class="view-profile-edit">
+  <form class="form-profile" bindsubmit="formSubmit" bindreset="formReset">
+    <view class="title-h1">
+      用户注册
+    </view>
+    <view class="field field-name">
+      <label>昵称</label>
+      <input type="text" name="name"></input>
+    </view>
+    <view class="field field-gender">
+      <label>性别</label>
+      <picker mode="selector" range="{{gender}}" value="index" bindchange="bindGenderChange" name="gender" value="0">
+        <view>{{gender[index]}}</view>
+      </picker>
+    </view>
+    <view class="field field-description">
+      <label>个人简介</label>
+      <textarea name="description"></textarea>
+    </view>
+    <view class="field field-email">
+      <label>邮箱</label>
+      <input type="text" name="email"></input>
+    </view>
+    <view class="field field-wechatid">
+      <label>微信号</label>
+      <input type="text" name="wechatID"></input>
+    </view>
+    <view class="field field-submit">
+      <button form-type="submit" class="btn btn-default btn-submit">提交</button>
+      <button form-type="reset" class="btn btn-default btn-reset">重置</button>
+    </view>
+    <view class="message-info-box" wx:if="{{isShow}}">
+      <view class="message">{{message}}</view>
+    </view>
+  </form>
+</view>

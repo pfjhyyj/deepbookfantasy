@@ -1,0 +1,15 @@
+<!--components/List/List.wxml-->
+<view class="book-list">
+  <block wx:for="{{list}}" wx:key="id">
+    <navigator url="../orderInformation/orderInformation">
+      <view class="book-single">
+        <image class="b-pic" lazy-load="true" src="{{item.image}}"></image> 
+        <view class="book-info">
+          <text class="text b-name">{{item.name}}</text>
+          <text class="text b-description">{{item.description}}</text>
+        </view>
+      </view> 
+    </navigator> 
+  </block>
+  <button type="primary" class="load-more" loading="{{loading}}" bindtap="loadMore">更多</button>
+</view>

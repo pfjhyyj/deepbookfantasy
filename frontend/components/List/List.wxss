@@ -1,0 +1,48 @@
+/* components/List/List.wxss */
+
+.book-single{ 
+  width: 100%;
+  justify-content: space-between; 
+  padding: 0 50rpx;
+  box-sizing: border-box; 
+  height: 360rpx;
+  align-items: center;
+  border-top: 5px solid #F2F2F2;
+  border-bottom: 5px solid #F2F2F2;
+  padding-top: 25rpx;
+  padding-bottom: 25rpx;
+}
+
+.b-pic {
+  width: 150rpx;
+  height: 300rpx;
+  position: relative;
+  display: inline-block;
+  vertical-align: top;
+}
+
+.book-info {
+  width: 450rpx;
+  font-size: 12px;
+  color: #b0b0b0;
+  line-height: 1.5em;
+  padding-left: 50rpx; 
+  display: inline-block;
+}
+
+/*放那几个文字*/
+.book-info .text {
+  font-size: 14px;
+  color:#000;
+  margin-top:15rpx;
+  position:relative;
+  display: block;
+}
+
+.book-info .name {
+  text-align: center;
+}
+
+.load-more {
+  margin: 0 50rpx;
+}
