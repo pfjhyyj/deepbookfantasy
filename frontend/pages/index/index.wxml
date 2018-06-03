@@ -27,7 +27,7 @@
     </block>
   </swiper> 
   <view class='viewclass'>  
-    <text class='viewview'>图书推荐</text>  
-   </view>
-
+    <text class='viewview'>图书推荐</text>
+    <book-list></book-list>  
+  </view>
 </view>

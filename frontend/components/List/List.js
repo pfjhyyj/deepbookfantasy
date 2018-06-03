@@ -12,7 +12,8 @@ Component({
    */
 
   data: {
-    list: []
+    list: [],
+    page: 0
   },
 
   /**
@@ -21,8 +22,23 @@ Component({
   methods: {
     loadMore() {
       let that = this;
-      this.setData({
-        list: that.data.list.concat({ "id": 1 })
+      wx.request({
+        url: 'http://localhost:8080/book/search',
+        data: {
+          name: "书",
+          page: that.data.page
+        },
+        header: {
+          'cookie': wx.getStorageSync("session")
+        },
+        method: "GET",
+        success: res => {
+          console.log(res);
+          this.setData({
+            list: that.data.list.concat(res.data.data),
+            page: that.data.page+1
+          })
+        }
       })
     },
     list_init() {
@@ -36,6 +52,5 @@ Component({
     }
   },
   attached() {
-    this.list_init();
   }
 })

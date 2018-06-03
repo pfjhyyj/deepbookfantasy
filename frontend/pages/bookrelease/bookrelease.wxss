@@ -1,1 +1,48 @@
 /* pages/bookrelease/bookrelease.wxss */
+.view-book-edit {
+  margin: 50rpx 50rpx;
+}
+
+.view-book-edit .form-book .field {
+  vertical-align: top;
+}
+
+.view-book-edit .form-book .field input,
+.view-book-edit .form-book .field picker {
+  display: inline-block;
+  width: 450rpx;
+  text-align: right;
+  padding: 5rpx 20rpx;
+  vertical-align: middle;
+  box-sizing: border-box;
+}
+
+.view-book-edit .form-book .field label {
+  display: inline-block;
+  width: 150rpx;
+  margin-right: 50rpx;
+  vertical-align: middle;
+}
+
+.view-book-edit .form-book .field-submit {
+  text-align: center;
+}
+
+.view-book-edit .form-book .field-submit .btn {
+  margin: 10rpx;
+  width: 200rpx;
+}
+
+.view-book-edit .form-book .upload-box {
+  vertical-align: top;
+  width: 450rpx;
+  box-sizing: border-box;
+  height: 300rpx;
+  border: 1px solid #ccc;
+  display: inline-block;
+}
+
+.view-book-edit .form-book .btn-upload {
+  margin-top: 10rpx;
+  margin-left: 450rpx;
+}

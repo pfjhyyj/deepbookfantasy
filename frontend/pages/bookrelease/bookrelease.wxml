@@ -1,2 +1,56 @@
 <!--pages/bookrelease/bookrelease.wxml-->
-<text>pages/bookrelease/bookrelease.wxml</text>
+<import src="../../components/toast/toast.wxml"/>
+
+<template is="toast" data="{{ ...$wux.toast }}"/>
+<view class="view-book-edit">
+  <form class="form-book" bindsubmit="formSubmit" bindreset="formReset">
+    <view class="title-h1">
+      发布图书信息
+    </view>
+    <view class="field field-name">
+      <label>图书名</label>
+      <input type="text" name="name"></input>
+    </view>
+    <view class="field field-type">
+      <label>类型</label>
+      <picker mode="selector" range="{{type}}" value="index" bindchange="bindTypeChange" name="type" value="0">
+        <view>{{type[index]}}</view>
+      </picker>
+    </view>
+    <view class="field field-isbn">
+      <label>ISBN</label>
+      <input type="text" name="ISBN"></input>
+    </view>
+    <view class="field field-image">
+      <label>图书图片（点击选择上传图片）</label>
+      <view class="upload-box" bindtap="selectImage">
+        <image style="width:100%;height:100%;" src="{{tempFile}}"></image>
+      </view>
+      <input class="hidden" name="image" value="{{imagePath}}"></input>
+      <button class="btn btn-default btn-upload" bindtap="uploadImage">上传</button>
+    </view>
+    <view class="field field-description">
+      <label>图书简介</label>
+      <textarea name="description" maxlength="300"></textarea>
+    </view>
+    <view class="field field-start">
+      <label>开始时间</label>
+      <picker mode="date" value="{{date}}" start="2015-09-01" end="2017-09-01" name="start">
+        {{date}}
+      </picker>
+    </view>
+    <view class="field field-end">
+      <label>结束时间</label>
+      <picker mode="date" value="{{date}}" start="2015-09-01" end="2017-09-01" name="end">
+        {{date}}
+      </picker>
+    </view>
+    <view class="field field-submit">
+      <button form-type="submit" class="btn btn-default btn-submit">提交</button>
+      <button form-type="reset" class="btn btn-default btn-reset">重置</button>
+    </view>
+    <view class="message-info-box" wx:if="{{isShow}}">
+      <view class="message">{{message}}</view>
+    </view>
+  </form>
+</view>

@@ -22,16 +22,18 @@ App({
               header: {
                 'cookie': wx.getStorageSync("session")
               },
-              fail: res => {
-                wx.switchTab({
-                  url: '/pages/register/register',
-                })
+              success: res => {
+                if (res.data.errorCode != 0) {
+                  wx.redirectTo({
+                    url: '/pages/register/register',
+                  })
+                }
               }
             })
           }
         })
       }
-    })
+    });
     // 获取用户信息
     wx.getSetting({
       success: res => {

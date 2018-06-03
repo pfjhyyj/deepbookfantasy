@@ -8,9 +8,7 @@ Page({
    */
   data: {
     gender: ["男", "女"],
-    index: 0,
-    isShow: false,
-    message: "提示消息"
+    index: 0
   },
 
   bindGenderChange: function (e) {
@@ -49,7 +47,11 @@ Page({
   formValidate: function(e) {
     let that = this;
     if (e.name == null) {
-      that.showErrorToast("昵称不能为空");
+      that.showErrorToast("图书名不能为空");
+      return false;
+    }
+    if (e.start < e.end) {
+      that.showErrorToast("时间错误");
       return false;
     }
     return true;

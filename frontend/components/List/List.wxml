@@ -3,7 +3,7 @@
   <block wx:for="{{list}}" wx:key="id">
     <navigator url="../orderInformation/orderInformation">
       <view class="book-single">
-        <image class="b-pic" lazy-load="true" src="../../images/headimage1.jpg"></image> 
+        <image class="b-pic" lazy-load="true" src="{{item.image}}"></image> 
         <view class="book-info">
           <text class="text b-name">{{item.name}}</text>
           <text class="text b-description">{{item.description}}</text>

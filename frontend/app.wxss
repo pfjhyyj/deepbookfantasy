@@ -103,3 +103,7 @@ picker {
   color: white;
   font-size: 13pt;
 }
+
+.hidden {
+  display: none !important;
+}
