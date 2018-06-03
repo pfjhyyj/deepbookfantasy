@@ -26,13 +26,22 @@ public class User implements Serializable {
 
     @Column(unique=true)
     private String wxOpenId;
+
     private String wxUnionId;
 
+    @Column(nullable = false)
     private String name;
+
+    @Column(nullable = false)
     private Integer gender;
+
     private String description;
+
     private String email;
+
     private String wechatID;
+
+    @Column(nullable = false)
     private Integer enable;
 
     public User(Map<String, Object> userVO) {
@@ -42,6 +51,7 @@ public class User implements Serializable {
         this.description = userVO.get("description").toString();
         this.email = userVO.get("email").toString();
         this.wechatID = userVO.get("wechatID").toString();
+        this.enable = 0;
     }
 
 
