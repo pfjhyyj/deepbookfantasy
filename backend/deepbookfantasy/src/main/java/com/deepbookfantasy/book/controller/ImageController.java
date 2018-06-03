@@ -28,7 +28,7 @@ public class ImageController {
     @Value("${img.host}")
     private String imgHost;
 
-    @RequestMapping(value="/upload", method = RequestMethod.GET, produces = "application/json")
+    @RequestMapping(value="/upload", method = RequestMethod.POST, produces = "application/json")
     public Map<String,Object> imageUpload(@RequestParam("image") MultipartFile image) {
         if (image == null) {
             wxReply(40010, null);
@@ -44,4 +44,5 @@ public class ImageController {
         }
         return wxReply(40011, null);
     }
+
 }

@@ -12,6 +12,9 @@ import org.springframework.data.domain.Sort;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpSession;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.util.Calendar;
 import java.util.List;
 import java.util.Map;
 
@@ -36,6 +39,7 @@ public class BookController {
      */
     @RequestMapping(value = "/book", method = RequestMethod.POST, produces = "application/json")
     public Map<String, Object> addBook(@RequestBody Map<String, Object> reqMap, HttpSession session) {
+        System.out.println(reqMap.get("name"));
         String wxOpenId = String.valueOf(session.getAttribute("wx_openid"));
         User user = userService.getUserByWxOpenId(wxOpenId);
         reqMap.put("user", user);

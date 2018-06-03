@@ -19,4 +19,5 @@ public interface BookDAO extends PagingAndSortingRepository<Book, Long> {
     Page<Book> findByNameContaining(String name, Pageable pageable);
 
     Page<Book> findByUser(User owner, Pageable pageable);
+
 }

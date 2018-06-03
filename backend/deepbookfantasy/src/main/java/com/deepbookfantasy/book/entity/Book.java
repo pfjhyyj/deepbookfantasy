@@ -8,6 +8,8 @@ import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
 
 import javax.persistence.*;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.Date;
 import java.util.Map;
 
@@ -34,10 +36,10 @@ public class Book {
     private String image;
 
     @Column(nullable = false)
-    private Date start;
+    private LocalDate start;
 
     @Column(nullable = false)
-    private Date end;
+    private LocalDate end;
 
     @Column(nullable = false)
     private Integer enable;
@@ -55,8 +57,9 @@ public class Book {
         this.ISBN = String.valueOf(bookVO.get("ISBN"));
         this.description = String.valueOf(bookVO.get("description"));
         this.image = String.valueOf(bookVO.get("image"));
-        this.start = new Date(Long.parseLong(String.valueOf(bookVO.get("start"))));
-        this.end = new Date(Long.parseLong(String.valueOf(bookVO.get("end"))));
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+        this.start = LocalDate.parse(String.valueOf(bookVO.get("start")), formatter);
+        this.end = LocalDate.parse(String.valueOf(bookVO.get("end")), formatter);
         this.enable = 0;
         this.type = Integer.parseInt(String.valueOf(bookVO.get("type")));
         this.user = (User)bookVO.get("user");
