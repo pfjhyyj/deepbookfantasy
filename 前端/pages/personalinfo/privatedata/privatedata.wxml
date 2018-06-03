@@ -1,0 +1,25 @@
+
+<view class="jx_card">
+    <text class="jx_title">个人资料</text>
+</view>
+
+<view class="content">
+  <view class="item-ans">
+    <view class="text">头像</view>
+    <image class="avatar" src='{{userInfo.avatarUrl}}'></image> 
+
+    <text class="text2" style="margin-top:400rpx">校区</text> 
+    <view class="picker">
+      <picker bindchange="bindPickerChange" value="{{index}}" range="{{array}}">
+        <view class="chooseText">
+          {{array[index]}}
+        </view>
+      </picker>
+    </view>
+    <view class="text2" style="margin-top:500rpx">用户名</view>
+    <view class="text2" style="margin-top:600rpx">手机号码</view>
+    <view class="text2" style="margin-top:700rpx">QQ</view>
+    <view class="text2" style="margin-top:800rpx">微信</view>
+
+  </view>
+</view>

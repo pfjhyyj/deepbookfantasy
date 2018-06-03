@@ -1,0 +1,27 @@
+<!--pages/myorder/myorder.wxml-->
+<view class="jx_card">
+    <image class="jx_image" src="../../images/lalala.png"></image>
+    <text class="jx_title">订单列表</text>
+</view>
+
+ <swiper class="tab-content" style="height:800rpx">
+    <swiper-item>
+        <scroll-view class="scoll-h" scroll-y="true"  >
+            <block wx:for="{{[1,2,3,4,5]}}" wx:key="*this">
+              <navigator url="../orderInformation/orderInformation">
+                <view class="item-ans">
+                    <image class="avatar" src="../../images/headimage1.jpg">
+                    </image> 
+                    <view class="expertInfo">
+                      <text class="text">{{name}}</text>
+                      <text class="text">{{order_time}}</text>
+                      <text class="text">{{exchange_time}}</text>
+                      <text class="text">{{exchange_to}}</text>
+                    </view>
+                </view> 
+              </navigator>               
+            </block>
+         </scroll-view>
+    </swiper-item>
+</swiper>
+
