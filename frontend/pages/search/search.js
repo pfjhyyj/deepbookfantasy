@@ -1,6 +1,6 @@
 var app = getApp()
-var WxSearch = require('../../../components/wxSearch/wxSearch.js')
-import { $wuxToast } from '../../../components/wux'
+var WxSearch = require('../../components/wxSearch/wxSearch.js')
+import { $wuxToast } from '../../components/wux'
 Page({
   data: {
     selectHide: false,
@@ -9,7 +9,8 @@ Page({
     modalHidden: true,
     list: [],
     page: 0,
-    showMore: false
+    showMore: false,
+    noResult: true
   },
   bindInput: function (e) {
     this.setData({
@@ -29,6 +30,9 @@ Page({
     var that = this
     WxSearch.wxSearchAddHisKey(that);
     console.log(that.data.wxSearchData);
+    wx.showLoading({
+      title: '加载中',
+    })
     wx.request({
       url: 'http://localhost:8080/book/search',
       data: {
@@ -40,14 +44,27 @@ Page({
       },
       method: "GET",
       success: res => {
-        console.log(res);
-        this.setData({
-          list: that.data.list.concat(res.data.data),
-          page: that.data.page + 1,
-          showMore: true
-        })
+        if (res.data.data.length == 0) {
+          this.setData({
+            showMore: false
+          })
+          that.showInfoToast("沒有更多了");
+        } else {
+          console.log(res);
+          console.log(that);
+          this.setData({
+            list: res.data.data,
+            page: that.data.page + 1,
+            showMore: true,
+            noResult: false,
+          })
+          wx.hideLoading();
+        }
+      },
+      fail: () => {
+        wx.hideLoading();
       }
-    })
+    });
   },
   wxSearchInput: function (e) {
     var that = this
@@ -111,9 +128,6 @@ Page({
       color: '#fff',
       text: message,
       success: () => {
-        wx.switchTab({
-          url: "../personalinfo/personalinfo",
-        })
       }
     })
   },

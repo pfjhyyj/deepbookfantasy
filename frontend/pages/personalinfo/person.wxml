@@ -1,0 +1,34 @@
+<!--pages/personalinfo/person.wxml-->
+<import src="../../components/toast/toast.wxml"/>
+
+<template is="toast" data="{{ ...$wux.toast }}"/>
+<view class="view-profile">
+  <form class="form-profile" bindsubmit="formSubmit" bindreset="formReset">
+    <view class="field field-name">
+      <label>用戶名</label>
+      <input class="text" disabled="{{disabled}}" value="{{userInfo.name}}" name="name"></input>
+    </view>
+    <view class="field field-wechatid">
+      <label>微信号</label>
+      <input class="text" disabled="{{disabled}}" value="{{userInfo.wechatID}}" name="wechatID"></input>
+    </view>
+    <view class="field field-email">
+      <label>邮箱</label>
+      <input class="text" disabled="{{disabled}}" value="{{userInfo.email}}" name="email"></input>
+    </view>
+    <view class="field field-gender">
+      <label>性别</label>
+      <picker mode="selector" range="{{genderRange}}" value="0" bindchange="bindGenderChange" name="gender" disabled="{{disabled}}">
+        <view>{{genderRange[userInfo.gender]}}</view>
+      </picker>
+    </view>
+    <view class="field field-description">
+      <label>个人简介</label>
+      <textarea class="text" disabled="{{disabled}}" value="{{userInfo.description}}" name="description"></textarea>
+    </view>
+    <view class="field field-edit">
+      <button class="btn btn-default" bindtap="editProfile" hidden="{{!disabled}}">修改</button>
+      <button form-type="submit" class="btn btn-default btn-submit" hidden="{{disabled}}">提交</button>
+    </view>
+  </form>
+</view>

@@ -5,14 +5,33 @@ Page({
    * 页面的初始数据
    */
   data: {
-  
+    bookInfo: null
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-  
+    wx.showLoading({
+      title: '加载中',
+    })
+    wx.request({
+      url: 'http://localhost:8080/book/'+options.id,
+      header: {
+        'cookie': wx.getStorageSync("session")
+      },
+      method: "GET",
+      success: res => {
+        console.log(res);
+        this.setData({
+          bookInfo: res.data.data
+        })
+        wx.hideLoading();
+      },
+      fail: () => {
+        wx.hideLoading();
+      }
+    });
   },
 
   /**

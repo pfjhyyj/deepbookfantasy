@@ -8,21 +8,20 @@
         <scroll-view class="scoll-h" scroll-y="true"  >
             <view class="item-ans">
                 <text class="atext">封面</text>
-                <image class="avatar" src="../../images/headimage2.jpg"></image> 
+                <image class="avatar" src="{{bookInfo.image}}"></image> 
             </view> 
 
             <view class="item-ans">
                 <view class="bookname">书名</view>
                 <view class="explainname">简介:</view>
                 <view class="explain">
-                  <text>本书介绍了一位美女,她非常美（仅限100字，否则要加大面板大小，在item-ans类里面）
+                  <text>{{bookInfo.description}}
                   </text>
                 </view>
             </view>  
             <view class="item-ans">
-                <text class="bookname">下单时间：{{ordertime}}</text>
-                <text class="explainname">交换时间：{{exchangetime}}</text>
-                <text class="explainname2">归还时间：{{returntime}}</text>
+                <text class="bookname">上架时间：{{bookInfo.start}}</text>
+                <text class="explainname">结束时间：{{bookInfo.end}}</text>
             </view> 
                              
          </scroll-view>

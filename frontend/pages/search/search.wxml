@@ -1,6 +1,6 @@
-<!--pages/index/search/search.wxml-->
-<import src="../../../components/wxSearch/wxSearch.wxml"/>
-<import src="../../../components/toast/toast.wxml"/>
+<!--pages/search/search.wxml-->
+<import src="../../components/wxSearch/wxSearch.wxml"/>
+<import src="../../components/toast/toast.wxml"/>
 
 <template is="toast" data="{{ ...$wux.toast }}"/>
 
@@ -14,7 +14,7 @@
   <template is="wxSearch" data="{{wxSearchData}}"/>
   <view class="search-result">
     <block wx:for="{{list}}" wx:key="id">
-      <navigator url="../orderInformation/orderInformation">
+      <navigator url="../orderInformation/orderInformation?id={{item.id}}">
         <view class="book-single">
           <image class="b-pic" lazy-load="true" src="{{item.image}}"></image> 
           <view class="book-info">
@@ -25,5 +25,8 @@
       </navigator> 
     </block>
     <button type="primary" class="load-more" loading="{{loading}}" bindtap="loadMore" wx:if="{{showMore}}">更多</button>
+  </view>
+  <view class="tip-description" wx:if="{{noResult}}">
+    点击上方搜索栏进行搜索
   </view>
 </view>

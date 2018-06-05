@@ -1,14 +1,22 @@
-// pages/register/register.js
+// pages/personalinfo/person.js
 import { $wuxToast } from '../../components/wux'
-
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    gender: ["男", "女"],
-    index: 0
+    genderRange: ["男", "女"],
+    disabled: true
+  },
+
+  editProfile: function (e) {
+    if (this.data.disabled) {
+      this.setData({
+        disabled: false
+      });
+      this.showSuccessToast("已可编辑");
+    }
   },
 
   bindGenderChange: function (e) {
@@ -24,15 +32,18 @@ Page({
       return;
     }
     wx.request({
-      url: 'http://localhost:8080/user',
+      url: 'http://localhost:8080/user/'+that.data.userInfo.id,
       header: {
         'cookie': wx.getStorageSync("session")
       },
       data: e.detail.value,
-      method: "POST", 
+      method: "PUT",
       success: res => {
         if (res.data.errorCode == 0) {
-          that.showSuccessToast("用户创建成功");
+          that.showSuccessToast("用户更新成功");
+          this.setData({
+            disabled: true
+          });
         } else {
           that.showErrorToast(res.data.msg);
           console.log(res);
@@ -44,7 +55,7 @@ Page({
   formReset: function () {
   },
 
-  formValidate: function(e) {
+  formValidate: function (e) {
     let that = this;
     if (e.name == null) {
       that.showErrorToast("用户名不能为空");
@@ -75,12 +86,34 @@ Page({
       success: () => console.log('禁止操作')
     })
   },
+  showInfoToast: function (message) {
+    $wuxToast.show({
+      type: 'text',
+      timer: 1500,
+      color: '#fff',
+      text: message,
+      success: () => console.log('禁止操作')
+    })
+  },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-  
+    let that = this;
+    wx.request({
+      url: 'http://localhost:8080/user',
+      header: {
+        'cookie': wx.getStorageSync("session")
+      },
+      method: "GET",
+      success: res => {
+        console.log(res.data.data);
+        that.setData({
+          userInfo: res.data.data
+        });
+      }
+    })
   },
 
   /**

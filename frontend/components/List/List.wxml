@@ -11,5 +11,5 @@
       </view> 
     </navigator> 
   </block>
-  <button type="primary" class="load-more" loading="{{loading}}" bindtap="loadMore">更多</button>
+  <button type="primary" class="load-more" loading="{{loading}}" bindtap="loadMore" wx:if="{{showMore}}">更多</button>
 </view>

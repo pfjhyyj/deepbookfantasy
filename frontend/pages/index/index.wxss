@@ -1,4 +1,5 @@
 /**index.wxss**/
+@import "../../components/wxSearch/wxSearch.wxss";
 .nav-header{
   position:relative;
   z-index:99;
@@ -41,9 +42,9 @@
 }
 
 .viewclass{ 
-  /* display: flex;   */
-  /* flex-direction: row;  
-  justify-content: center; */
+   display: flex;   
+   flex-direction: row;   
+  justify-content: center; 
 }
 
 /**swiper**/

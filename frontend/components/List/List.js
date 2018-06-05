@@ -4,7 +4,6 @@ Component({
    * 组件的属性列表
    */
   properties: {
-
   },
 
   /**
@@ -13,7 +12,9 @@ Component({
 
   data: {
     list: [],
-    page: 0
+    page: 0,
+    showMore: false,
+    keyWord: ""
   },
 
   /**
@@ -25,7 +26,7 @@ Component({
       wx.request({
         url: 'http://localhost:8080/book/search',
         data: {
-          name: "书",
+          name: that.properties.input,
           page: that.data.page
         },
         header: {
@@ -41,14 +42,12 @@ Component({
         }
       })
     },
-    list_init() {
+    init(keyWord) {
       let that = this;
       this.setData({
-        list: that.data.list.concat({
-          "id": 1,
-          "name": "通常攻撃が全体攻撃で二回攻撃のお母さんは好きですか?",
-          "description": "日本轻小说"})
+        keyWord: keyWord
       })
+      that.loadMore();
     }
   },
   attached() {

@@ -1,19 +1,26 @@
 <!--index.wxml-->
 <!--<view class="container">-->
-
+<import src="../../components/wxSearch/wxSearch.wxml"/>
 <view class="page">
 
   <view class="nav-header"> 
-      <mask hidden="{{hidden1}}" bindtap="mask1" hover-style="none"/>
-      <view class="saoyisao"  bindtap="tap1">
-      <!--<image src="../../../image/API.png" width="10" height="10"></image>-->
-        <view style="display:inline-block;"></view>
-      </view>
-      <view class="search"> 
+       <!-- <mask hidden="{{hidden1}}" bindtap="mask1" hover-style="none"/>
+      <view class="saoyisao"  bindtap="tap1"> 
+      <image src="../../../image/API.png" width="10" height="10"></image>
+         <view style="display:inline-block;"></view>
+       </view>  
+       <view class="search"> 
         <input class="search-input" placeholder="请输入" bindtap="bindFocus" auto-focus >
           <icon type="search" size="20" color="purple" class="search-icon inside"/>
         </input>
-       </view>
+       </view>  -->
+      <view class="wxSearch-section" capture-bind:tap="navigateToSearch">
+        <view class="wxSearch-pancel">
+          <input bindinput="wxSearchInput" bindfocus="wxSerchFocus" value="{{wxSearchData.value}}" bindblur="wxSearchBlur" class="wxSearch-input" placeholder="搜索" />
+          <button class="wxSearch-button" bindtap="wxSearchFn" size="mini" plain="true">搜索</button>
+        </view>
+      </view>
+      <template is="wxSearch" data="{{wxSearchData}}"/>
 
   </view>
 
@@ -27,7 +34,7 @@
     </block>
   </swiper> 
   <view class='viewclass'>  
-    <text class='viewview'>图书推荐</text>
-    <book-list></book-list>  
+    <text class='viewview title-h1'>图书推荐</text>
   </view>
+  <book-list></book-list>  
 </view>

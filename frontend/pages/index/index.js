@@ -3,7 +3,6 @@
 const app = getApp()
 
 
-
 Page({
   data: {
     hidden1: true,
@@ -29,13 +28,10 @@ Page({
     obj['hidden1'] = false
     this.setData(obj)
   },
-  mask1: function (e) {
-    var obj = {}
-    obj['hidden1'] = true
-    this.setData(obj)
-    //   wx.navigateTo({
-    //     url: '../component1/component1'
-    //   })
+  navigateToSearch: function (e) {
+    wx.navigateTo({
+      url: './search/search'
+    })
   },
 
   formReset: function (e) {
@@ -43,6 +39,8 @@ Page({
     this.setData({
       chosen: ''
     })
+  },
+  wxSerchFocus: function (e) {
   },
   bindFocus: function () {
     wx.navigateTo({
@@ -69,6 +67,8 @@ Page({
     this.setData({
       duration: e.data.value
     })
+  },
+  onLoad: function () {
   },
 
 

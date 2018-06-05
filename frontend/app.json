@@ -1,7 +1,7 @@
 {
   "pages": [
     "pages/index/index",
-    "pages/personalinfo/personalinfo",
+    "pages/personalinfo/person",
     "pages/personalinfo/mypublish/publishInformation/publishInformation",
     "pages/personalinfo/privatedata/privatedata",
     "pages/myorder/myorder",
@@ -9,13 +9,13 @@
     "pages/logs/logs",
     "pages/bookrelease/bookrelease",
     "pages/index/search/search",
-    "pages/index/result/result",
     "pages/personalinfo/unreadinfo/unreadinfo",
     "pages/personalinfo/mypublish/mypublish",
     "pages/personalinfo/mybooking/mybooking",
     "pages/personalinfo/myorders/myorders",
     "pages/book/book",
-    "pages/register/register"
+    "pages/register/register",
+    "pages/search/search"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -38,8 +38,8 @@
       {
         "selectedIconPath": "images/3.png",
         "iconPath": "images/3.png",
-        "pagePath": "pages/book/book",
-        "text": "预定"
+        "pagePath": "pages/search/search",
+        "text": "搜索"
       },
       {
         "selectedIconPath": "images/1.png",
@@ -51,12 +51,12 @@
         "selectedIconPath": "images/5.png",
         "iconPath": "images/5.png",
         "pagePath": "pages/myorder/myorder",
-        "text": "订单"
+        "text": "我的"
       },
       {
         "selectedIconPath": "images/6.png",
         "iconPath": "images/6.png",
-        "pagePath": "pages/personalinfo/personalinfo",
+        "pagePath": "pages/personalinfo/person",
         "text": "个人信息"
       }
     ]
