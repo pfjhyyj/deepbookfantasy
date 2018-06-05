@@ -38,8 +38,12 @@ public class UserService {
     }
 
     public void updateUser(Map<String, Object> userVO) {
-        validateUser(Long.valueOf(userVO.get("id").toString()));
-        User newUser = new User(userVO);
+        User newUser = getUserById(Long.valueOf(userVO.get("id").toString()));
+        newUser.setDescription(userVO.get("description").toString());
+        newUser.setEmail(userVO.get("email").toString());
+        newUser.setGender(Integer.valueOf(userVO.get("gender").toString()));
+        newUser.setName(userVO.get("name").toString());
+        newUser.setWechatID(userVO.get("wechatID").toString());
         userDAO.save(newUser);
     }
 

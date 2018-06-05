@@ -12,10 +12,6 @@ import org.springframework.data.domain.Sort;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpSession;
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
-import java.util.Calendar;
-import java.util.List;
 import java.util.Map;
 
 import static com.deepbookfantasy.common.util.WxResponse.wxReply;
@@ -92,16 +88,16 @@ public class BookController {
         User user = userService.getUserByWxOpenId(wxOpenId);
         Book result = bookService.getBookById(Long.valueOf(bookid));
         if (!result.getId().equals(user.getId())) {
-            wxReply(403, "这是不属于你的图书");
+            wxReply(403, "这是不属于你的图�?");
         }
         bookService.deleteBook(Long.valueOf(bookid));
         return wxReply(0, null);
     }
 
     /**
-     * 根据名字进行模糊搜索（%关键字%）
+     * 根据名字进行模糊搜索
      * @param page 页码
-     * @param size 一页的大小
+     * @param size 页的大小
      * @param name 关键字
      * @return 图书的list
      */
@@ -116,9 +112,24 @@ public class BookController {
     }
 
     /**
+     * 分页获取所有图书
+     * @param page 页码
+     * @param size 页大小
+     * @return 图书的list
+     */
+    @RequestMapping(value = "/book/all", method = RequestMethod.GET, produces = "application/json")
+    public Map<String, Object> getAllBooks(@RequestParam(value = "page", defaultValue = "0") Integer page,
+                                           @RequestParam(value = "size", defaultValue = "20") Integer size) {
+        Sort sort = new Sort(Sort.Direction.DESC, "id");
+        Pageable pageable = PageRequest.of(page, size, sort);
+        Page<Book> books = bookService.getAllBooks(pageable);
+        return wxReply(0, books.getContent());
+    }
+
+    /**
      * 根据用户id获得此用户的图书
      * @param page 页码
-     * @param size 一页的大小
+     * @param size 页的大小
      * @return 图书的list
      */
     @RequestMapping(value = "/list/{userid}", method = RequestMethod.GET, produces = "application/json")

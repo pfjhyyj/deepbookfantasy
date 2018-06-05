@@ -11,6 +11,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.EntityNotFoundException;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.Collection;
 import java.util.List;
 import java.util.Map;
@@ -36,13 +38,25 @@ public class BookService {
         return bookDAO.findByUser(owner, pageable);
     }
 
+    public Page<Book> getAllBooks(Pageable pageable) {
+        return bookDAO.findAll(pageable);
+    }
+
     public void addBook(Map<String, Object> bookVO) {
         Book newBook = new Book(bookVO);
         bookDAO.save(newBook);
     }
 
     public void updateBook(Map<String, Object> bookVO) {
-        Book newBook = new Book(bookVO);
+        Book newBook = getBookById(Long.valueOf(bookVO.get("id").toString()));
+        newBook.setName(bookVO.get("name").toString());
+        newBook.setDescription(bookVO.get("description").toString());
+        newBook.setISBN(bookVO.get("ISBN").toString());
+        newBook.setImage(bookVO.get("image").toString());
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+        newBook.setStart(LocalDate.parse(bookVO.get("start").toString(), formatter));
+        newBook.setEnd(LocalDate.parse(bookVO.get("end").toString(), formatter));
+        newBook.setType(Integer.valueOf(bookVO.get("type").toString()));
         bookDAO.save(newBook);
     }
 
@@ -51,5 +65,7 @@ public class BookService {
             bookDAO.delete(book);
         });
     }
+
+
 
 }

@@ -70,7 +70,6 @@ public class UserController {
     @RequestMapping(value="/user/{userid}", method = RequestMethod.PUT, produces = "application/json")
     public Map<String, Object> updateUser(@PathVariable String userid, @RequestBody Map<String,Object> reqMap, HttpSession session) {
         userService.validateUser(Long.valueOf(userid));
-        reqMap.put("wxOpenId", String.valueOf(session.getAttribute("wx_openid")));
         reqMap.put("id", userid);
         userService.updateUser(reqMap);
         return wxReply(0, userService.getUserById(Long.valueOf(userid)));
