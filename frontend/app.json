@@ -14,6 +14,7 @@
     "pages/personalinfo/mybooking/mybooking",
     "pages/personalinfo/myorders/myorders",
     "pages/book/book",
+    "pages/bookrelease/update/bookrelease",
     "pages/register/register",
     "pages/search/search"
   ],

@@ -27,6 +27,8 @@ App({
                   wx.redirectTo({
                     url: '/pages/register/register',
                   })
+                } else {
+                  wx.setStorageSync('userid', res.data.data.id);
                 }
               }
             })

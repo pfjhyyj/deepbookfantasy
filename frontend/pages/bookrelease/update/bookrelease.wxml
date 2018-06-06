@@ -1,5 +1,5 @@
 <!--pages/bookrelease/bookrelease.wxml-->
-<import src="../../components/toast/toast.wxml"/>
+<import src="../../../components/toast/toast.wxml"/>
 
 <template is="toast" data="{{ ...$wux.toast }}"/>
 <view class="view-book-edit">
@@ -9,17 +9,17 @@
     </view>
     <view class="field field-name">
       <label>图书名</label>
-      <input type="text" name="name"></input>
+      <input type="text" name="name" value="{{bookInfo.name}}"></input>
     </view>
     <view class="field field-type">
       <label>类型</label>
-      <picker mode="selector" range="{{type}}" value="index" bindchange="bindTypeChange" name="type" value="0">
-        <view>{{type[index]}}</view>
+      <picker mode="selector" range="{{type}}" value="{{bookInfo.type}}" bindchange="bindTypeChange" name="type">
+        <view>{{type[bookInfo.type]}}</view>
       </picker>
     </view>
     <view class="field field-isbn">
       <label>ISBN</label>
-      <input type="text" name="ISBN"></input>
+      <input type="text" name="ISBN" value="{{bookInfo.isbn}}"></input>
     </view>
     <view class="field field-image">
       <label>图书图片（点击选择上传图片）</label>
@@ -31,7 +31,7 @@
     </view>
     <view class="field field-description">
       <label>图书简介</label>
-      <textarea name="description" maxlength="300"></textarea>
+      <textarea name="description" maxlength="300" value="{{bookInfo.description}}"></textarea>
     </view>
     <view class="field field-start">
       <label>开始时间</label>

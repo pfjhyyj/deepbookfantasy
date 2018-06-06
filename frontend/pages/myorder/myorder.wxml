@@ -1,10 +1,10 @@
 <!--pages/myorder/myorder.wxml-->
-<view class="jx_card">
+<!-- <view class="jx_card">
     <image class="jx_image" src="../../images/lalala.png"></image>
     <text class="jx_title">订单列表</text>
-</view>
-
- <swiper class="tab-content" style="height:800rpx">
+</view> -->
+<!-- 
+  <swiper class="tab-content" style="height:800rpx">
     <swiper-item>
         <scroll-view class="scoll-h" scroll-y="true"  >
             <block wx:for="{{[1,2,3,4,5]}}" wx:key="*this">
@@ -22,6 +22,23 @@
               </navigator>               
             </block>
          </scroll-view>
-    </swiper-item>
+    </swiper-item> 
 </swiper>
+ -->
+<import src="../../components/toast/toast.wxml"/>
+<template is="toast" data="{{ ...$wux.toast }}"/>
 
+<view class="search-result">
+    <block wx:for="{{list}}" wx:key="id">
+      <navigator url="../orderInformation/orderInformation?id={{item.id}}">
+        <view class="book-single">
+          <image class="b-pic" lazy-load="true" src="{{item.image}}"></image> 
+          <view class="book-info">
+            <text class="text b-name">{{item.name}}</text>
+            <text class="text b-description">{{item.description}}</text>
+          </view>
+        </view> 
+      </navigator> 
+    </block>
+    <button type="primary" class="load-more" loading="{{loading}}" bindtap="loadMore" wx:if="{{showMore}}">更多</button>
+  </view>

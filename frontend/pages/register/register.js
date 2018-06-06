@@ -33,6 +33,7 @@ Page({
       success: res => {
         if (res.data.errorCode == 0) {
           that.showSuccessToast("用户创建成功");
+          wx.setStorageSync('userid', res.data.data.id);
         } else {
           that.showErrorToast(res.data.msg);
           console.log(res);

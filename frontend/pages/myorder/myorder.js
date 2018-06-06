@@ -5,19 +5,46 @@ Page({
    * 页面的初始数据
    */
   data: {
-    name:"书名",
-    order_time:"下单时间",
-    exchange_time:"交换时间",
-    exchange_to:"交换至"
+    // name:"书名",
+    // order_time:"下单时间",
+    // exchange_time:"交换时间",
+    // exchange_to:"交换至",
+    page: 0,
+    showMore: false
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-  
-  },
 
+  },
+  loadMore() {
+    let that = this;
+    wx.request({
+      url: 'http://localhost:8080/list',
+      data: {
+        page: that.data.page
+      },
+      header: {
+        'cookie': wx.getStorageSync("session")
+      },
+      method: "GET",
+      success: res => {
+        console.log(res);
+        if (res.data.data.length == 0) {
+          this.setData({
+            showMore: false
+          })
+          that.showInfoToast("沒有更多了");
+        }
+        this.setData({
+          list: that.data.list.concat(res.data.data),
+          page: that.data.page + 1
+        })
+      }
+    })
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
@@ -29,7 +56,40 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-  
+    let that = this;
+    wx.showLoading({
+      title: '加载中',
+    })
+    wx.request({
+      url: 'http://localhost:8080/list',
+      data: {
+        page: that.data.page
+      },
+      header: {
+        'cookie': wx.getStorageSync("session")
+      },
+      method: "GET",
+      success: res => {
+        if (res.data.data.length == 0) {
+          that.setData({
+            showMore: false
+          })
+          that.showInfoToast("沒有更多了");
+        } else {
+          console.log(res);
+          console.log(that);
+          that.setData({
+            list: res.data.data,
+            page: that.data.page + 1,
+            showMore: true
+          })
+          wx.hideLoading();
+        }
+      },
+      fail: () => {
+        wx.hideLoading();
+      }
+    });
   },
 
   /**

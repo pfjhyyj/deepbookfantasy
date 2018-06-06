@@ -1,9 +1,9 @@
 <!--pages/orderInformation/orderInformation.wxml-->
-<view class="jx_card">
+<!-- <view class="jx_card">
     <text class="jx_title">订单详情</text>
-</view>
+</view> -->
 
- <swiper class="tab-content" style="height:900rpx">
+ <!-- <swiper class="tab-content" style="height:900rpx">
     <swiper-item>
         <scroll-view class="scoll-h" scroll-y="true"  >
             <view class="item-ans">
@@ -12,7 +12,10 @@
             </view> 
 
             <view class="item-ans">
-                <view class="bookname">书名</view>
+                <view class="bookname">书名:</view>
+                <view class="explain">
+                  {{bookInfo.name}}
+                </view>
                 <view class="explainname">简介:</view>
                 <view class="explain">
                   <text>{{bookInfo.description}}
@@ -26,4 +29,33 @@
                              
          </scroll-view>
     </swiper-item>
-</swiper>
+</swiper> -->
+<view class="header">
+  <view class="title">图书详情</view>
+</view>
+
+<view class="page-item">
+  <view class="field field-pic">
+      <image class="picture" src="{{bookInfo.image}}"></image> 
+  </view> 
+
+  <view class="field field-name">
+      <label>书名:</label>
+      <view class="name">{{bookInfo.name}}</view>
+  </view>
+  <view class="field field-description">
+      <label>简介:</label>
+      <view class="description">{{bookInfo.description}}</view>
+  </view>  
+  <view class="field field-start">
+      <text class="start">上架时间：{{bookInfo.start}}</text>
+  </view> 
+  <view class="field field-end">
+      <text class="end">结束时间：{{bookInfo.end}}</text>
+  </view> 
+  <view class="field field-edit">
+    <navigator url="../bookrelease/update/bookrelease?id={{bookInfo.id}}">
+      <button class="btn btn-default" wx:if="{{editable}}">修改</button>
+    </navigator>
+  </view>
+</view>

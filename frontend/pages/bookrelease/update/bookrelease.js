@@ -1,5 +1,5 @@
 // pages/bookrelease/bookrelease.js
-import { $wuxToast } from '../../components/wux'
+import { $wuxToast } from '../../../components/wux'
 Page({
 
   /**
@@ -9,10 +9,11 @@ Page({
     type: ["求借", "借出"],
     index: 0,
     date: '2016-09-01',
+    start: "",
+    end: "",
     imagePath: "",
     tempFile: "",
-    start: "",
-    end: ""
+    bookInfo: null
   },
   bindTypeChange: function (e) {
     this.setData({
@@ -74,15 +75,15 @@ Page({
       return;
     }
     wx.request({
-      url: 'http://localhost:8080/book',
+      url: 'http://localhost:8080/book/'+that.data.bookInfo.id,
       header: {
         'cookie': wx.getStorageSync("session")
       },
       data: e.detail.value,
-      method: "POST",
+      method: "PUT",
       success: res => {
         if (res.data.errorCode == 0) {
-          that.showSuccessToast("图书信息创建成功");
+          that.showSuccessToast("图书信息更新成功");
         } else {
           that.showErrorToast(res.data.msg);
           console.log(res);
@@ -109,9 +110,7 @@ Page({
       color: '#fff',
       text: message,
       success: () => {
-        wx.switchTab({
-          url: "../personalinfo/personalinfo",
-        })
+        wx.navigateBack();
       }
     })
   },
@@ -130,7 +129,27 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-  
+    wx.request({
+      url: 'http://localhost:8080/book/' + options.id,
+      header: {
+        'cookie': wx.getStorageSync("session")
+      },
+      method: "GET",
+      success: res => {
+        console.log(res);
+        this.setData({
+          bookInfo: res.data.data,
+          tempFile: res.data.data.image,
+          imagePath: res.data.data.image,
+          start: res.data.data.start,
+          end: res.data.data.end
+        })
+        wx.hideLoading();
+      },
+      fail: () => {
+        wx.hideLoading();
+      }
+    });
   },
 
   /**

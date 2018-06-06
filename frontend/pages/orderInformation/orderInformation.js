@@ -5,32 +5,18 @@ Page({
    * 页面的初始数据
    */
   data: {
-    bookInfo: null
+    bookInfo: null,
+    id: 0,
+    userid: 0,
+    editable: false
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    wx.showLoading({
-      title: '加载中',
-    })
-    wx.request({
-      url: 'http://localhost:8080/book/'+options.id,
-      header: {
-        'cookie': wx.getStorageSync("session")
-      },
-      method: "GET",
-      success: res => {
-        console.log(res);
-        this.setData({
-          bookInfo: res.data.data
-        })
-        wx.hideLoading();
-      },
-      fail: () => {
-        wx.hideLoading();
-      }
+    this.setData({
+      id: options.id
     });
   },
 
@@ -45,7 +31,35 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-  
+    this.setData({
+      userid: wx.getStorageSync("userid")
+    });
+    let that = this;
+    wx.showLoading({
+      title: '加载中',
+    })
+    wx.request({
+      url: 'http://localhost:8080/book/' + that.data.id,
+      header: {
+        'cookie': wx.getStorageSync("session")
+      },
+      method: "GET",
+      success: res => {
+        console.log(res);
+        this.setData({
+          bookInfo: res.data.data
+        });
+        if (res.data.data.user.id == that.data.userid) {
+          this.setData({
+            editable: true
+          });
+        }
+        wx.hideLoading();
+      },
+      fail: () => {
+        wx.hideLoading();
+      }
+    });
   },
 
   /**
