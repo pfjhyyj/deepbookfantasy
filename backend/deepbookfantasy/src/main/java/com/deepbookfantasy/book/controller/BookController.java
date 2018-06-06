@@ -132,11 +132,12 @@ public class BookController {
      * @param size 页的大小
      * @return 图书的list
      */
-    @RequestMapping(value = "/list/{userid}", method = RequestMethod.GET, produces = "application/json")
-    public Map<String, Object> getBooksByUser(@PathVariable String userid,
-                                              @RequestParam(value = "page", defaultValue = "0") Integer page,
-                                              @RequestParam(value = "size", defaultValue = "20") Integer size) {
-        User user = userService.getUserById(Long.valueOf(userid));
+    @RequestMapping(value = "/list", method = RequestMethod.GET, produces = "application/json")
+    public Map<String, Object> getBooksByUser(@RequestParam(value = "page", defaultValue = "0") Integer page,
+                                              @RequestParam(value = "size", defaultValue = "20") Integer size,
+                                              HttpSession httpSession) {
+        String openid = httpSession.getAttribute("wx_openid").toString();
+        User user = userService.getUserByWxOpenId(openid);
         Sort sort = new Sort(Sort.Direction.DESC, "id");
         Pageable pageable = PageRequest.of(page, size, sort);
         Page<Book> books = bookService.getBookByUser(user, pageable);
