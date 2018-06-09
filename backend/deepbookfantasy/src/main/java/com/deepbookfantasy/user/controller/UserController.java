@@ -10,8 +10,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpSession;
-import java.io.UnsupportedEncodingException;
-import java.security.InvalidAlgorithmParameterException;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -27,18 +25,19 @@ public class UserController {
 
     /**
      * 创建新的用户
-     * @param reqMap Map<String, String> 用户对象
+     *
+     * @param reqMap  Map<String, String> 用户对象
      * @param session http session
      * @return 操作消息内容
      */
-    @RequestMapping(value="/user", method = RequestMethod.POST, produces = "application/json")
-    public Map<String, Object> createUser(@RequestBody Map<String,Object> reqMap, HttpSession session) {
+    @RequestMapping(value = "/user", method = RequestMethod.POST, produces = "application/json")
+    public Map<String, Object> createUser(@RequestBody Map<String, Object> reqMap, HttpSession session) {
         String wxOpenId = String.valueOf(session.getAttribute("wx_openid"));
         reqMap.put("wxOpenId", wxOpenId);
         userService.addUser(reqMap);
         User newUser = null;
         newUser = userService.getUserByWxOpenId(wxOpenId);
-        return wxReply(0,newUser);
+        return wxReply(0, newUser);
     }
 
     @RequestMapping(value = "/user", method = RequestMethod.GET, produces = "application/json")
@@ -50,10 +49,11 @@ public class UserController {
 
     /**
      * 根据用户id获取用户信息
+     *
      * @param userid 用户id
      * @return 操作消息内容
      */
-    @RequestMapping(value="/user/{userid}", method = RequestMethod.GET, produces = "application/json")
+    @RequestMapping(value = "/user/{userid}", method = RequestMethod.GET, produces = "application/json")
     public Map<String, Object> getUser(@PathVariable String userid) {
         User result = null;
         result = userService.getUserById(Long.valueOf(userid));
@@ -62,13 +62,14 @@ public class UserController {
 
     /**
      * 更新用户信息
-     * @param userid 用户id
-     * @param reqMap Map<String, String> 用户对象
+     *
+     * @param userid  用户id
+     * @param reqMap  Map<String, String> 用户对象
      * @param session http session
      * @return 操作消息内容
      */
-    @RequestMapping(value="/user/{userid}", method = RequestMethod.PUT, produces = "application/json")
-    public Map<String, Object> updateUser(@PathVariable String userid, @RequestBody Map<String,Object> reqMap, HttpSession session) {
+    @RequestMapping(value = "/user/{userid}", method = RequestMethod.PUT, produces = "application/json")
+    public Map<String, Object> updateUser(@PathVariable String userid, @RequestBody Map<String, Object> reqMap, HttpSession session) {
         userService.validateUser(Long.valueOf(userid));
         reqMap.put("id", userid);
         userService.updateUser(reqMap);
@@ -77,19 +78,20 @@ public class UserController {
 
     /**
      * 删除该用户
-     * @param userid 用户id
+     *
+     * @param userid  用户id
      * @param session http session
      * @return 操作消息内容
      */
-    @RequestMapping(value="/user/{userid}", method = RequestMethod.DELETE, produces = "application/json")
+    @RequestMapping(value = "/user/{userid}", method = RequestMethod.DELETE, produces = "application/json")
     public Map<String, Object> deleteUser(@PathVariable String userid, HttpSession session) {
         userService.deleteUser(Long.valueOf(userid), String.valueOf(session.getAttribute("wx_openid")));
         return wxReply(0, "success");
     }
 
     @RequestMapping(value = "/decode", method = RequestMethod.GET, produces = "application/json")
-    public Map<String, Object> addUserByWX(@RequestParam(required = true,value = "encryptedData")String encryptedData,
-                                           @RequestParam(required = true,defaultValue = "iv")String iv,
+    public Map<String, Object> addUserByWX(@RequestParam(required = true, value = "encryptedData") String encryptedData,
+                                           @RequestParam(required = true, defaultValue = "iv") String iv,
                                            HttpSession httpSession) {
         String session_key = (String) httpSession.getAttribute("wx_session_key");
         if (session_key == null) {
@@ -99,11 +101,12 @@ public class UserController {
         try {
             AES aes = new AES();
             byte[] resultByte = aes.decrypt(Base64.decodeBase64(encryptedData), Base64.decodeBase64(session_key), Base64.decodeBase64(iv));
-            if(null != resultByte && resultByte.length > 0){
+            if (null != resultByte && resultByte.length > 0) {
                 String userInfo = new String(resultByte, "UTF-8");
                 ObjectMapper mapper = new ObjectMapper();
                 Map<String, Object> rawUserData = new HashMap<>();
-                rawUserData = mapper.readValue(userInfo, new TypeReference<Map<String, String>>(){});
+                rawUserData = mapper.readValue(userInfo, new TypeReference<Map<String, String>>() {
+                });
                 return wxReply(0, "success");
             }
         } catch (Exception e) {

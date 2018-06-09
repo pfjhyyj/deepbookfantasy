@@ -1,10 +1,7 @@
 package com.deepbookfantasy.common.util;
 
-import com.google.common.collect.ImmutableMap;
 import org.springframework.web.client.HttpStatusCodeException;
 import org.springframework.web.client.RestTemplate;
-
-import java.util.Map;
 
 /**
  * Created By HeartunderBlade on 2018/4/15

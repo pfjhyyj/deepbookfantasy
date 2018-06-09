@@ -21,11 +21,11 @@ public class UserService {
     private UserDAO userDAO;
 
     public User getUserById(Long id) {
-        return userDAO.findById(id).orElseThrow(() ->  new EntityNotFoundException("未找到用户"));
+        return userDAO.findById(id).orElseThrow(() -> new EntityNotFoundException("未找到用户"));
     }
 
     public User getUserByWxOpenId(String wxOpenId) {
-        return userDAO.findByWxOpenId(wxOpenId).orElseThrow(() ->  new EntityNotFoundException("未找到用户"));
+        return userDAO.findByWxOpenId(wxOpenId).orElseThrow(() -> new EntityNotFoundException("未找到用户"));
     }
 
     public List<User> getUsersByName(String name) {
@@ -58,7 +58,7 @@ public class UserService {
 
     public void validateUser(Long id) {
         Optional<User> user = this.userDAO.findById(id);
-        user.orElseThrow(() ->  new EntityNotFoundException("未找到用户"));
+        user.orElseThrow(() -> new EntityNotFoundException("未找到用户"));
     }
 
 }

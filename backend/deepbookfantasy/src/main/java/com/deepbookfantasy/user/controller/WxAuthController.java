@@ -3,8 +3,6 @@ package com.deepbookfantasy.user.controller;
 import com.deepbookfantasy.common.util.AES;
 import com.deepbookfantasy.user.service.WxAuthService;
 import com.google.common.collect.ImmutableMap;
-import io.swagger.annotations.ApiImplicitParam;
-import io.swagger.annotations.ApiOperation;
 import org.apache.commons.codec.binary.Base64;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -25,8 +23,8 @@ public class WxAuthController {
     @Autowired
     private WxAuthService wxAuthService;
 
-    @RequestMapping(value="/auth/getSession", method = RequestMethod.GET, produces = "application/json")
-    public Map<String,Object> getSession(@RequestParam(required = true,value = "code") String wxCode, HttpSession session) {
+    @RequestMapping(value = "/auth/getSession", method = RequestMethod.GET, produces = "application/json")
+    public Map<String, Object> getSession(@RequestParam(required = true, value = "code") String wxCode, HttpSession session) {
 
         System.out.println(wxCode);
         Map<String, Object> wxSessionMap = wxAuthService.getWxSession(wxCode);
@@ -50,19 +48,19 @@ public class WxAuthController {
     }
 
     @RequestMapping(value = "/auth/decodeUserInfo", method = RequestMethod.GET, produces = "application/json")
-    public Map<String,Object> decodeUserInfo(@RequestParam(required = true,value = "encryptedData")String encryptedData,
-                                             @RequestParam(required = true,defaultValue = "iv")String iv,
-                                             HttpSession session) throws Exception {
+    public Map<String, Object> decodeUserInfo(@RequestParam(required = true, value = "encryptedData") String encryptedData,
+                                              @RequestParam(required = true, defaultValue = "iv") String iv,
+                                              HttpSession session) throws Exception {
         Object wxSessionObj = session.getAttribute("session_key");
         if (null == wxSessionObj) {
             return wxReply(40008, null);
         }
-        String sessionKey = (String)wxSessionObj;
+        String sessionKey = (String) wxSessionObj;
 
         try {
             AES aes = new AES();
             byte[] resultByte = aes.decrypt(Base64.decodeBase64(encryptedData), Base64.decodeBase64(sessionKey), Base64.decodeBase64(iv));
-            if(null != resultByte && resultByte.length > 0){
+            if (null != resultByte && resultByte.length > 0) {
                 String userInfo = new String(resultByte, "UTF-8");
                 return wxReply(0, userInfo);
             }
@@ -73,9 +71,9 @@ public class WxAuthController {
     }
 
     @RequestMapping(value = "/test", method = RequestMethod.GET, produces = "application/json")
-    public Map<String,Object> test(HttpSession session){
-        System.out.println("Current sessionId:"+session.getId());
-        System.out.println("Current user"+session.getAttribute("wx_openid"));
+    public Map<String, Object> test(HttpSession session) {
+        System.out.println("Current sessionId:" + session.getId());
+        System.out.println("Current user" + session.getAttribute("wx_openid"));
         return wxReply(0, ImmutableMap.of("url", "adsadadads"));
     }
 }

@@ -10,7 +10,6 @@ import org.hibernate.annotations.OnDeleteAction;
 import javax.persistence.*;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
-import java.util.Date;
 import java.util.Map;
 
 /**
@@ -49,7 +48,7 @@ public class Book {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id", nullable = false)
-    @OnDelete(action =  OnDeleteAction.CASCADE)
+    @OnDelete(action = OnDeleteAction.CASCADE)
     private User user;
 
     public Book(Map<String, Object> bookVO) {
@@ -62,6 +61,6 @@ public class Book {
         this.end = LocalDate.parse(String.valueOf(bookVO.get("end")), formatter);
         this.enable = 0;
         this.type = Integer.parseInt(String.valueOf(bookVO.get("type")));
-        this.user = (User)bookVO.get("user");
+        this.user = (User) bookVO.get("user");
     }
 }

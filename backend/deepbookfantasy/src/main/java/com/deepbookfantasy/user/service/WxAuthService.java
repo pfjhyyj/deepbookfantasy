@@ -2,9 +2,9 @@ package com.deepbookfantasy.user.service;
 
 import com.alibaba.fastjson.JSON;
 import com.deepbookfantasy.common.properties.WxAuth;
+import com.deepbookfantasy.common.util.HttpRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import com.deepbookfantasy.common.util.HttpRequest;
 
 import java.util.Map;
 
@@ -17,7 +17,7 @@ public class WxAuthService {
     private WxAuth wxAuth;
 
     @SuppressWarnings("unchecked")
-    public Map<String,Object> getWxSession(String wxCode) {
+    public Map<String, Object> getWxSession(String wxCode) {
         StringBuffer sb = new StringBuffer();
         sb.append("appid=").append(wxAuth.getAppId());
         sb.append("&secret=").append(wxAuth.getSecret());

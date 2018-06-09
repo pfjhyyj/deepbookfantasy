@@ -1,6 +1,6 @@
 package com.deepbookfantasy.book.controller;
 
-import java.io.File;
+import com.google.common.collect.ImmutableMap;
 import org.apache.commons.lang3.RandomStringUtils;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.util.FileCopyUtils;
@@ -9,12 +9,12 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
-import com.google.common.collect.ImmutableMap;
 
-import static com.deepbookfantasy.common.util.WxResponse.wxReply;
-
+import java.io.File;
 import java.io.IOException;
 import java.util.Map;
+
+import static com.deepbookfantasy.common.util.WxResponse.wxReply;
 
 /**
  * Created By HeartunderBlade on 2018/5/14
@@ -28,10 +28,10 @@ public class ImageController {
     @Value("${img.host}")
     private String imgHost;
 
-    @RequestMapping(value="/upload", method = RequestMethod.POST, produces = "application/json")
-    public Map<String,Object> imageUpload(@RequestParam("image") MultipartFile image) {
+    @RequestMapping(value = "/upload", method = RequestMethod.POST, produces = "application/json")
+    public Map<String, Object> imageUpload(@RequestParam("image") MultipartFile image) {
         if (image == null) {
-            wxReply(40010, null);
+            wxReply(500, "Empty file");
         }
         String random = RandomStringUtils.randomAlphabetic(16);
         String fileName = random + ".jpg";
@@ -42,7 +42,7 @@ public class ImageController {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        return wxReply(40011, null);
+        return wxReply(500, "Server Error");
     }
 
 }

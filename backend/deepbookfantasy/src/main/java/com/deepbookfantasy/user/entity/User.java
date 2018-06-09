@@ -24,10 +24,8 @@ public class User implements Serializable {
     @GeneratedValue(generator = "user_generator")
     private Long id;
 
-    @Column(unique=true)
+    @Column(unique = true)
     private String wxOpenId;
-
-    private String wxUnionId;
 
     @Column(nullable = false)
     private String name;

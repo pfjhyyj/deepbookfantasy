@@ -5,7 +5,6 @@ import com.deepbookfantasy.book.entity.Book;
 import com.deepbookfantasy.user.entity.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -13,8 +12,6 @@ import org.springframework.transaction.annotation.Transactional;
 import javax.persistence.EntityNotFoundException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
-import java.util.Collection;
-import java.util.List;
 import java.util.Map;
 
 /**
@@ -27,7 +24,7 @@ public class BookService {
     private BookDAO bookDAO;
 
     public Book getBookById(Long id) {
-        return bookDAO.findById(id).orElseThrow(() ->  new EntityNotFoundException("未找到图书") );
+        return bookDAO.findById(id).orElseThrow(() -> new EntityNotFoundException("未找到图书"));
     }
 
     public Page<Book> getBooksByName(String name, Pageable pageable) {
@@ -65,7 +62,6 @@ public class BookService {
             bookDAO.delete(book);
         });
     }
-
 
 
 }

@@ -29,7 +29,8 @@ public class BookController {
 
     /**
      * 根据图书信息创建图书
-     * @param reqMap 图书信息
+     *
+     * @param reqMap  图书信息
      * @param session http session
      * @return 成功返回0，不返回详细信息
      */
@@ -45,6 +46,7 @@ public class BookController {
 
     /**
      * 根据图书id获取具体图书
+     *
      * @param bookid 图书id
      * @return 返回具体图书信息
      */
@@ -56,9 +58,25 @@ public class BookController {
     }
 
     /**
-     * 更新图书信息
+     * 根据图书id获取图书的Owner
+     *
      * @param bookid 图书id
-     * @param reqMap 图书信息
+     * @return 返回具体用户信息
+     */
+    @RequestMapping(value = "/book/{bookid}/owner", method = RequestMethod.GET, produces = "application/json")
+    public Map<String, Object> getOwnerByBook(@PathVariable String bookid) {
+        Book result = null;
+        result = bookService.getBookById(Long.valueOf(bookid));
+        User owner = result.getUser();
+        String id = owner.getWechatID();
+        return wxReply(0, owner);
+    }
+
+    /**
+     * 更新图书信息
+     *
+     * @param bookid  图书id
+     * @param reqMap  图书信息
      * @param session http session
      * @return 成功返回0，不返回详细信息
      */
@@ -78,7 +96,8 @@ public class BookController {
 
     /**
      * 删除图书信息
-     * @param bookid 图书id
+     *
+     * @param bookid  图书id
      * @param session http session
      * @return 成功返回0，不返回详细信息
      */
@@ -96,6 +115,7 @@ public class BookController {
 
     /**
      * 根据名字进行模糊搜索
+     *
      * @param page 页码
      * @param size 页的大小
      * @param name 关键字
@@ -103,8 +123,8 @@ public class BookController {
      */
     @RequestMapping(value = "/book/search", method = RequestMethod.GET, produces = "application/json")
     public Map<String, Object> searchBooksByName(@RequestParam(value = "page", defaultValue = "0") Integer page,
-                                                @RequestParam(value = "size", defaultValue = "20") Integer size,
-                                                @RequestParam(value = "name") String name) {
+                                                 @RequestParam(value = "size", defaultValue = "20") Integer size,
+                                                 @RequestParam(value = "name") String name) {
         Sort sort = new Sort(Sort.Direction.DESC, "id");
         Pageable pageable = PageRequest.of(page, size, sort);
         Page<Book> books = bookService.getBooksByName(name, pageable);
@@ -113,6 +133,7 @@ public class BookController {
 
     /**
      * 分页获取所有图书
+     *
      * @param page 页码
      * @param size 页大小
      * @return 图书的list
@@ -128,6 +149,7 @@ public class BookController {
 
     /**
      * 根据用户id获得此用户的图书
+     *
      * @param page 页码
      * @param size 页的大小
      * @return 图书的list
