@@ -1,4 +1,5 @@
 // pages/bookrelease/bookrelease.js
+const app = getApp()
 import { $wuxToast } from '../../../components/wux'
 Page({
 
@@ -50,7 +51,7 @@ Page({
   uploadImage: function() {
     let that = this;
     wx.uploadFile({
-      url: 'http://localhost:8080/upload',
+      url: app.globalData.address +'/upload',
       filePath: that.data.tempFile,
       name: 'image',
       header: {
@@ -75,7 +76,7 @@ Page({
       return;
     }
     wx.request({
-      url: 'http://localhost:8080/book/'+that.data.bookInfo.id,
+      url: app.globalData.address +'/book/'+that.data.bookInfo.id,
       header: {
         'cookie': wx.getStorageSync("session")
       },
@@ -130,7 +131,7 @@ Page({
    */
   onLoad: function (options) {
     wx.request({
-      url: 'http://localhost:8080/book/' + options.id,
+      url: app.globalData.address +'/book/' + options.id,
       header: {
         'cookie': wx.getStorageSync("session")
       },

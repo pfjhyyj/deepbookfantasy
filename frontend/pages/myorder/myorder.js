@@ -1,4 +1,6 @@
 // pages/myorder/myorder.js
+const app = getApp()
+import { $wuxToast } from '../../components/wux'
 Page({
 
   /**
@@ -22,7 +24,7 @@ Page({
   loadMore() {
     let that = this;
     wx.request({
-      url: 'http://localhost:8080/list',
+      url: app.globalData.address +'/list',
       data: {
         page: that.data.page
       },
@@ -60,8 +62,11 @@ Page({
     wx.showLoading({
       title: '加载中',
     })
+    that.setData({
+      page: 0
+    });
     wx.request({
-      url: 'http://localhost:8080/list',
+      url: app.globalData.address +'/list',
       data: {
         page: that.data.page
       },
@@ -75,6 +80,7 @@ Page({
             showMore: false
           })
           that.showInfoToast("沒有更多了");
+          wx.hideLoading();
         } else {
           console.log(res);
           console.log(that);
@@ -90,6 +96,16 @@ Page({
         wx.hideLoading();
       }
     });
+  },
+  showInfoToast(message) {
+    $wuxToast.show({
+      type: 'text',
+      timer: 1500,
+      color: '#fff',
+      text: message,
+      success: () => {
+      }
+    })
   },
 
   /**

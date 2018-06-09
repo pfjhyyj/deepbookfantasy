@@ -24,7 +24,7 @@ Page({
       return;
     }
     wx.request({
-      url: 'http://localhost:8080/user',
+      url: app.globalData.address +'/user',
       header: {
         'cookie': wx.getStorageSync("session")
       },

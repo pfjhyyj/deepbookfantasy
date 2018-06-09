@@ -34,7 +34,7 @@ Page({
       title: '加载中',
     })
     wx.request({
-      url: 'http://localhost:8080/book/search',
+      url: app.globalData.address +'/book/search',
       data: {
         name: that.data.wxSearchData.value,
         page: that.data.page
@@ -97,7 +97,7 @@ Page({
   loadMore() {
     let that = this;
     wx.request({
-      url: 'http://localhost:8080/book/search',
+      url: app.globalData.address +'/book/search',
       data: {
         name: that.data.wxSearchData,
         page: that.data.page

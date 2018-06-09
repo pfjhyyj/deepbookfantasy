@@ -1,4 +1,5 @@
 // pages/personalinfo/person.js
+const app = getApp()
 import { $wuxToast } from '../../components/wux'
 Page({
 
@@ -32,7 +33,7 @@ Page({
       return;
     }
     wx.request({
-      url: 'http://localhost:8080/user/'+that.data.userInfo.id,
+      url: app.globalData.address +'/user/'+that.data.userInfo.id,
       header: {
         'cookie': wx.getStorageSync("session")
       },
@@ -102,7 +103,7 @@ Page({
   onLoad: function (options) {
     let that = this;
     wx.request({
-      url: 'http://localhost:8080/user',
+      url: app.globalData.address +'/user',
       header: {
         'cookie': wx.getStorageSync("session")
       },

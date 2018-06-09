@@ -1,4 +1,5 @@
 // pages/orderInformation/orderInformation.js
+const app = getApp()
 Page({
 
   /**
@@ -39,7 +40,7 @@ Page({
       title: '加载中',
     })
     wx.request({
-      url: 'http://localhost:8080/book/' + that.data.id,
+      url: app.globalData.address +'/book/' + that.data.id,
       header: {
         'cookie': wx.getStorageSync("session")
       },
@@ -49,12 +50,21 @@ Page({
         this.setData({
           bookInfo: res.data.data
         });
-        if (res.data.data.user.id == that.data.userid) {
-          this.setData({
-            editable: true
-          });
-        }
-        wx.hideLoading();
+        wx.request({
+          url: app.globalData.address + '/book/' + that.data.id +'/owner',
+          header: {
+            'cookie': wx.getStorageSync("session")
+          },
+          method: "GET",
+          success: res => {
+            if (res.data.data.id == that.data.userid) {
+              this.setData({
+                editable: true
+              });
+              wx.hideLoading();
+            }
+          }
+        });
       },
       fail: () => {
         wx.hideLoading();

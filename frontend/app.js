@@ -5,20 +5,21 @@ App({
     var logs = wx.getStorageSync('logs') || []
     logs.unshift(Date.now())
     wx.setStorageSync('logs', logs)
+    let that = this;
 
     // 登录
     wx.login({
       success: res => {
         // 发送 res.code 到后台换取 openId, sessionKey, unionId
         wx.request({
-          url: 'http://localhost:8080/auth/getSession',
+          url: that.globalData.address+'/auth/getSession',
           data: {
             code: res.code
           },
           success: res => {
             wx.setStorageSync('session', res.header["Set-Cookie"]);
             wx.request({
-              url: 'http://localhost:8080/user',
+              url: that.globalData.address +'/user',
               header: {
                 'cookie': wx.getStorageSync("session")
               },
@@ -79,6 +80,7 @@ App({
     userInfo: null,
     userId: null,
     lendID: null,
-    borrowID: null
+    borrowID: null,
+    address: "http://120.78.158.212:8080"
   }
 })
