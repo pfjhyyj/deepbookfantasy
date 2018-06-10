@@ -36,12 +36,18 @@
     </view>
     <view class="field field-start">
       <picker mode="date" value="{{start}}" start="2015-09-01" end="2017-09-01" name="start" bindchange="bindStartChange">
-        开始时间 {{start}}
+      <view class="time">
+        <text class="time_text">开始时间</text>
+        <text class="time_string">{{start}}</text>
+      </view>
       </picker>
     </view>
     <view class="field field-end">
       <picker mode="date" value="{{end}}" start="2015-09-01" end="2017-09-01" name="end" bindchange="bindEndChange">
-        结束时间{{end}}
+        <view class="time">
+          <text class="time_text">结束时间</text>
+          <text class="time_string">{{end}}</text>
+      </view>
       </picker>
     </view>
     <view class="field field-submit">
