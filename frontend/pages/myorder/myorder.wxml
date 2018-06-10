@@ -25,6 +25,10 @@
     </swiper-item> 
 </swiper>
  -->
+<view class="jx_card">
+    <text class="jx_title">订单列表</text>
+</view>
+
 <import src="../../components/toast/toast.wxml"/>
 <template is="toast" data="{{ ...$wux.toast }}"/>
 

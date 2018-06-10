@@ -1,12 +1,13 @@
 <!--pages/bookrelease/bookrelease.wxml-->
+<view class="jx_card">
+    <text class="jx_title"> 发布图书信息</text>
+</view>
 <import src="../../components/toast/toast.wxml"/>
 
 <template is="toast" data="{{ ...$wux.toast }}"/>
 <view class="view-book-edit">
   <form class="form-book" bindsubmit="formSubmit" bindreset="formReset">
-    <view class="title-h1">
-      发布图书信息
-    </view>
+    
     <view class="field field-name">
       <label>图书名</label>
       <input type="text" name="name"></input>

@@ -1,4 +1,7 @@
 <!--pages/personalinfo/person.wxml-->
+<view class="jx_card">
+    <text class="jx_title">个人资料</text>
+</view>
 <import src="../../components/toast/toast.wxml"/>
 
 <template is="toast" data="{{ ...$wux.toast }}"/>

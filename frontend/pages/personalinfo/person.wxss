@@ -1,5 +1,23 @@
 /* pages/personalinfo/person.wxss */
+page{
+  background: #e4e4e4;
+}
+.jx_card{
+  width: 100%;
+  height: 90rpx;
+  background:#339966;
+  position: relative;
+}
 
+.jx_title{
+  margin-left:35%;
+  padding-top:20rpx;
+  position: absolute;
+  color:white;
+  font-size:15px;
+  font-weight: bold;
+  font-family: 微软雅黑;
+}
 .view-profile {
   margin: 50rpx 50rpx;
 }

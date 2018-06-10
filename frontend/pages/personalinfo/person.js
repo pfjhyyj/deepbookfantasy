@@ -72,7 +72,7 @@ Page({
       text: message,
       success: () => {
         wx.switchTab({
-          url: "../personalinfo/personalinfo",
+          url: "../personalinfo/person",
         })
       }
     })

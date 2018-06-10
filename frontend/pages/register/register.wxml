@@ -1,12 +1,13 @@
 <!--pages/register/register.wxml-->
+
+<view class="jx_card">
+    <text class="jx_title">用户注册</text>
+</view>
 <import src="../../components/toast/toast.wxml"/>
 
 <template is="toast" data="{{ ...$wux.toast }}"/>
 <view class="view-profile-edit">
   <form class="form-profile" bindsubmit="formSubmit" bindreset="formReset">
-    <view class="title-h1">
-      用户注册
-    </view>
     <view class="field field-name">
       <label>昵称</label>
       <input type="text" name="name"></input>

@@ -1,6 +1,6 @@
 // pages/register/register.js
 import { $wuxToast } from '../../components/wux'
-
+const app = getApp()
 Page({
 
   /**

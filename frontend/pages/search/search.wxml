@@ -1,4 +1,7 @@
 <!--pages/search/search.wxml-->
+<view class="jx_card">
+    <text class="jx_title">搜索</text>
+</view>
 <import src="../../components/wxSearch/wxSearch.wxml"/>
 <import src="../../components/toast/toast.wxml"/>
 
