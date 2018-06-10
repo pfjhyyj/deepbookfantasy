@@ -35,15 +35,13 @@
       <textarea name="description" maxlength="300"></textarea>
     </view>
     <view class="field field-start">
-      <label>开始时间</label>
       <picker mode="date" value="{{start}}" start="2015-09-01" end="2017-09-01" name="start" bindchange="bindStartChange">
-        {{start}}
+        开始时间 {{start}}
       </picker>
     </view>
     <view class="field field-end">
-      <label>结束时间</label>
       <picker mode="date" value="{{end}}" start="2015-09-01" end="2017-09-01" name="end" bindchange="bindEndChange">
-        {{end}}
+        结束时间{{end}}
       </picker>
     </view>
     <view class="field field-submit">
