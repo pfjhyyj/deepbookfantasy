@@ -58,8 +58,8 @@ Page({
             showMore: true,
             noResult: false,
           })
-          wx.hideLoading();
         }
+        wx.hideLoading();
       },
       fail: () => {
         wx.hideLoading();

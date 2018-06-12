@@ -2,6 +2,7 @@
 page{
   background: #e4e4e4;
 }
+
 .jx_card{
   width: 100%;
   height: 90rpx;
@@ -30,7 +31,6 @@ page{
 .view-book-edit .form-book .field picker {
   display: inline-block;
   width: 450rpx;
-  text-align: right;
   padding: 5rpx 20rpx;
   vertical-align: middle;
   box-sizing: border-box;
@@ -64,4 +64,14 @@ page{
 .view-book-edit .form-book .btn-upload {
   margin-top: 10rpx;
   margin-left: 450rpx;
+}
+
+.view-book-edit .form-book .field-start picker,
+.view-book-edit .form-book .field-end picker {
+  width: 100%;
+}
+
+.view-book-edit .form-book textarea,
+.view-book-edit .form-book image {
+  background: white;
 }

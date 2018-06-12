@@ -1,7 +1,7 @@
 //index.js
 //获取应用实例
 const app = getApp()
-
+import { $wuxToast } from '../../components/wux'
 
 Page({
   data: {
@@ -13,39 +13,13 @@ Page({
       'http://img06.tooopen.com/images/20160818/tooopen_sy_175866434296.jpg',
       'http://img06.tooopen.com/images/20160818/tooopen_sy_175833047715.jpg'
     ],
-    
-  indicatorDots: true,
-  autoplay: true,
-  interval: 3000,
-  duration: 3000
-  },
-
-  bindViewTap: function () {
-    console.log('222')
-  },
-  tap1: function (e) {
-    let obj = {}
-    obj['hidden1'] = false
-    this.setData(obj)
-  },
-  navigateToSearch: function (e) {
-    wx.navigateTo({
-      url: './search/search'
-    })
-  },
-
-  formReset: function (e) {
-    console.log('form发生了reset事件，携带数据为：', e.detail.value)
-    this.setData({
-      chosen: ''
-    })
-  },
-  wxSerchFocus: function (e) {
-  },
-  bindFocus: function () {
-    wx.navigateTo({
-      url: './search/search'
-    })
+    indicatorDots: true,
+    autoplay: true,
+    interval: 3000,
+    duration: 3000,
+    list: [],
+    page: 0,
+    showMore: false,
   },
 
   changeIndicatorDots:function (e) {
@@ -70,6 +44,79 @@ Page({
   },
   onLoad: function () {
   },
-
-
+  onShow: function() {
+    let that = this;
+    wx.showLoading({
+      title: '加载中',
+    })
+    that.setData({
+      page: 0
+    });
+    wx.request({
+      url: app.globalData.address + '/book/all',
+      data: {
+        page: that.data.page
+      },
+      header: {
+        'cookie': wx.getStorageSync("session")
+      },
+      method: "GET",
+      success: res => {
+        if (res.data.data.length == 0) {
+          that.setData({
+            showMore: false
+          })
+          that.showInfoToast("沒有更多了");
+          wx.hideLoading();
+        } else {
+          that.setData({
+            list: res.data.data,
+            page: that.data.page + 1,
+            showMore: true
+          })
+          wx.hideLoading();
+        }
+      },
+      fail: () => {
+        wx.hideLoading();
+      }
+    })
+  },
+  showInfoToast(message) {
+    $wuxToast.show({
+      type: 'text',
+      timer: 1500,
+      color: '#fff',
+      text: message,
+      success: () => {
+      }
+    })
+  },
+  loadMore() {
+    let that = this;
+    wx.request({
+      url: app.globalData.address + '/book/search',
+      data: {
+        name: that.data.wxSearchData,
+        page: that.data.page
+      },
+      header: {
+        'cookie': wx.getStorageSync("session")
+      },
+      method: "GET",
+      success: res => {
+        console.log(res);
+        if (res.data.data.length == 0) {
+          this.setData({
+            showMore: false
+          })
+          that.showInfoToast("沒有更多了");
+        }
+        this.setData({
+          list: that.data.list.concat(res.data.data),
+          page: that.data.page + 1
+        })
+      }
+    })
+  },
 })

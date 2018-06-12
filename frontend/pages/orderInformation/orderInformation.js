@@ -1,5 +1,6 @@
 // pages/orderInformation/orderInformation.js
 const app = getApp()
+import { $wuxToast } from '../../components/wux'
 Page({
 
   /**
@@ -46,7 +47,6 @@ Page({
       },
       method: "GET",
       success: res => {
-        console.log(res);
         this.setData({
           bookInfo: res.data.data
         });
@@ -70,6 +70,65 @@ Page({
         wx.hideLoading();
       }
     });
+  },
+  deleteBook: function() {
+    let that = this;
+    wx.showModal({
+      title: '提示',
+      content: '是否确认删除？',
+      success: function(sm) {
+        if (sm.confirm) {
+          wx.showLoading({
+            title: '删除中',
+          })
+          wx.request({
+            url: app.globalData.address + '/book/' + that.data.id,
+            header: {
+              'cookie': wx.getStorageSync("session")
+            },
+            method: "DELETE",
+            success: res => {
+              wx.hideLoading();
+              if (res.data.errorCode == 0) {
+                that.showSuccessToast("图书信息删除成功");
+              }
+            },
+            fail: () => {
+              wx.hideLoading();
+              that.showErrorToast("图书信息删除失败");
+            }
+          });
+        }
+      }
+    });
+  },
+  navigateToUpdate: function() {
+    let that = this;
+    wx.navigateTo({
+      url: '../bookrelease/update/bookrelease?id='+that.data.bookInfo.id,
+    })
+  },
+  showSuccessToast(message) {
+    $wuxToast.show({
+      type: 'success',
+      timer: 1500,
+      color: '#fff',
+      text: message,
+      success: () => {
+        wx.switchTab({
+          url: "../myorder/myorder",
+        })
+      }
+    })
+  },
+  showErrorToast: function (message) {
+    $wuxToast.show({
+      type: 'forbidden',
+      timer: 1500,
+      color: '#fff',
+      text: message,
+      success: () => console.log('禁止操作')
+    })
   },
 
   /**
