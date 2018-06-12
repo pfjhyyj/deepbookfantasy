@@ -2,18 +2,10 @@
   "pages": [
     "pages/index/index",
     "pages/personalinfo/person",
-    "pages/personalinfo/mypublish/publishInformation/publishInformation",
-    "pages/personalinfo/privatedata/privatedata",
     "pages/myorder/myorder",
     "pages/orderInformation/orderInformation",
     "pages/logs/logs",
     "pages/bookrelease/bookrelease",
-    "pages/index/search/search",
-    "pages/personalinfo/unreadinfo/unreadinfo",
-    "pages/personalinfo/mypublish/mypublish",
-    "pages/personalinfo/mybooking/mybooking",
-    "pages/personalinfo/myorders/myorders",
-    "pages/book/book",
     "pages/bookrelease/update/bookrelease",
     "pages/register/register",
     "pages/search/search"

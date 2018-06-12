@@ -149,3 +149,8 @@ page{
 .header .title {
   text-align: center;
 }
+
+.btn {
+  display: inline-block;
+  margin: 10rpx;
+}

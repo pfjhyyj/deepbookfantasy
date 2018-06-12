@@ -28,11 +28,18 @@ public class ImageController {
     @Value("${img.host}")
     private String imgHost;
 
+    /**
+     * 处理图片上传
+     *
+     * @param image 图片文件
+     * @return 成功返回图片路径
+     */
     @RequestMapping(value = "/upload", method = RequestMethod.POST, produces = "application/json")
     public Map<String, Object> imageUpload(@RequestParam("image") MultipartFile image) {
         if (image == null) {
             wxReply(500, "Empty file");
         }
+        // 给予所上传图片一个hash值作为文件名减少冲突
         String random = RandomStringUtils.randomAlphabetic(16);
         String fileName = random + ".jpg";
         try {

@@ -48,58 +48,75 @@ Page({
       }
     })
   },
-  uploadImage: function() {
+  uploadImage: function () {
     let that = this;
+    wx.showLoading({
+      title: '上传图片中',
+    });
     wx.uploadFile({
-      url: app.globalData.address +'/upload',
+      url: app.globalData.address + '/upload',
       filePath: that.data.tempFile,
       name: 'image',
       header: {
         'cookie': wx.getStorageSync("session")
       },
       success: function (res) {
-        console.log(res);
         let json_res = JSON.parse(res.data);
         that.setData({
           imagePath: json_res.data.image
         });
+        wx.hideLoading();
+        that.showSuccessToast("图片上传成功");
       },
       fail: res => {
+        wx.hideLoading();
         console.log(res);
       }
     });
   },
   formSubmit: function (e) {
-    console.log('form发生了submit事件，携带数据为：', e.detail);
     let that = this;
     if (!that.formValidate(e.detail.value)) {
       return;
-    }
-    wx.request({
-      url: app.globalData.address +'/book/'+that.data.bookInfo.id,
-      header: {
-        'cookie': wx.getStorageSync("session")
-      },
-      data: e.detail.value,
-      method: "PUT",
-      success: res => {
-        if (res.data.errorCode == 0) {
-          that.showSuccessToast("图书信息更新成功");
-        } else {
-          that.showErrorToast(res.data.msg);
+    } else {
+      wx.showLoading({
+        title: '更新图书中',
+      })
+      wx.request({
+        url: app.globalData.address + '/book/'+ that.data.bookInfo.id,
+        header: {
+          'cookie': wx.getStorageSync("session")
+        },
+        data: e.detail.value,
+        method: "PUT",
+        success: res => {
+          if (res.data.errorCode == 0) {
+            that.showEndToast("图书信息更新成功");
+            that.setData({
+              reset: true
+            });
+          } else {
+            that.showErrorToast(res.data.msg);
+            console.log(res);
+          }
+          wx.hideLoading();
+        },
+        fail: res => {
           console.log(res);
+          wx.hideLoading();
         }
-      }
-    })
+      })
+    }
   },
 
   formReset: function () {
   },
 
   formValidate: function (e) {
+    console.log(e);
     let that = this;
-    if (e.name == null) {
-      that.showErrorToast("昵称不能为空");
+    if (e.name == "") {
+      that.showErrorToast("书名不能为空");
       return false;
     }
     return true;
@@ -111,7 +128,20 @@ Page({
       color: '#fff',
       text: message,
       success: () => {
-        wx.navigateBack();
+      }
+    })
+  },
+  showEndToast(message) {
+    this.formReset();
+    $wuxToast.show({
+      type: 'success',
+      timer: 1500,
+      color: '#fff',
+      text: message,
+      success: () => {
+        wx.switchTab({
+          url: "../../myorder/myorder",
+        })
       }
     })
   },

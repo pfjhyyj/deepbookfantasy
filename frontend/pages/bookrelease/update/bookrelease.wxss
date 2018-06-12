@@ -1,4 +1,8 @@
 /* pages/bookrelease/bookrelease.wxss */
+page {
+  background: #e4e4e4;
+}
+
 .view-book-edit {
   margin: 50rpx 50rpx;
 }
@@ -11,7 +15,6 @@
 .view-book-edit .form-book .field picker {
   display: inline-block;
   width: 450rpx;
-  text-align: right;
   padding: 5rpx 20rpx;
   vertical-align: middle;
   box-sizing: border-box;

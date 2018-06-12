@@ -7,10 +7,6 @@ Page({
    * 页面的初始数据
    */
   data: {
-    // name:"书名",
-    // order_time:"下单时间",
-    // exchange_time:"交换时间",
-    // exchange_to:"交换至",
     page: 0,
     showMore: false
   },

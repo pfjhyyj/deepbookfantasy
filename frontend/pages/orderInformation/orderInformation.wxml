@@ -1,35 +1,6 @@
 <!--pages/orderInformation/orderInformation.wxml-->
-<!-- <view class="jx_card">
-    <text class="jx_title">订单详情</text>
-</view> -->
-
- <!-- <swiper class="tab-content" style="height:900rpx">
-    <swiper-item>
-        <scroll-view class="scoll-h" scroll-y="true"  >
-            <view class="item-ans">
-                <text class="atext">封面</text>
-                <image class="avatar" src="{{bookInfo.image}}"></image> 
-            </view> 
-
-            <view class="item-ans">
-                <view class="bookname">书名:</view>
-                <view class="explain">
-                  {{bookInfo.name}}
-                </view>
-                <view class="explainname">简介:</view>
-                <view class="explain">
-                  <text>{{bookInfo.description}}
-                  </text>
-                </view>
-            </view>  
-            <view class="item-ans">
-                <text class="bookname">上架时间：{{bookInfo.start}}</text>
-                <text class="explainname">结束时间：{{bookInfo.end}}</text>
-            </view> 
-                             
-         </scroll-view>
-    </swiper-item>
-</swiper> -->
+<import src="../../components/toast/toast.wxml"/>
+<template is="toast" data="{{ ...$wux.toast }}"/>
 <view class="header">
   <view class="title">图书详情</view>
 </view>
@@ -54,8 +25,7 @@
       <text class="end">结束时间：{{bookInfo.end}}</text>
   </view> 
   <view class="field field-edit">
-    <navigator url="../bookrelease/update/bookrelease?id={{bookInfo.id}}">
-      <button class="btn btn-default" wx:if="{{editable}}">修改</button>
-    </navigator>
+    <button class="btn btn-default" wx:if="{{editable}}" bindtap="navigateToUpdate">修改</button>
+    <button class="btn btn-default btn-delete" wx:if="{{editable}}" bindtap="deleteBook">删除</button>
   </view>
 </view>
