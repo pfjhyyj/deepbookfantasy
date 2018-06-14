@@ -1,7 +1,4 @@
 <!--pages/search/search.wxml-->
-<view class="jx_card">
-    <text class="jx_title">搜索</text>
-</view>
 <import src="../../components/wxSearch/wxSearch.wxml"/>
 <import src="../../components/toast/toast.wxml"/>
 
@@ -22,6 +19,7 @@
           <image class="b-pic" lazy-load="true" src="{{item.image}}"></image> 
           <view class="book-info">
             <text class="text b-name">{{item.name}}</text>
+            <text class="text b-type">类型：{{typeList[item.type]}}</text>
             <text class="text b-description">{{item.description}}</text>
           </view>
         </view> 
@@ -31,5 +29,6 @@
   </view>
   <view class="tip-description" wx:if="{{noResult}}">
     点击上方搜索栏进行搜索
+    (少于20个字)
   </view>
 </view>

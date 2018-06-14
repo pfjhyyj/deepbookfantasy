@@ -8,7 +8,9 @@ Page({
    */
   data: {
     page: 0,
-    showMore: false
+    showMore: false,
+    list: [],
+    typeList: ["求借", "借出"],
   },
 
   /**
@@ -35,11 +37,12 @@ Page({
             showMore: false
           })
           that.showInfoToast("沒有更多了");
+        } else  {
+          this.setData({
+            list: that.data.list.concat(res.data.data),
+            page: that.data.page + 1
+          })
         }
-        this.setData({
-          list: that.data.list.concat(res.data.data),
-          page: that.data.page + 1
-        })
       }
     })
   },
@@ -73,7 +76,9 @@ Page({
       success: res => {
         if (res.data.data.length == 0) {
           that.setData({
-            showMore: false
+            showMore: false,
+            list: null,
+            page: 0
           })
           that.showInfoToast("沒有更多了");
           wx.hideLoading();

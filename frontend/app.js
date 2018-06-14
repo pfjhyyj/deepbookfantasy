@@ -81,6 +81,6 @@ App({
     userId: null,
     lendID: null,
     borrowID: null,
-    address: "http://120.78.158.212:8080"
+    address: "http://127.0.0.1:8080"
   }
 })
