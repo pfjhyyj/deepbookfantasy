@@ -10,7 +10,8 @@ Page({
     bookInfo: null,
     id: 0,
     userid: 0,
-    editable: false
+    editable: false,
+    typeList: ["求借", "借出"]
   },
 
   /**
@@ -61,8 +62,8 @@ Page({
               this.setData({
                 editable: true
               });
-              wx.hideLoading();
             }
+            wx.hideLoading();
           }
         });
       },

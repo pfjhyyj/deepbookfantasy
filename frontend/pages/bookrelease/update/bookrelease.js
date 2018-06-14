@@ -1,5 +1,6 @@
 // pages/bookrelease/bookrelease.js
 const app = getApp()
+var util = require('../../../utils/util.js'); 
 import { $wuxToast } from '../../../components/wux'
 Page({
 
@@ -117,6 +118,15 @@ Page({
     let that = this;
     if (e.name == "") {
       that.showErrorToast("书名不能为空");
+      return false;
+    }
+    if (e.start > e.end) {
+      that.showErrorToast("借阅时间不能迟于归还时间");
+      return false;
+    }
+    var time = util.formatTime(new Date());
+    if (time > e.start) {
+      that.showErrorToast("借阅时间不能早于当前时间");
       return false;
     }
     return true;
