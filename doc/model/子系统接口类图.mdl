@@ -95,6 +95,160 @@
 	subsystem  	"Component View"
 	quidu      	"39C9260C00D7"
 	logical_models 	(list unit_reference_list
+	    (object Class "UserAuth"
+		quid       	"5B2384D80030")
+	    (object Class "UserInformation"
+		quid       	"5B2384DD0399")
+	    (object Class "AuthController"
+		quid       	"5B2385220062")
+	    (object Class "InformationController"
+		quid       	"5B23852C03AE")
+	    (object Class "AuthService"
+		quid       	"5B23856A03CF")
+	    (object Class "InformationService"
+		quid       	"5B2385760117")
+	    (object Class "User"
+		quid       	"5B2386960217")
+	    (object Class "BookInfo"
+		quid       	"5B23877102AB")
+	    (object Class "BookController"
+		quid       	"5B2387C40241")
+	    (object Class "BookService"
+		quid       	"5B2387F903A9")
+	    (object Class "NewClass"
+		quid       	"5B2388A6009C")
+	    (object Association "$UNNAMED$0"
+		quid       	"5B2385D0020A"
+		roles      	(list role_list
+		    (object Role "$UNNAMED$1"
+			quid       	"5B2385D10059"
+			supplier   	"Logical View::AuthController"
+			quidu      	"5B2385220062"
+			is_navigable 	TRUE)
+		    (object Role "$UNNAMED$2"
+			quid       	"5B2385D1005D"
+			supplier   	"Logical View::UserAuth"
+			quidu      	"5B2384D80030")))
+	    (object Association "$UNNAMED$3"
+		quid       	"5B2385D60051"
+		roles      	(list role_list
+		    (object Role "$UNNAMED$4"
+			quid       	"5B2385D601D2"
+			supplier   	"Logical View::InformationController"
+			quidu      	"5B23852C03AE"
+			is_navigable 	TRUE)
+		    (object Role "$UNNAMED$5"
+			quid       	"5B2385D601D6"
+			supplier   	"Logical View::UserInformation"
+			quidu      	"5B2384DD0399")))
+	    (object Association "$UNNAMED$6"
+		quid       	"5B2385D900F9"
+		roles      	(list role_list
+		    (object Role "$UNNAMED$7"
+			quid       	"5B2385D902D2"
+			supplier   	"Logical View::AuthService"
+			quidu      	"5B23856A03CF"
+			is_navigable 	TRUE)
+		    (object Role "$UNNAMED$8"
+			quid       	"5B2385D902D6"
+			supplier   	"Logical View::AuthController"
+			quidu      	"5B2385220062")))
+	    (object Association "$UNNAMED$9"
+		quid       	"5B2385DB02B9"
+		roles      	(list role_list
+		    (object Role "$UNNAMED$10"
+			quid       	"5B2385DC006A"
+			supplier   	"Logical View::InformationService"
+			quidu      	"5B2385760117"
+			is_navigable 	TRUE)
+		    (object Role "$UNNAMED$11"
+			quid       	"5B2385DC0073"
+			supplier   	"Logical View::InformationController"
+			quidu      	"5B23852C03AE")))
+	    (object Association "$UNNAMED$12"
+		quid       	"5B2385DD0291"
+		roles      	(list role_list
+		    (object Role "$UNNAMED$13"
+			quid       	"5B2385DE00B3"
+			supplier   	"Logical View::UserAuth"
+			quidu      	"5B2384D80030"
+			is_navigable 	TRUE)
+		    (object Role "$UNNAMED$14"
+			quid       	"5B2385DE00BE"
+			supplier   	"Logical View::AuthService"
+			quidu      	"5B23856A03CF")))
+	    (object Association "$UNNAMED$15"
+		quid       	"5B2385DF026A"
+		roles      	(list role_list
+		    (object Role "$UNNAMED$16"
+			quid       	"5B2385E0008D"
+			supplier   	"Logical View::UserAuth"
+			quidu      	"5B2384D80030"
+			is_navigable 	TRUE)
+		    (object Role "$UNNAMED$17"
+			quid       	"5B2385E00099"
+			supplier   	"Logical View::InformationService"
+			quidu      	"5B2385760117")))
+	    (object Association "$UNNAMED$18"
+		quid       	"5B2386A1017A"
+		roles      	(list role_list
+		    (object Role "$UNNAMED$19"
+			quid       	"5B2386A20094"
+			supplier   	"Logical View::User"
+			quidu      	"5B2386960217"
+			is_navigable 	TRUE)
+		    (object Role "$UNNAMED$20"
+			quid       	"5B2386A2009C"
+			supplier   	"Logical View::AuthService"
+			quidu      	"5B23856A03CF")))
+	    (object Association "$UNNAMED$21"
+		quid       	"5B2386A5033C"
+		roles      	(list role_list
+		    (object Role "$UNNAMED$22"
+			quid       	"5B2386A601AB"
+			supplier   	"Logical View::User"
+			quidu      	"5B2386960217"
+			is_navigable 	TRUE)
+		    (object Role "$UNNAMED$23"
+			quid       	"5B2386A601B5"
+			supplier   	"Logical View::InformationService"
+			quidu      	"5B2385760117")))
+	    (object Association "$UNNAMED$24"
+		quid       	"5B23898B0216"
+		roles      	(list role_list
+		    (object Role "$UNNAMED$25"
+			quid       	"5B23898B03AD"
+			supplier   	"Logical View::BookController"
+			quidu      	"5B2387C40241"
+			is_navigable 	TRUE)
+		    (object Role "$UNNAMED$26"
+			quid       	"5B23898B03B3"
+			supplier   	"Logical View::BookInfo"
+			quidu      	"5B23877102AB")))
+	    (object Association "$UNNAMED$27"
+		quid       	"5B23898D0234"
+		roles      	(list role_list
+		    (object Role "$UNNAMED$28"
+			quid       	"5B23898E0005"
+			supplier   	"Logical View::BookService"
+			quidu      	"5B2387F903A9"
+			is_navigable 	TRUE)
+		    (object Role "$UNNAMED$29"
+			quid       	"5B23898E000E"
+			supplier   	"Logical View::BookController"
+			quidu      	"5B2387C40241")))
+	    (object Association "$UNNAMED$30"
+		quid       	"5B23898F02CD"
+		roles      	(list role_list
+		    (object Role "$UNNAMED$31"
+			quid       	"5B238990016E"
+			supplier   	"Logical View::java::awt::print::Book"
+			quidu      	"39CD6BFC00D6"
+			is_navigable 	TRUE)
+		    (object Role "$UNNAMED$32"
+			quid       	"5B2389900178"
+			supplier   	"Logical View::BookService"
+			quidu      	"5B2387F903A9")))
 	    (object Class_Category "javax"
 		is_unit    	TRUE
 		is_loaded  	FALSE
@@ -110,618 +264,56 @@
 		is_loaded  	FALSE
 		file_name  	"$FRAMEWORK_PATH\\Shared Components\\j2se_1_3_org.cat"
 		quid       	"39C92693036F")
-	    (object Mechanism @1
-		logical_models 	(list unit_reference_list
-		    (object Object "User"
-			quid       	"5B2206FC0311"
-			collaborators 	(list link_list
-			    (object Link
-				quid       	"5B22072203B9"
-				supplier   	"Interface"
-				quidu      	"5B22070001CD"
-				messages   	(list Messages
-				    (object Message "addLendBook()"
-					quid       	"5B22072203BA"
-					frequency  	"Aperiodic"
-					synchronization 	"Simple"
-					dir        	"FromClientToSupplier"
-					sequence   	"1"
-					ordinal    	0
-					quidu      	"000000000000"
-					creation   	FALSE)
-				    (object Message "displace success"
-					quid       	"5B2207510015"
-					frequency  	"Aperiodic"
-					synchronization 	"Return"
-					dir        	"ToClientFromSupplier"
-					sequence   	"1.2"
-					ordinal    	2
-					quidu      	"000000000000"
-					creation   	FALSE)
-				    (object Message "addBorrowBook()"
-					quid       	"5B220767017E"
-					frequency  	"Aperiodic"
-					synchronization 	"Simple"
-					dir        	"FromClientToSupplier"
-					sequence   	"2"
-					ordinal    	3
-					quidu      	"000000000000"
-					creation   	FALSE)
-				    (object Message "displace success"
-					quid       	"5B22079203E3"
-					frequency  	"Aperiodic"
-					synchronization 	"Return"
-					dir        	"ToClientFromSupplier"
-					sequence   	"2.2"
-					ordinal    	5
-					quidu      	"000000000000"
-					creation   	FALSE))))
-			persistence 	"Transient"
-			creationObj 	TRUE
-			multi      	FALSE)
-		    (object Object "Interface"
-			quid       	"5B22070001CD"
-			collaborators 	(list link_list
-			    (object Link
-				quid       	"5B22073E037A"
-				supplier   	"Database"
-				quidu      	"5B2207040343"
-				messages   	(list Messages
-				    (object Message "addLendBook()"
-					quid       	"5B22073E037B"
-					frequency  	"Aperiodic"
-					synchronization 	"Simple"
-					dir        	"FromClientToSupplier"
-					sequence   	"1.1"
-					ordinal    	1
-					quidu      	"000000000000"
-					creation   	FALSE)
-				    (object Message "addBorrowBook()"
-					quid       	"5B22078003D2"
-					frequency  	"Aperiodic"
-					synchronization 	"Simple"
-					dir        	"FromClientToSupplier"
-					sequence   	"2.1"
-					ordinal    	4
-					quidu      	"000000000000"
-					creation   	FALSE))))
-			persistence 	"Transient"
-			creationObj 	TRUE
-			multi      	FALSE)
-		    (object Object "Database"
-			quid       	"5B2207040343"
-			persistence 	"Transient"
-			creationObj 	TRUE
-			multi      	FALSE))))
-	statemachine 	(object State_Machine "State/Activity Model"
-	    quid       	"5B2201970330"
-	    states     	(list States
-		(object SynchronizationState "$UNNAMED$0"
-		    quid       	"5B227FC90326")
-		(object State "上传图书图片"
-		    quid       	"5B227FCB02DF"
-		    type       	"Normal")
-		(object State "输入图书名称"
-		    quid       	"5B227FCD012E"
-		    type       	"Normal")
-		(object State "输入图书简介"
-		    quid       	"5B227FCF01BE"
-		    type       	"Normal")
-		(object SynchronizationState "$UNNAMED$1"
-		    quid       	"5B227FD401D0")
-		(object State "发布借出/求借图书信息成功"
-		    quid       	"5B227FD900E4"
-		    type       	"Normal")
-		(object State "$UNNAMED$2"
-		    quid       	"5B227FDC0114"
-		    type       	"EndState")
-		(object State "进入发布借出/求借图书信息页面"
-		    quid       	"5B22802B03E0"
-		    type       	"Normal")
-		(object State "$UNNAMED$3"
-		    quid       	"5B227FC4021B"
-		    type       	"StartState")
-		(object State "选择起止时间"
-		    quid       	"5B22A2A801F7"
-		    type       	"Normal"))
-	    partitions 	(list Partitions)
-	    objects    	(list Objects)
-	    transitions 	(list transition_list
-		(object State_Transition
-		    quid       	"5B227FF401B0"
-		    supplier   	"Logical View::State/Activity Model::输入图书名称"
-		    supplier_quidu 	"5B227FCD012E"
-		    client     	"$UNNAMED$0"
-		    client_quidu 	"5B227FC90326"
-		    sendEvent  	(object sendEvent
-			quid       	"5B227FF401B3"))
-		(object State_Transition
-		    quid       	"5B227FF700BD"
-		    supplier   	"Logical View::State/Activity Model::输入图书简介"
-		    supplier_quidu 	"5B227FCF01BE"
-		    client     	"$UNNAMED$0"
-		    client_quidu 	"5B227FC90326"
-		    sendEvent  	(object sendEvent
-			quid       	"5B227FF700C0"))
-		(object State_Transition
-		    quid       	"5B227FF901AB"
-		    supplier   	"$UNNAMED$1"
-		    supplier_quidu 	"5B227FD401D0"
-		    client     	"Logical View::State/Activity Model::输入图书名称"
-		    client_quidu 	"5B227FCD012E"
-		    sendEvent  	(object sendEvent
-			quid       	"5B227FF901AE"))
-		(object State_Transition
-		    quid       	"5B227FFC0135"
-		    supplier   	"$UNNAMED$1"
-		    supplier_quidu 	"5B227FD401D0"
-		    client     	"Logical View::State/Activity Model::上传图书图片"
-		    client_quidu 	"5B227FCB02DF"
-		    sendEvent  	(object sendEvent
-			quid       	"5B227FFC0138"))
-		(object State_Transition
-		    quid       	"5B2280000013"
-		    supplier   	"$UNNAMED$1"
-		    supplier_quidu 	"5B227FD401D0"
-		    client     	"Logical View::State/Activity Model::输入图书简介"
-		    client_quidu 	"5B227FCF01BE"
-		    sendEvent  	(object sendEvent
-			quid       	"5B2280000016"))
-		(object State_Transition
-		    quid       	"5B2280030094"
-		    supplier   	"Logical View::State/Activity Model::发布借出/求借图书信息成功"
-		    supplier_quidu 	"5B227FD900E4"
-		    client     	"$UNNAMED$1"
-		    client_quidu 	"5B227FD401D0"
-		    sendEvent  	(object sendEvent
-			quid       	"5B2280030097"))
-		(object State_Transition
-		    quid       	"5B22800502BA"
-		    supplier   	"$UNNAMED$2"
-		    supplier_quidu 	"5B227FDC0114"
-		    client     	"Logical View::State/Activity Model::发布借出/求借图书信息成功"
-		    client_quidu 	"5B227FD900E4"
-		    sendEvent  	(object sendEvent
-			quid       	"5B22800502BD"))
-		(object State_Transition
-		    quid       	"5B22804002A4"
-		    supplier   	"$UNNAMED$0"
-		    supplier_quidu 	"5B227FC90326"
-		    client     	"Logical View::State/Activity Model::进入发布借出/求借图书信息页面"
-		    client_quidu 	"5B22802B03E0"
-		    sendEvent  	(object sendEvent
-			quid       	"5B22804002A7"))
-		(object State_Transition
-		    quid       	"5B2280470100"
-		    supplier   	"Logical View::State/Activity Model::进入发布借出/求借图书信息页面"
-		    supplier_quidu 	"5B22802B03E0"
-		    client     	"$UNNAMED$3"
-		    client_quidu 	"5B227FC4021B"
-		    sendEvent  	(object sendEvent
-			quid       	"5B2280470103"))
-		(object State_Transition
-		    quid       	"5B2280500290"
-		    supplier   	"Logical View::State/Activity Model::上传图书图片"
-		    supplier_quidu 	"5B227FCB02DF"
-		    client     	"$UNNAMED$0"
-		    client_quidu 	"5B227FC90326"
-		    sendEvent  	(object sendEvent
-			quid       	"5B2280500293"))
-		(object State_Transition
-		    quid       	"5B22A2AD0325"
-		    supplier   	"Logical View::State/Activity Model::选择起止时间"
-		    supplier_quidu 	"5B22A2A801F7"
-		    client     	"$UNNAMED$0"
-		    client_quidu 	"5B227FC90326"
-		    sendEvent  	(object sendEvent
-			quid       	"5B22A2AD0328"))
-		(object State_Transition
-		    quid       	"5B22A2B50049"
-		    supplier   	"$UNNAMED$1"
-		    supplier_quidu 	"5B227FD401D0"
-		    client     	"Logical View::State/Activity Model::选择起止时间"
-		    client_quidu 	"5B22A2A801F7"
-		    sendEvent  	(object sendEvent
-			quid       	"5B22A2B5004C")))
-	    objectflows 	(list objectflow_list)
-	    statediagrams 	(list StateDiagrams
-		(object ActivityDiagram "发布借出/求借图书信息页面事件流"
-		    quid       	"5B2201970344"
-		    title      	"发布借出/求借图书信息页面事件流"
-		    zoom       	100
-		    max_height 	28350
-		    max_width  	21600
-		    origin_x   	0
-		    origin_y   	0
-		    items      	(list diagram_item_list
-			(object Swimlane "" @2
-			    line_color 	3342489
-			    width      	450)
-			(object StateView "Normal" "上传图书图片" @3
-			    Parent_View 	@2
-			    location   	(688, 832)
-			    font       	(object Font
-				size       	10
-				face       	"Arial"
-				bold       	FALSE
-				italics    	FALSE
-				underline  	FALSE
-				strike     	FALSE
-				color      	0
-				default_color 	TRUE)
-			    label      	(object ItemLabel
-				Parent_View 	@3
-				location   	(688, 821)
-				fill_color 	13434879
-				anchor_loc 	1
-				nlines     	2
-				max_width  	204
-				justify    	0
-				label      	"上传图书图片")
-			    icon_style 	"Icon"
-			    line_color 	3342489
-			    fill_color 	13434879
-			    quidu      	"5B227FCB02DF"
-			    height     	134
-			    autoResize 	TRUE)
-			(object StateView "Normal" "输入图书名称" @4
-			    Parent_View 	@2
-			    location   	(304, 832)
-			    font       	(object Font
-				size       	10
-				face       	"Arial"
-				bold       	FALSE
-				italics    	FALSE
-				underline  	FALSE
-				strike     	FALSE
-				color      	0
-				default_color 	TRUE)
-			    label      	(object ItemLabel
-				Parent_View 	@4
-				location   	(304, 821)
-				fill_color 	13434879
-				anchor_loc 	1
-				nlines     	2
-				max_width  	204
-				justify    	0
-				label      	"输入图书名称")
-			    icon_style 	"Icon"
-			    line_color 	3342489
-			    fill_color 	13434879
-			    quidu      	"5B227FCD012E"
-			    height     	134
-			    autoResize 	TRUE)
-			(object StateView "Normal" "输入图书简介" @5
-			    Parent_View 	@2
-			    location   	(1536, 832)
-			    font       	(object Font
-				size       	10
-				face       	"Arial"
-				bold       	FALSE
-				italics    	FALSE
-				underline  	FALSE
-				strike     	FALSE
-				color      	0
-				default_color 	TRUE)
-			    label      	(object ItemLabel
-				Parent_View 	@5
-				location   	(1536, 821)
-				fill_color 	13434879
-				anchor_loc 	1
-				nlines     	2
-				max_width  	204
-				justify    	0
-				label      	"输入图书简介")
-			    icon_style 	"Icon"
-			    line_color 	3342489
-			    fill_color 	13434879
-			    quidu      	"5B227FCF01BE"
-			    height     	134
-			    autoResize 	TRUE)
-			(object StateView "Normal" "发布借出/求借图书信息成功" @6
-			    Parent_View 	@2
-			    location   	(928, 1280)
-			    font       	(object Font
-				size       	10
-				face       	"Arial"
-				bold       	FALSE
-				italics    	FALSE
-				underline  	FALSE
-				strike     	FALSE
-				color      	0
-				default_color 	TRUE)
-			    label      	(object ItemLabel
-				Parent_View 	@6
-				location   	(928, 1269)
-				fill_color 	13434879
-				anchor_loc 	1
-				nlines     	2
-				max_width  	314
-				justify    	0
-				label      	"发布借出/求借图书信息成功")
-			    icon_style 	"Icon"
-			    line_color 	3342489
-			    fill_color 	13434879
-			    quidu      	"5B227FD900E4"
-			    width      	410
-			    height     	134
-			    autoResize 	TRUE)
-			(object StateView "EndState" "$UNNAMED$2" @7
-			    Parent_View 	@2
-			    location   	(928, 1488)
-			    icon_style 	"Icon"
-			    line_color 	3342489
-			    quidu      	"5B227FDC0114"
-			    autoResize 	TRUE)
-			(object TransView "" @8
-			    stereotype 	TRUE
-			    line_color 	3342489
-			    quidu      	"5B22800502BA"
-			    client     	@6
-			    supplier   	@7
-			    vertices   	(list Points
-				(928, 1347)
-				(928, 1446))
-			    line_style 	0
-			    x_offset   	FALSE)
-			(object StateView "Normal" "进入发布借出/求借图书信息页面" @9
-			    Parent_View 	@2
-			    location   	(928, 432)
-			    font       	(object Font
-				size       	10
-				face       	"Arial"
-				bold       	FALSE
-				italics    	FALSE
-				underline  	FALSE
-				strike     	FALSE
-				color      	0
-				default_color 	TRUE)
-			    label      	(object ItemLabel
-				Parent_View 	@9
-				location   	(928, 421)
-				fill_color 	13434879
-				anchor_loc 	1
-				nlines     	2
-				max_width  	372
-				justify    	0
-				label      	"进入发布借出/求借图书信息页面")
-			    icon_style 	"Label"
-			    line_color 	3342489
-			    fill_color 	13434879
-			    quidu      	"5B22802B03E0"
-			    width      	468
-			    height     	134
-			    autoResize 	TRUE)
-			(object StateView "StartState" "$UNNAMED$3" @10
-			    Parent_View 	@2
-			    location   	(928, 224)
-			    icon_style 	"Icon"
-			    line_color 	3342489
-			    quidu      	"5B227FC4021B"
-			    autoResize 	TRUE)
-			(object TransView "" @11
-			    stereotype 	TRUE
-			    line_color 	3342489
-			    quidu      	"5B2280470100"
-			    client     	@10
-			    supplier   	@9
-			    vertices   	(list Points
-				(928, 254)
-				(928, 365))
-			    line_style 	0
-			    x_offset   	FALSE)
-			(object StateView "Normal" "选择起止时间" @12
-			    Parent_View 	@2
-			    location   	(1136, 832)
-			    font       	(object Font
-				size       	10
-				face       	"Arial"
-				bold       	FALSE
-				italics    	FALSE
-				underline  	FALSE
-				strike     	FALSE
-				color      	0
-				default_color 	TRUE)
-			    label      	(object ItemLabel
-				Parent_View 	@12
-				location   	(1136, 821)
-				fill_color 	13434879
-				anchor_loc 	1
-				nlines     	2
-				max_width  	258
-				justify    	0
-				label      	"选择起止时间")
-			    icon_style 	"Icon"
-			    line_color 	3342489
-			    fill_color 	13434879
-			    quidu      	"5B22A2A801F7"
-			    width      	354
-			    height     	134
-			    autoResize 	TRUE)
-			(object SynchronizationView "$UNNAMED$0" @13
-			    location   	(928, 592)
-			    font       	(object Font
-				size       	10
-				face       	"Arial"
-				bold       	FALSE
-				italics    	FALSE
-				underline  	FALSE
-				strike     	FALSE
-				color      	0
-				default_color 	TRUE)
-			    label      	(object SegLabel @14
-				Parent_View 	@13
-				location   	(1090, 521)
-				font       	(object Font
-				    size       	10
-				    face       	"Arial"
-				    bold       	FALSE
-				    italics    	TRUE
-				    underline  	FALSE
-				    strike     	FALSE
-				    color      	0
-				    default_color 	TRUE)
-				hidden     	TRUE
-				nlines     	2
-				max_width  	300
-				justify    	1
-				label      	""
-				pctDist    	1.000000
-				height     	0
-				orientation 	0)
-			    icon_style 	"Icon"
-			    line_color 	3342489
-			    quidu      	"5B227FC90326"
-			    autoResize 	TRUE
-			    sync_flow_direction 	1
-			    sync_is_horizontal 	TRUE)
-			(object TransView "" @15
-			    stereotype 	TRUE
-			    line_color 	3342489
-			    quidu      	"5B227FF401B0"
-			    client     	@13
-			    supplier   	@4
-			    vertices   	(list Points
-				(903, 601)
-				(454, 774))
-			    line_style 	0
-			    x_offset   	FALSE)
-			(object TransView "" @16
-			    stereotype 	TRUE
-			    line_color 	3342489
-			    quidu      	"5B227FF700BD"
-			    client     	@13
-			    supplier   	@5
-			    vertices   	(list Points
-				(951, 601)
-				(1386, 771))
-			    line_style 	0
-			    x_offset   	FALSE)
-			(object TransView "" @17
-			    stereotype 	TRUE
-			    line_color 	3342489
-			    quidu      	"5B22804002A4"
-			    client     	@9
-			    supplier   	@13
-			    vertices   	(list Points
-				(928, 499)
-				(928, 582))
-			    line_style 	0
-			    x_offset   	FALSE)
-			(object TransView "" @18
-			    stereotype 	TRUE
-			    line_color 	3342489
-			    quidu      	"5B2280500290"
-			    client     	@13
-			    supplier   	@3
-			    vertices   	(list Points
-				(918, 601)
-				(757, 765))
-			    line_style 	0
-			    x_offset   	FALSE)
-			(object SynchronizationView "$UNNAMED$1" @19
-			    location   	(928, 1056)
-			    font       	(object Font
-				size       	10
-				face       	"Arial"
-				bold       	FALSE
-				italics    	FALSE
-				underline  	FALSE
-				strike     	FALSE
-				color      	0
-				default_color 	TRUE)
-			    label      	(object SegLabel @20
-				Parent_View 	@19
-				location   	(1090, 985)
-				font       	(object Font
-				    size       	10
-				    face       	"Arial"
-				    bold       	FALSE
-				    italics    	TRUE
-				    underline  	FALSE
-				    strike     	FALSE
-				    color      	0
-				    default_color 	TRUE)
-				hidden     	TRUE
-				nlines     	2
-				max_width  	300
-				justify    	1
-				label      	""
-				pctDist    	1.000000
-				height     	0
-				orientation 	0)
-			    icon_style 	"Icon"
-			    line_color 	3342489
-			    quidu      	"5B227FD401D0"
-			    autoResize 	TRUE
-			    sync_flow_direction 	1
-			    sync_is_horizontal 	TRUE)
-			(object TransView "" @21
-			    stereotype 	TRUE
-			    line_color 	3342489
-			    quidu      	"5B227FF901AB"
-			    client     	@4
-			    supplier   	@19
-			    vertices   	(list Points
-				(454, 885)
-				(905, 1046))
-			    line_style 	0
-			    x_offset   	FALSE)
-			(object TransView "" @22
-			    stereotype 	TRUE
-			    line_color 	3342489
-			    quidu      	"5B227FFC0135"
-			    client     	@3
-			    supplier   	@19
-			    vertices   	(list Points
-				(759, 898)
-				(928, 1046))
-			    line_style 	0
-			    x_offset   	FALSE)
-			(object TransView "" @23
-			    stereotype 	TRUE
-			    line_color 	3342489
-			    quidu      	"5B2280000013"
-			    client     	@5
-			    supplier   	@19
-			    vertices   	(list Points
-				(1386, 887)
-				(948, 1046))
-			    line_style 	0
-			    x_offset   	FALSE)
-			(object TransView "" @24
-			    stereotype 	TRUE
-			    line_color 	3342489
-			    quidu      	"5B2280030094"
-			    client     	@19
-			    supplier   	@6
-			    vertices   	(list Points
-				(928, 1065)
-				(928, 1213))
-			    line_style 	0
-			    x_offset   	FALSE)
-			(object TransView "" @25
-			    stereotype 	TRUE
-			    line_color 	3342489
-			    quidu      	"5B22A2AD0325"
-			    client     	@13
-			    supplier   	@12
-			    vertices   	(list Points
-				(935, 601)
-				(1077, 765))
-			    line_style 	0
-			    x_offset   	FALSE)
-			(object TransView "" @26
-			    stereotype 	TRUE
-			    line_color 	3342489
-			    quidu      	"5B22A2B50049"
-			    client     	@12
-			    supplier   	@19
-			    vertices   	(list Points
-				(1073, 899)
-				(936, 1046))
-			    line_style 	0
-			    x_offset   	FALSE)))))
+	    (object Class_Category "User System"
+		quid       	"5B2383D20199"
+		exportControl 	"Public"
+		logical_models 	(list unit_reference_list)
+		logical_presentations 	(list unit_reference_list))
+	    (object Class_Category "UserForm"
+		quid       	"5B23842803C5"
+		exportControl 	"Public"
+		logical_models 	(list unit_reference_list)
+		logical_presentations 	(list unit_reference_list))
+	    (object Class_Category "User Business Logic"
+		quid       	"5B2384F9004B"
+		exportControl 	"Public"
+		logical_models 	(list unit_reference_list)
+		logical_presentations 	(list unit_reference_list))
+	    (object Class_Category "User Service Logic"
+		quid       	"5B23854E0294"
+		exportControl 	"Public"
+		logical_models 	(list unit_reference_list)
+		logical_presentations 	(list unit_reference_list))
+	    (object Class_Category "User Entity"
+		quid       	"5B2385A701CD"
+		exportControl 	"Public"
+		logical_models 	(list unit_reference_list)
+		logical_presentations 	(list unit_reference_list))
+	    (object Class_Category "Book System"
+		quid       	"5B23870401F7"
+		exportControl 	"Public"
+		logical_models 	(list unit_reference_list)
+		logical_presentations 	(list unit_reference_list))
+	    (object Class_Category "BookForm"
+		quid       	"5B23874200F8"
+		exportControl 	"Public"
+		logical_models 	(list unit_reference_list)
+		logical_presentations 	(list unit_reference_list))
+	    (object Class_Category "Book Business Logic"
+		quid       	"5B2387830100"
+		exportControl 	"Public"
+		logical_models 	(list unit_reference_list)
+		logical_presentations 	(list unit_reference_list))
+	    (object Class_Category "Book Service Logic"
+		quid       	"5B2387E00089"
+		exportControl 	"Public"
+		logical_models 	(list unit_reference_list)
+		logical_presentations 	(list unit_reference_list))
+	    (object Class_Category "Book Entity"
+		quid       	"5B23884B0281"
+		exportControl 	"Public"
+		logical_models 	(list unit_reference_list)
+		logical_presentations 	(list unit_reference_list)))
 	logical_presentations 	(list unit_reference_list
 	    (object ClassDiagram "Package Hierarchy"
 		quid       	"39C9261001B8"
@@ -732,7 +324,7 @@
 		origin_x   	0
 		origin_y   	0
 		items      	(list diagram_item_list
-		    (object CategoryView "Logical View::java" @27
+		    (object CategoryView "Logical View::java" @1
 			location   	(208, 272)
 			font       	(object Font
 			    size       	10
@@ -744,7 +336,7 @@
 			    color      	0
 			    default_color 	TRUE)
 			label      	(object ItemLabel
-			    Parent_View 	@27
+			    Parent_View 	@1
 			    location   	(64, 188)
 			    nlines     	2
 			    max_width  	288
@@ -756,7 +348,7 @@
 			quidu      	"39C92661003B"
 			width      	300
 			height     	180)
-		    (object CategoryView "Logical View::javax" @28
+		    (object CategoryView "Logical View::javax" @2
 			location   	(656, 272)
 			font       	(object Font
 			    size       	10
@@ -768,7 +360,7 @@
 			    color      	0
 			    default_color 	TRUE)
 			label      	(object ItemLabel
-			    Parent_View 	@28
+			    Parent_View 	@2
 			    location   	(512, 188)
 			    nlines     	2
 			    max_width  	288
@@ -780,7 +372,7 @@
 			quidu      	"39C926610018"
 			width      	300
 			height     	180)
-		    (object CategoryView "Logical View::org" @29
+		    (object CategoryView "Logical View::org" @3
 			location   	(1104, 272)
 			font       	(object Font
 			    size       	10
@@ -792,7 +384,7 @@
 			    color      	0
 			    default_color 	TRUE)
 			label      	(object ItemLabel
-			    Parent_View 	@29
+			    Parent_View 	@3
 			    location   	(960, 188)
 			    nlines     	2
 			    max_width  	288
@@ -813,7 +405,7 @@
 		origin_x   	0
 		origin_y   	0
 		items      	(list diagram_item_list
-		    (object NoteView @30
+		    (object NoteView @4
 			location   	(224, 624)
 			font       	(object Font
 			    size       	10
@@ -828,7 +420,7 @@
 			fill_color 	12632256
 			width      	300
 			height     	132)
-		    (object NoteView @31
+		    (object NoteView @5
 			location   	(704, 624)
 			font       	(object Font
 			    size       	10
@@ -843,7 +435,7 @@
 			fill_color 	8421631
 			width      	300
 			height     	132)
-		    (object NoteView @32
+		    (object NoteView @6
 			location   	(1200, 624)
 			font       	(object Font
 			    size       	10
@@ -858,7 +450,7 @@
 			fill_color 	12615680
 			width      	300
 			height     	132)
-		    (object NoteView @33
+		    (object NoteView @7
 			location   	(1664, 624)
 			font       	(object Font
 			    size       	10
@@ -873,7 +465,7 @@
 			fill_color 	16777215
 			width      	300
 			height     	132)
-		    (object Label @34
+		    (object Label @8
 			location   	(81, 369)
 			font       	(object Font
 			    size       	12
@@ -888,7 +480,7 @@
 			max_width  	1163
 			justify    	1
 			label      	"J2EE: Java 2 Platform, Enterprise Edition - v 1.2.1")
-		    (object Label @35
+		    (object Label @9
 			location   	(96, 608)
 			font       	(object Font
 			    size       	10
@@ -903,7 +495,7 @@
 			max_width  	268
 			justify    	1
 			label      	"Abstract Class")
-		    (object Label @36
+		    (object Label @10
 			location   	(592, 608)
 			font       	(object Font
 			    size       	10
@@ -918,7 +510,7 @@
 			max_width  	225
 			justify    	1
 			label      	"Final Class")
-		    (object Label @37
+		    (object Label @11
 			location   	(1104, 608)
 			font       	(object Font
 			    size       	10
@@ -933,7 +525,7 @@
 			max_width  	206
 			justify    	1
 			label      	"Interface")
-		    (object Label @38
+		    (object Label @12
 			location   	(1552, 608)
 			font       	(object Font
 			    size       	10
@@ -948,185 +540,779 @@
 			max_width  	144
 			justify    	1
 			label      	"Class")))
-	    (object InteractionDiagram "发布借出/求借图书信息时序图"
-		mechanism_ref 	@1
-		quid       	"5B2204AD0167"
-		title      	"发布借出/求借图书信息时序图"
+	    (object ClassDiagram "User"
+		quid       	"5B2381F800C9"
+		title      	"User"
+		zoom       	100
+		max_height 	28350
+		max_width  	21600
+		origin_x   	100
+		origin_y   	0
+		items      	(list diagram_item_list
+		    (object CategoryView "Logical View::User System" @13
+			location   	(1152, 1168)
+			font       	(object Font
+			    size       	10
+			    face       	"Arial"
+			    bold       	FALSE
+			    italics    	FALSE
+			    underline  	FALSE
+			    strike     	FALSE
+			    color      	0
+			    default_color 	TRUE)
+			label      	(object ItemLabel
+			    Parent_View 	@13
+			    location   	(490, 303)
+			    fill_color 	13434879
+			    nlines     	2
+			    max_width  	1324
+			    justify    	0
+			    label      	"User System")
+			icon_style 	"Icon"
+			line_color 	3342489
+			fill_color 	13434879
+			quidu      	"5B2383D20199"
+			width      	1337
+			height     	1743)
+		    (object CategoryView "Logical View::UserForm" @14
+			location   	(1168, 624)
+			font       	(object Font
+			    size       	10
+			    face       	"Arial"
+			    bold       	FALSE
+			    italics    	FALSE
+			    underline  	FALSE
+			    strike     	FALSE
+			    color      	0
+			    default_color 	TRUE)
+			label      	(object ItemLabel
+			    Parent_View 	@14
+			    location   	(649, 511)
+			    fill_color 	13434879
+			    nlines     	2
+			    max_width  	1038
+			    justify    	0
+			    label      	"UserForm")
+			icon_style 	"Icon"
+			line_color 	3342489
+			fill_color 	13434879
+			quidu      	"5B23842803C5"
+			width      	1050
+			height     	238)
+		    (object CategoryView "Logical View::User Business Logic" @15
+			location   	(1168, 1008)
+			font       	(object Font
+			    size       	10
+			    face       	"Arial"
+			    bold       	FALSE
+			    italics    	FALSE
+			    underline  	FALSE
+			    strike     	FALSE
+			    color      	0
+			    default_color 	TRUE)
+			label      	(object ItemLabel
+			    Parent_View 	@15
+			    location   	(652, 883)
+			    fill_color 	13434879
+			    nlines     	2
+			    max_width  	1032
+			    justify    	0
+			    label      	"User Business Logic")
+			icon_style 	"Icon"
+			line_color 	3342489
+			fill_color 	13434879
+			quidu      	"5B2384F9004B"
+			width      	1044
+			height     	262)
+		    (object CategoryView "Logical View::User Service Logic" @16
+			location   	(1168, 1376)
+			font       	(object Font
+			    size       	10
+			    face       	"Arial"
+			    bold       	FALSE
+			    italics    	FALSE
+			    underline  	FALSE
+			    strike     	FALSE
+			    color      	0
+			    default_color 	TRUE)
+			label      	(object ItemLabel
+			    Parent_View 	@16
+			    location   	(658, 1245)
+			    fill_color 	13434879
+			    nlines     	2
+			    max_width  	1020
+			    justify    	0
+			    label      	"User Service Logic")
+			icon_style 	"Icon"
+			line_color 	3342489
+			fill_color 	13434879
+			quidu      	"5B23854E0294"
+			width      	1032
+			height     	275)
+		    (object CategoryView "Logical View::User Entity" @17
+			location   	(1184, 1728)
+			font       	(object Font
+			    size       	10
+			    face       	"Arial"
+			    bold       	FALSE
+			    italics    	FALSE
+			    underline  	FALSE
+			    strike     	FALSE
+			    color      	0
+			    default_color 	TRUE)
+			label      	(object ItemLabel
+			    Parent_View 	@17
+			    location   	(681, 1612)
+			    fill_color 	13434879
+			    nlines     	2
+			    max_width  	1006
+			    justify    	0
+			    label      	"User Entity")
+			icon_style 	"Icon"
+			line_color 	3342489
+			fill_color 	13434879
+			quidu      	"5B2385A701CD"
+			width      	1019
+			height     	244)
+		    (object ClassView "Class" "Logical View::UserAuth" @18
+			ShowCompartmentStereotypes 	TRUE
+			IncludeAttribute 	TRUE
+			IncludeOperation 	TRUE
+			location   	(896, 640)
+			font       	(object Font
+			    size       	10
+			    face       	"Arial"
+			    bold       	FALSE
+			    italics    	FALSE
+			    underline  	FALSE
+			    strike     	FALSE
+			    color      	0
+			    default_color 	TRUE)
+			label      	(object ItemLabel
+			    Parent_View 	@18
+			    location   	(789, 589)
+			    fill_color 	13434879
+			    nlines     	1
+			    max_width  	214
+			    justify    	0
+			    label      	"UserAuth")
+			icon_style 	"Icon"
+			line_color 	3342489
+			fill_color 	13434879
+			quidu      	"5B2384D80030"
+			width      	232
+			height     	126
+			annotation 	8
+			autoResize 	TRUE)
+		    (object ClassView "Class" "Logical View::UserInformation" @19
+			ShowCompartmentStereotypes 	TRUE
+			IncludeAttribute 	TRUE
+			IncludeOperation 	TRUE
+			location   	(1456, 640)
+			font       	(object Font
+			    size       	10
+			    face       	"Arial"
+			    bold       	FALSE
+			    italics    	FALSE
+			    underline  	FALSE
+			    strike     	FALSE
+			    color      	0
+			    default_color 	TRUE)
+			label      	(object ItemLabel
+			    Parent_View 	@19
+			    location   	(1293, 589)
+			    fill_color 	13434879
+			    nlines     	1
+			    max_width  	326
+			    justify    	0
+			    label      	"UserInformation")
+			icon_style 	"Icon"
+			line_color 	3342489
+			fill_color 	13434879
+			quidu      	"5B2384DD0399"
+			width      	344
+			height     	126
+			annotation 	8
+			autoResize 	TRUE)
+		    (object ClassView "Class" "Logical View::AuthController" @20
+			ShowCompartmentStereotypes 	TRUE
+			IncludeAttribute 	TRUE
+			IncludeOperation 	TRUE
+			location   	(896, 1024)
+			font       	(object Font
+			    size       	10
+			    face       	"Arial"
+			    bold       	FALSE
+			    italics    	FALSE
+			    underline  	FALSE
+			    strike     	FALSE
+			    color      	0
+			    default_color 	TRUE)
+			label      	(object ItemLabel
+			    Parent_View 	@20
+			    location   	(749, 973)
+			    fill_color 	13434879
+			    nlines     	1
+			    max_width  	294
+			    justify    	0
+			    label      	"AuthController")
+			icon_style 	"Icon"
+			line_color 	3342489
+			fill_color 	13434879
+			quidu      	"5B2385220062"
+			width      	312
+			height     	126
+			annotation 	8
+			autoResize 	TRUE)
+		    (object AssociationViewNew "$UNNAMED$0" @21
+			location   	(896, 831)
+			font       	(object Font
+			    size       	10
+			    face       	"Arial"
+			    bold       	FALSE
+			    italics    	FALSE
+			    underline  	FALSE
+			    strike     	FALSE
+			    color      	0
+			    default_color 	TRUE)
+			stereotype 	TRUE
+			line_color 	3342489
+			quidu      	"5B2385D0020A"
+			roleview_list 	(list RoleViews
+			    (object RoleView "$UNNAMED$1" @22
+				Parent_View 	@21
+				location   	(-432, 175)
+				stereotype 	TRUE
+				line_color 	3342489
+				quidu      	"5B2385D10059"
+				client     	@21
+				supplier   	@20
+				vertices   	(list Points
+				    (896, 831)
+				    (896, 960))
+				line_style 	0)
+			    (object RoleView "$UNNAMED$2" @23
+				Parent_View 	@21
+				location   	(-432, 175)
+				stereotype 	TRUE
+				line_color 	3342489
+				quidu      	"5B2385D1005D"
+				client     	@21
+				supplier   	@18
+				vertices   	(list Points
+				    (896, 831)
+				    (896, 703))
+				line_style 	0)))
+		    (object ClassView "Class" "Logical View::InformationController" @24
+			ShowCompartmentStereotypes 	TRUE
+			IncludeAttribute 	TRUE
+			IncludeOperation 	TRUE
+			location   	(1424, 1024)
+			font       	(object Font
+			    size       	10
+			    face       	"Arial"
+			    bold       	FALSE
+			    italics    	FALSE
+			    underline  	FALSE
+			    strike     	FALSE
+			    color      	0
+			    default_color 	TRUE)
+			label      	(object ItemLabel
+			    Parent_View 	@24
+			    location   	(1221, 973)
+			    fill_color 	13434879
+			    nlines     	1
+			    max_width  	406
+			    justify    	0
+			    label      	"InformationController")
+			icon_style 	"Icon"
+			line_color 	3342489
+			fill_color 	13434879
+			quidu      	"5B23852C03AE"
+			width      	424
+			height     	126
+			annotation 	8
+			autoResize 	TRUE)
+		    (object AssociationViewNew "$UNNAMED$3" @25
+			location   	(1439, 831)
+			font       	(object Font
+			    size       	10
+			    face       	"Arial"
+			    bold       	FALSE
+			    italics    	FALSE
+			    underline  	FALSE
+			    strike     	FALSE
+			    color      	0
+			    default_color 	TRUE)
+			stereotype 	TRUE
+			line_color 	3342489
+			quidu      	"5B2385D60051"
+			roleview_list 	(list RoleViews
+			    (object RoleView "$UNNAMED$4" @26
+				Parent_View 	@25
+				location   	(-449, 175)
+				stereotype 	TRUE
+				line_color 	3342489
+				quidu      	"5B2385D601D2"
+				client     	@25
+				supplier   	@24
+				vertices   	(list Points
+				    (1439, 831)
+				    (1429, 960))
+				line_style 	0)
+			    (object RoleView "$UNNAMED$5" @27
+				Parent_View 	@25
+				location   	(-449, 175)
+				stereotype 	TRUE
+				line_color 	3342489
+				quidu      	"5B2385D601D6"
+				client     	@25
+				supplier   	@19
+				vertices   	(list Points
+				    (1439, 831)
+				    (1450, 703))
+				line_style 	0)))
+		    (object ClassView "Class" "Logical View::AuthService" @28
+			ShowCompartmentStereotypes 	TRUE
+			IncludeAttribute 	TRUE
+			IncludeOperation 	TRUE
+			location   	(912, 1392)
+			font       	(object Font
+			    size       	10
+			    face       	"Arial"
+			    bold       	FALSE
+			    italics    	FALSE
+			    underline  	FALSE
+			    strike     	FALSE
+			    color      	0
+			    default_color 	TRUE)
+			label      	(object ItemLabel
+			    Parent_View 	@28
+			    location   	(784, 1341)
+			    fill_color 	13434879
+			    nlines     	1
+			    max_width  	256
+			    justify    	0
+			    label      	"AuthService")
+			icon_style 	"Icon"
+			line_color 	3342489
+			fill_color 	13434879
+			quidu      	"5B23856A03CF"
+			width      	274
+			height     	126
+			annotation 	8
+			autoResize 	TRUE)
+		    (object AssociationViewNew "$UNNAMED$6" @29
+			location   	(903, 1207)
+			font       	(object Font
+			    size       	10
+			    face       	"Arial"
+			    bold       	FALSE
+			    italics    	FALSE
+			    underline  	FALSE
+			    strike     	FALSE
+			    color      	0
+			    default_color 	TRUE)
+			stereotype 	TRUE
+			line_color 	3342489
+			quidu      	"5B2385D900F9"
+			roleview_list 	(list RoleViews
+			    (object RoleView "$UNNAMED$7" @30
+				Parent_View 	@29
+				location   	(-425, 167)
+				stereotype 	TRUE
+				line_color 	3342489
+				quidu      	"5B2385D902D2"
+				client     	@29
+				supplier   	@28
+				vertices   	(list Points
+				    (903, 1207)
+				    (909, 1328))
+				line_style 	0)
+			    (object RoleView "$UNNAMED$8" @31
+				Parent_View 	@29
+				location   	(-425, 167)
+				stereotype 	TRUE
+				line_color 	3342489
+				quidu      	"5B2385D902D6"
+				client     	@29
+				supplier   	@20
+				vertices   	(list Points
+				    (903, 1207)
+				    (898, 1087))
+				line_style 	0)))
+		    (object ClassView "Class" "Logical View::InformationService" @32
+			ShowCompartmentStereotypes 	TRUE
+			IncludeAttribute 	TRUE
+			IncludeOperation 	TRUE
+			location   	(1424, 1392)
+			font       	(object Font
+			    size       	10
+			    face       	"Arial"
+			    bold       	FALSE
+			    italics    	FALSE
+			    underline  	FALSE
+			    strike     	FALSE
+			    color      	0
+			    default_color 	TRUE)
+			label      	(object ItemLabel
+			    Parent_View 	@32
+			    location   	(1246, 1341)
+			    fill_color 	13434879
+			    nlines     	1
+			    max_width  	356
+			    justify    	0
+			    label      	"InformationService")
+			icon_style 	"Icon"
+			line_color 	3342489
+			fill_color 	13434879
+			quidu      	"5B2385760117"
+			width      	374
+			height     	126
+			annotation 	8
+			autoResize 	TRUE)
+		    (object AssociationViewNew "$UNNAMED$9" @33
+			location   	(1424, 1207)
+			font       	(object Font
+			    size       	10
+			    face       	"Arial"
+			    bold       	FALSE
+			    italics    	FALSE
+			    underline  	FALSE
+			    strike     	FALSE
+			    color      	0
+			    default_color 	TRUE)
+			stereotype 	TRUE
+			line_color 	3342489
+			quidu      	"5B2385DB02B9"
+			roleview_list 	(list RoleViews
+			    (object RoleView "$UNNAMED$10" @34
+				Parent_View 	@33
+				location   	(-432, 167)
+				stereotype 	TRUE
+				line_color 	3342489
+				quidu      	"5B2385DC006A"
+				client     	@33
+				supplier   	@32
+				vertices   	(list Points
+				    (1424, 1207)
+				    (1424, 1328))
+				line_style 	0)
+			    (object RoleView "$UNNAMED$11" @35
+				Parent_View 	@33
+				location   	(-432, 167)
+				stereotype 	TRUE
+				line_color 	3342489
+				quidu      	"5B2385DC0073"
+				client     	@33
+				supplier   	@24
+				vertices   	(list Points
+				    (1424, 1207)
+				    (1424, 1087))
+				line_style 	0)))
+		    (object ClassView "Class" "Logical View::User" @36
+			ShowCompartmentStereotypes 	TRUE
+			IncludeAttribute 	TRUE
+			IncludeOperation 	TRUE
+			location   	(1200, 1760)
+			font       	(object Font
+			    size       	10
+			    face       	"Arial"
+			    bold       	FALSE
+			    italics    	FALSE
+			    underline  	FALSE
+			    strike     	FALSE
+			    color      	0
+			    default_color 	TRUE)
+			label      	(object ItemLabel
+			    Parent_View 	@36
+			    location   	(1119, 1709)
+			    fill_color 	13434879
+			    nlines     	1
+			    max_width  	162
+			    justify    	0
+			    label      	"User")
+			icon_style 	"Icon"
+			line_color 	3342489
+			fill_color 	13434879
+			quidu      	"5B2386960217"
+			height     	126
+			annotation 	8
+			autoResize 	TRUE)
+		    (object AssociationViewNew "$UNNAMED$18" @37
+			location   	(1055, 1575)
+			font       	(object Font
+			    size       	10
+			    face       	"Arial"
+			    bold       	FALSE
+			    italics    	FALSE
+			    underline  	FALSE
+			    strike     	FALSE
+			    color      	0
+			    default_color 	TRUE)
+			stereotype 	TRUE
+			line_color 	3342489
+			quidu      	"5B2386A1017A"
+			roleview_list 	(list RoleViews
+			    (object RoleView "$UNNAMED$19" @38
+				Parent_View 	@37
+				location   	(143, 183)
+				stereotype 	TRUE
+				line_color 	3342489
+				quidu      	"5B2386A20094"
+				client     	@37
+				supplier   	@36
+				vertices   	(list Points
+				    (1055, 1575)
+				    (1150, 1696))
+				line_style 	0)
+			    (object RoleView "$UNNAMED$20" @39
+				Parent_View 	@37
+				location   	(143, 183)
+				stereotype 	TRUE
+				line_color 	3342489
+				quidu      	"5B2386A2009C"
+				client     	@37
+				supplier   	@28
+				vertices   	(list Points
+				    (1055, 1575)
+				    (961, 1455))
+				line_style 	0)))
+		    (object AssociationViewNew "$UNNAMED$21" @40
+			location   	(1311, 1575)
+			font       	(object Font
+			    size       	10
+			    face       	"Arial"
+			    bold       	FALSE
+			    italics    	FALSE
+			    underline  	FALSE
+			    strike     	FALSE
+			    color      	0
+			    default_color 	TRUE)
+			stereotype 	TRUE
+			line_color 	3342489
+			quidu      	"5B2386A5033C"
+			roleview_list 	(list RoleViews
+			    (object RoleView "$UNNAMED$22" @41
+				Parent_View 	@40
+				location   	(-113, 183)
+				stereotype 	TRUE
+				line_color 	3342489
+				quidu      	"5B2386A601AB"
+				client     	@40
+				supplier   	@36
+				vertices   	(list Points
+				    (1311, 1575)
+				    (1238, 1696))
+				line_style 	0)
+			    (object RoleView "$UNNAMED$23" @42
+				Parent_View 	@40
+				location   	(-113, 183)
+				stereotype 	TRUE
+				line_color 	3342489
+				quidu      	"5B2386A601B5"
+				client     	@40
+				supplier   	@32
+				vertices   	(list Points
+				    (1311, 1575)
+				    (1385, 1455))
+				line_style 	0)))))
+	    (object ClassDiagram "Book"
+		quid       	"5B2386F30166"
+		title      	"Book"
 		zoom       	100
 		max_height 	28350
 		max_width  	21600
 		origin_x   	0
 		origin_y   	0
 		items      	(list diagram_item_list
-		    (object InterObjView "User" @39
-			location   	(688, 320)
+		    (object CategoryView "Logical View::Book System" @43
+			location   	(1136, 1104)
 			font       	(object Font
 			    size       	10
 			    face       	"Arial"
 			    bold       	FALSE
 			    italics    	FALSE
-			    underline  	TRUE
+			    underline  	FALSE
 			    strike     	FALSE
 			    color      	0
 			    default_color 	TRUE)
 			label      	(object ItemLabel
-			    Parent_View 	@39
-			    location   	(688, 320)
+			    Parent_View 	@43
+			    location   	(508, 232)
 			    fill_color 	13434879
-			    anchor_loc 	1
 			    nlines     	2
-			    max_width  	282
+			    max_width  	1256
 			    justify    	0
-			    label      	"User")
+			    label      	"Book System")
 			icon_style 	"Icon"
 			line_color 	3342489
 			fill_color 	13434879
-			quidu      	"5B2206FC0311"
-			width      	300
-			height     	862
-			icon_height 	0
-			icon_width 	0
-			icon_y_offset 	0
-			annotation 	1
-			Focus_Of_Control 	(object Focus_Of_Control "" @40
-			    location   	(688, 400)
-			    line_color 	3342489
-			    InterObjView 	@39
-			    height     	308
-			    y_coord    	218
-			    Nested     	FALSE)
-			Focus_Of_Control 	(object Focus_Of_Control "" @41
-			    location   	(688, 400)
-			    line_color 	3342489
-			    InterObjView 	@39
-			    height     	90
-			    y_coord    	0
-			    Nested     	TRUE)
-			Focus_Of_Control 	(object Focus_Of_Control "" @42
-			    location   	(688, 608)
-			    line_color 	3342489
-			    InterObjView 	@39
-			    height     	1
-			    y_coord    	-89
-			    Nested     	TRUE)
-			Focus_Of_Control 	(object Focus_Of_Control "" @43
-			    location   	(688, 784)
-			    line_color 	3342489
-			    InterObjView 	@39
-			    height     	308
-			    y_coord    	218
-			    Nested     	FALSE)
-			Focus_Of_Control 	(object Focus_Of_Control "" @44
-			    location   	(688, 992)
-			    line_color 	3342489
-			    InterObjView 	@39
-			    height     	1
-			    y_coord    	-89
-			    Nested     	TRUE))
-		    (object InterObjView "Interface" @45
-			location   	(1280, 320)
+			quidu      	"5B23870401F7"
+			width      	1269
+			height     	1756)
+		    (object CategoryView "Logical View::BookForm" @44
+			location   	(1152, 528)
 			font       	(object Font
 			    size       	10
 			    face       	"Arial"
 			    bold       	FALSE
 			    italics    	FALSE
-			    underline  	TRUE
+			    underline  	FALSE
+			    strike     	FALSE
+			    color      	0
+			    default_color 	TRUE)
+			label      	(object ItemLabel
+			    Parent_View 	@44
+			    location   	(687, 409)
+			    fill_color 	13434879
+			    nlines     	2
+			    max_width  	930
+			    justify    	0
+			    label      	"BookForm")
+			icon_style 	"Icon"
+			line_color 	3342489
+			fill_color 	13434879
+			quidu      	"5B23874200F8"
+			width      	943
+			height     	250)
+		    (object CategoryView "Logical View::Book Business Logic" @45
+			location   	(1152, 928)
+			font       	(object Font
+			    size       	10
+			    face       	"Arial"
+			    bold       	FALSE
+			    italics    	FALSE
+			    underline  	FALSE
 			    strike     	FALSE
 			    color      	0
 			    default_color 	TRUE)
 			label      	(object ItemLabel
 			    Parent_View 	@45
-			    location   	(1280, 320)
+			    location   	(686, 794)
 			    fill_color 	13434879
-			    anchor_loc 	1
 			    nlines     	2
-			    max_width  	282
+			    max_width  	932
 			    justify    	0
-			    label      	"Interface")
+			    label      	"Book Business Logic")
 			icon_style 	"Icon"
 			line_color 	3342489
 			fill_color 	13434879
-			quidu      	"5B22070001CD"
-			width      	300
-			height     	862
-			icon_height 	0
-			icon_width 	0
-			icon_y_offset 	0
-			annotation 	1
-			Focus_Of_Control 	(object Focus_Of_Control "" @46
-			    location   	(1280, 400)
-			    line_color 	3342489
-			    InterObjView 	@45
-			    height     	210
-			    y_coord    	120
-			    Nested     	FALSE)
-			Focus_Of_Control 	(object Focus_Of_Control "" @47
-			    location   	(1280, 400)
-			    line_color 	3342489
-			    InterObjView 	@45
-			    height     	90
-			    y_coord    	0
-			    Nested     	TRUE)
-			Focus_Of_Control 	(object Focus_Of_Control "" @48
-			    location   	(1280, 784)
-			    line_color 	3342489
-			    InterObjView 	@45
-			    height     	210
-			    y_coord    	120
-			    Nested     	FALSE))
-		    (object InterObjView "Database" @49
-			location   	(1856, 320)
+			quidu      	"5B2387830100"
+			width      	944
+			height     	281)
+		    (object CategoryView "Logical View::Book Service Logic" @46
+			location   	(1152, 1328)
 			font       	(object Font
 			    size       	10
 			    face       	"Arial"
 			    bold       	FALSE
 			    italics    	FALSE
-			    underline  	TRUE
+			    underline  	FALSE
+			    strike     	FALSE
+			    color      	0
+			    default_color 	TRUE)
+			label      	(object ItemLabel
+			    Parent_View 	@46
+			    location   	(677, 1184)
+			    fill_color 	13434879
+			    nlines     	2
+			    max_width  	950
+			    justify    	0
+			    label      	"Book Service Logic")
+			icon_style 	"Icon"
+			line_color 	3342489
+			fill_color 	13434879
+			quidu      	"5B2387E00089"
+			width      	962
+			height     	300)
+		    (object CategoryView "Logical View::Book Entity" @47
+			location   	(1152, 1760)
+			font       	(object Font
+			    size       	10
+			    face       	"Arial"
+			    bold       	FALSE
+			    italics    	FALSE
+			    underline  	FALSE
+			    strike     	FALSE
+			    color      	0
+			    default_color 	TRUE)
+			label      	(object ItemLabel
+			    Parent_View 	@47
+			    location   	(674, 1629)
+			    fill_color 	13434879
+			    nlines     	2
+			    max_width  	956
+			    justify    	0
+			    label      	"Book Entity")
+			icon_style 	"Icon"
+			line_color 	3342489
+			fill_color 	13434879
+			quidu      	"5B23884B0281"
+			width      	969
+			height     	275)
+		    (object ClassView "Class" "Logical View::BookInfo" @48
+			ShowCompartmentStereotypes 	TRUE
+			IncludeAttribute 	TRUE
+			IncludeOperation 	TRUE
+			location   	(1152, 544)
+			font       	(object Font
+			    size       	10
+			    face       	"Arial"
+			    bold       	FALSE
+			    italics    	FALSE
+			    underline  	FALSE
+			    strike     	FALSE
+			    color      	0
+			    default_color 	TRUE)
+			label      	(object ItemLabel
+			    Parent_View 	@48
+			    location   	(1059, 493)
+			    fill_color 	13434879
+			    nlines     	1
+			    max_width  	186
+			    justify    	0
+			    label      	"BookInfo")
+			icon_style 	"Icon"
+			line_color 	3342489
+			fill_color 	13434879
+			quidu      	"5B23877102AB"
+			width      	204
+			height     	126
+			annotation 	8
+			autoResize 	TRUE)
+		    (object ClassView "Class" "Logical View::BookController" @49
+			ShowCompartmentStereotypes 	TRUE
+			IncludeAttribute 	TRUE
+			IncludeOperation 	TRUE
+			location   	(1168, 944)
+			font       	(object Font
+			    size       	10
+			    face       	"Arial"
+			    bold       	FALSE
+			    italics    	FALSE
+			    underline  	FALSE
 			    strike     	FALSE
 			    color      	0
 			    default_color 	TRUE)
 			label      	(object ItemLabel
 			    Parent_View 	@49
-			    location   	(1856, 320)
+			    location   	(1018, 893)
 			    fill_color 	13434879
-			    anchor_loc 	1
-			    nlines     	2
-			    max_width  	282
+			    nlines     	1
+			    max_width  	300
 			    justify    	0
-			    label      	"Database")
+			    label      	"BookController")
 			icon_style 	"Icon"
 			line_color 	3342489
 			fill_color 	13434879
-			quidu      	"5B2207040343"
-			width      	300
-			height     	862
-			icon_height 	0
-			icon_width 	0
-			icon_y_offset 	0
-			annotation 	1
-			Focus_Of_Control 	(object Focus_Of_Control "" @50
-			    location   	(1856, 400)
-			    line_color 	3342489
-			    InterObjView 	@49
-			    height     	172
-			    y_coord    	82
-			    Nested     	FALSE)
-			Focus_Of_Control 	(object Focus_Of_Control "" @51
-			    location   	(1856, 505)
-			    line_color 	3342489
-			    InterObjView 	@49
-			    height     	90
-			    y_coord    	0
-			    Nested     	TRUE)
-			Focus_Of_Control 	(object Focus_Of_Control "" @52
-			    location   	(1856, 889)
-			    line_color 	3342489
-			    InterObjView 	@49
-			    height     	90
-			    y_coord    	0
-			    Nested     	FALSE))
-		    (object InterMessView "addLendBook()" @53
-			location   	(16, 400)
+			quidu      	"5B2387C40241"
+			width      	318
+			height     	126
+			annotation 	8
+			autoResize 	TRUE)
+		    (object AssociationViewNew "$UNNAMED$24" @50
+			location   	(1159, 743)
 			font       	(object Font
 			    size       	10
 			    face       	"Arial"
@@ -1136,37 +1322,66 @@
 			    strike     	FALSE
 			    color      	0
 			    default_color 	TRUE)
-			label      	(object SegLabel @54
+			stereotype 	TRUE
+			line_color 	3342489
+			quidu      	"5B23898B0216"
+			roleview_list 	(list RoleViews
+			    (object RoleView "$UNNAMED$25" @51
+				Parent_View 	@50
+				location   	(7, 199)
+				stereotype 	TRUE
+				line_color 	3342489
+				quidu      	"5B23898B03AD"
+				client     	@50
+				supplier   	@49
+				vertices   	(list Points
+				    (1159, 743)
+				    (1165, 880))
+				line_style 	0)
+			    (object RoleView "$UNNAMED$26" @52
+				Parent_View 	@50
+				location   	(7, 199)
+				stereotype 	TRUE
+				line_color 	3342489
+				quidu      	"5B23898B03B3"
+				client     	@50
+				supplier   	@48
+				vertices   	(list Points
+				    (1159, 743)
+				    (1154, 607))
+				line_style 	0)))
+		    (object ClassView "Class" "Logical View::BookService" @53
+			ShowCompartmentStereotypes 	TRUE
+			IncludeAttribute 	TRUE
+			IncludeOperation 	TRUE
+			location   	(1168, 1360)
+			font       	(object Font
+			    size       	10
+			    face       	"Arial"
+			    bold       	FALSE
+			    italics    	FALSE
+			    underline  	FALSE
+			    strike     	FALSE
+			    color      	0
+			    default_color 	TRUE)
+			label      	(object ItemLabel
 			    Parent_View 	@53
-			    location   	(983, 356)
-			    font       	(object Font
-				size       	10
-				face       	"Arial"
-				bold       	FALSE
-				italics    	FALSE
-				underline  	FALSE
-				strike     	FALSE
-				color      	0
-				default_color 	TRUE)
-			    quidu      	"5B22072203BA"
-			    anchor_loc 	1
+			    location   	(1034, 1309)
+			    fill_color 	13434879
 			    nlines     	1
-			    max_width  	284
+			    max_width  	268
 			    justify    	0
-			    label      	"addLendBook()"
-			    pctDist    	0.500000
-			    height     	45
-			    orientation 	0)
+			    label      	"BookService")
+			icon_style 	"Icon"
 			line_color 	3342489
-			client     	@39
-			supplier   	@45
-			Focus_Src  	@40
-			Focus_Entry 	@46
-			origin     	(703, 400)
-			terminus   	(1264, 400)
-			ordinal    	0)
-		    (object InterMessView "addLendBook()" @55
-			location   	(16, 505)
+			fill_color 	13434879
+			quidu      	"5B2387F903A9"
+			width      	286
+			height     	126
+			annotation 	8
+			autoResize 	TRUE)
+		    (object AssociationViewNew "$UNNAMED$27" @54
+			location   	(1168, 1151)
 			font       	(object Font
 			    size       	10
 			    face       	"Arial"
@@ -1176,37 +1391,39 @@
 			    strike     	FALSE
 			    color      	0
 			    default_color 	TRUE)
-			label      	(object SegLabel @56
-			    Parent_View 	@55
-			    location   	(1567, 461)
-			    font       	(object Font
-				size       	10
-				face       	"Arial"
-				bold       	FALSE
-				italics    	FALSE
-				underline  	FALSE
-				strike     	FALSE
-				color      	0
-				default_color 	TRUE)
-			    quidu      	"5B22073E037B"
-			    anchor_loc 	1
-			    nlines     	1
-			    max_width  	282
-			    justify    	0
-			    label      	"addLendBook()"
-			    pctDist    	0.500000
-			    height     	45
-			    orientation 	0)
+			stereotype 	TRUE
 			line_color 	3342489
-			client     	@45
-			supplier   	@49
-			Focus_Src  	@46
-			Focus_Entry 	@51
-			origin     	(1295, 505)
-			terminus   	(1840, 505)
-			ordinal    	1)
-		    (object InterMessView "displace success" @57
-			location   	(16, 610)
+			quidu      	"5B23898D0234"
+			roleview_list 	(list RoleViews
+			    (object RoleView "$UNNAMED$28" @55
+				Parent_View 	@54
+				location   	(0, 207)
+				stereotype 	TRUE
+				line_color 	3342489
+				quidu      	"5B23898E0005"
+				client     	@54
+				supplier   	@53
+				vertices   	(list Points
+				    (1168, 1151)
+				    (1168, 1296))
+				line_style 	0)
+			    (object RoleView "$UNNAMED$29" @56
+				Parent_View 	@54
+				location   	(0, 207)
+				stereotype 	TRUE
+				line_color 	3342489
+				quidu      	"5B23898E000E"
+				client     	@54
+				supplier   	@49
+				vertices   	(list Points
+				    (1168, 1151)
+				    (1168, 1007))
+				line_style 	0)))
+		    (object ClassView "Class" "Logical View::java::awt::print::Book" @57
+			ShowCompartmentStereotypes 	TRUE
+			IncludeAttribute 	TRUE
+			IncludeOperation 	TRUE
+			location   	(1152, 1776)
 			font       	(object Font
 			    size       	10
 			    face       	"Arial"
@@ -1216,37 +1433,23 @@
 			    strike     	FALSE
 			    color      	0
 			    default_color 	TRUE)
-			label      	(object SegLabel @58
+			label      	(object ItemLabel
 			    Parent_View 	@57
-			    location   	(984, 566)
-			    font       	(object Font
-				size       	10
-				face       	"Arial"
-				bold       	FALSE
-				italics    	FALSE
-				underline  	FALSE
-				strike     	FALSE
-				color      	0
-				default_color 	TRUE)
-			    quidu      	"5B2207510015"
-			    anchor_loc 	1
+			    location   	(1071, 1702)
+			    fill_color 	13434879
 			    nlines     	1
-			    max_width  	326
+			    max_width  	162
 			    justify    	0
-			    label      	"displace success"
-			    pctDist    	0.500000
-			    height     	45
-			    orientation 	1)
+			    label      	"Book")
+			icon_style 	"Icon"
 			line_color 	3342489
-			client     	@45
-			supplier   	@39
-			Focus_Src  	@46
-			Focus_Entry 	@42
-			origin     	(1264, 610)
-			terminus   	(704, 610)
-			ordinal    	2)
-		    (object InterMessView "addBorrowBook()" @59
-			location   	(16, 784)
+			fill_color 	13434879
+			quidu      	"39CD6BFC00D6"
+			height     	172
+			annotation 	8
+			autoResize 	TRUE)
+		    (object AssociationViewNew "$UNNAMED$30" @58
+			location   	(1160, 1556)
 			font       	(object Font
 			    size       	10
 			    face       	"Arial"
@@ -1256,115 +1459,34 @@
 			    strike     	FALSE
 			    color      	0
 			    default_color 	TRUE)
-			label      	(object SegLabel @60
-			    Parent_View 	@59
-			    location   	(983, 740)
-			    font       	(object Font
-				size       	10
-				face       	"Arial"
-				bold       	FALSE
-				italics    	FALSE
-				underline  	FALSE
-				strike     	FALSE
-				color      	0
-				default_color 	TRUE)
-			    quidu      	"5B220767017E"
-			    anchor_loc 	1
-			    nlines     	1
-			    max_width  	320
-			    justify    	0
-			    label      	"addBorrowBook()"
-			    pctDist    	0.500000
-			    height     	45
-			    orientation 	0)
+			stereotype 	TRUE
 			line_color 	3342489
-			client     	@39
-			supplier   	@45
-			Focus_Src  	@43
-			Focus_Entry 	@48
-			origin     	(703, 784)
-			terminus   	(1264, 784)
-			ordinal    	3)
-		    (object InterMessView "addBorrowBook()" @61
-			location   	(16, 889)
-			font       	(object Font
-			    size       	10
-			    face       	"Arial"
-			    bold       	FALSE
-			    italics    	FALSE
-			    underline  	FALSE
-			    strike     	FALSE
-			    color      	0
-			    default_color 	TRUE)
-			label      	(object SegLabel @62
-			    Parent_View 	@61
-			    location   	(1567, 845)
-			    font       	(object Font
-				size       	10
-				face       	"Arial"
-				bold       	FALSE
-				italics    	FALSE
-				underline  	FALSE
-				strike     	FALSE
-				color      	0
-				default_color 	TRUE)
-			    quidu      	"5B22078003D2"
-			    anchor_loc 	1
-			    nlines     	1
-			    max_width  	319
-			    justify    	0
-			    label      	"addBorrowBook()"
-			    pctDist    	0.500000
-			    height     	45
-			    orientation 	0)
-			line_color 	3342489
-			client     	@45
-			supplier   	@49
-			Focus_Src  	@48
-			Focus_Entry 	@52
-			origin     	(1295, 889)
-			terminus   	(1840, 889)
-			ordinal    	4)
-		    (object InterMessView "displace success" @63
-			location   	(16, 994)
-			font       	(object Font
-			    size       	10
-			    face       	"Arial"
-			    bold       	FALSE
-			    italics    	FALSE
-			    underline  	FALSE
-			    strike     	FALSE
-			    color      	0
-			    default_color 	TRUE)
-			label      	(object SegLabel @64
-			    Parent_View 	@63
-			    location   	(984, 950)
-			    font       	(object Font
-				size       	10
-				face       	"Arial"
-				bold       	FALSE
-				italics    	FALSE
-				underline  	FALSE
-				strike     	FALSE
-				color      	0
-				default_color 	TRUE)
-			    quidu      	"5B22079203E3"
-			    anchor_loc 	1
-			    nlines     	1
-			    max_width  	326
-			    justify    	0
-			    label      	"displace success"
-			    pctDist    	0.500000
-			    height     	45
-			    orientation 	1)
-			line_color 	3342489
-			client     	@45
-			supplier   	@39
-			Focus_Src  	@48
-			Focus_Entry 	@44
-			origin     	(1264, 994)
-			terminus   	(704, 994)
-			ordinal    	5)))))
+			quidu      	"5B23898F02CD"
+			roleview_list 	(list RoleViews
+			    (object RoleView "$UNNAMED$31" @59
+				Parent_View 	@58
+				location   	(-8, 196)
+				stereotype 	TRUE
+				line_color 	3342489
+				quidu      	"5B238990016E"
+				client     	@58
+				supplier   	@57
+				vertices   	(list Points
+				    (1160, 1556)
+				    (1155, 1689))
+				line_style 	0)
+			    (object RoleView "$UNNAMED$32" @60
+				Parent_View 	@58
+				location   	(-8, 196)
+				stereotype 	TRUE
+				line_color 	3342489
+				quidu      	"5B2389900178"
+				client     	@58
+				supplier   	@53
+				vertices   	(list Points
+				    (1160, 1556)
+				    (1165, 1423))
+				line_style 	0)))))))
     root_subsystem 	(object SubSystem "Component View"
 	quid       	"39C9260C00D7"
 	physical_models 	(list unit_reference_list
@@ -1394,7 +1516,7 @@
 		origin_y   	0
 		items      	(list diagram_item_list)))
 	category   	"Logical View"
-	quidu      	"5B21FE5600C1")
+	quidu      	"5B2379A2027D")
     process_structure 	(object Processes
 	quid       	"39C9260C00D8"
 	ProcsNDevs 	(list

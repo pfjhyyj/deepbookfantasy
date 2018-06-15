@@ -432,7 +432,37 @@
 			    (762, 768)
 			    (1077, 768))
 			line_style 	0)
-		    (object UsesView "" @16
+		    (object Label @16
+			location   	(784, 784)
+			font       	(object Font
+			    size       	10
+			    face       	"Arial"
+			    bold       	FALSE
+			    italics    	FALSE
+			    underline  	FALSE
+			    strike     	FALSE
+			    color      	0
+			    default_color 	TRUE)
+			nlines     	1
+			max_width  	600
+			justify    	1
+			label      	"1")
+		    (object Label @17
+			location   	(976, 784)
+			font       	(object Font
+			    size       	10
+			    face       	"Arial"
+			    bold       	FALSE
+			    italics    	FALSE
+			    underline  	FALSE
+			    strike     	FALSE
+			    color      	0
+			    default_color 	TRUE)
+			nlines     	1
+			max_width  	732
+			justify    	1
+			label      	"0..*")
+		    (object UsesView "" @18
 			stereotype 	TRUE
 			line_color 	3342489
 			quidu      	"5B22678300C0"
@@ -538,7 +568,7 @@
 		origin_x   	0
 		origin_y   	0
 		items      	(list diagram_item_list
-		    (object SubSysView "Component View::视图层" @17
+		    (object SubSysView "Component View::视图层" @19
 			location   	(1040, 432)
 			font       	(object Font
 			    size       	10
@@ -550,7 +580,7 @@
 			    color      	0
 			    default_color 	TRUE)
 			label      	(object ItemLabel
-			    Parent_View 	@17
+			    Parent_View 	@19
 			    location   	(896, 363)
 			    fill_color 	13434879
 			    nlines     	2
@@ -563,7 +593,7 @@
 			quidu      	"5B22610200AD"
 			width      	300
 			height     	150)
-		    (object SubSysView "Component View::控制层" @18
+		    (object SubSysView "Component View::控制层" @20
 			location   	(1040, 736)
 			font       	(object Font
 			    size       	10
@@ -575,7 +605,7 @@
 			    color      	0
 			    default_color 	TRUE)
 			label      	(object ItemLabel
-			    Parent_View 	@18
+			    Parent_View 	@20
 			    location   	(896, 667)
 			    fill_color 	13434879
 			    nlines     	2
@@ -588,7 +618,7 @@
 			quidu      	"5B22611B029B"
 			width      	300
 			height     	150)
-		    (object SubSysView "Component View::服务层" @19
+		    (object SubSysView "Component View::服务层" @21
 			location   	(1040, 1056)
 			font       	(object Font
 			    size       	10
@@ -600,7 +630,7 @@
 			    color      	0
 			    default_color 	TRUE)
 			label      	(object ItemLabel
-			    Parent_View 	@19
+			    Parent_View 	@21
 			    location   	(896, 987)
 			    fill_color 	13434879
 			    nlines     	2
@@ -613,7 +643,7 @@
 			quidu      	"5B22611D027B"
 			width      	300
 			height     	150)
-		    (object SubSysView "Component View::模型层" @20
+		    (object SubSysView "Component View::模型层" @22
 			location   	(1040, 1376)
 			font       	(object Font
 			    size       	10
@@ -625,7 +655,7 @@
 			    color      	0
 			    default_color 	TRUE)
 			label      	(object ItemLabel
-			    Parent_View 	@20
+			    Parent_View 	@22
 			    location   	(896, 1307)
 			    fill_color 	13434879
 			    nlines     	2
@@ -638,32 +668,32 @@
 			quidu      	"5B22612000F2"
 			width      	300
 			height     	150)
-		    (object ModVisView "" @21
+		    (object ModVisView "" @23
 			stereotype 	TRUE
 			line_color 	3342489
 			quidu      	"5B22613001E4"
-			client     	@17
-			supplier   	@18
+			client     	@19
+			supplier   	@20
 			vertices   	(list Points
 			    (1040, 507)
 			    (1040, 606))
 			line_style 	0)
-		    (object ModVisView "" @22
+		    (object ModVisView "" @24
 			stereotype 	TRUE
 			line_color 	3342489
 			quidu      	"5B226144012B"
-			client     	@18
-			supplier   	@19
+			client     	@20
+			supplier   	@21
 			vertices   	(list Points
 			    (1040, 811)
 			    (1040, 926))
 			line_style 	0)
-		    (object ModVisView "" @23
+		    (object ModVisView "" @25
 			stereotype 	TRUE
 			line_color 	3342489
 			quidu      	"5B22614D01F1"
-			client     	@19
-			supplier   	@20
+			client     	@21
+			supplier   	@22
 			vertices   	(list Points
 			    (1040, 1131)
 			    (1040, 1246))
