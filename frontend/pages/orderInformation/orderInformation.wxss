@@ -128,6 +128,7 @@ page{
 .field .description {
   display: block;
   margin-top: 10rpx; 
+  width: 100%;
 }
 
 .page-item {

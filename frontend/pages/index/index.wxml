@@ -22,6 +22,7 @@
           <image class="b-pic" lazy-load="true" src="{{item.image}}"></image> 
           <view class="book-info">
             <text class="text b-name">{{item.name}}</text>
+            <text class="text b-type">类型：{{typeList[item.type]}}</text>
             <text class="text b-description">{{item.description}}</text>
           </view>
         </view> 

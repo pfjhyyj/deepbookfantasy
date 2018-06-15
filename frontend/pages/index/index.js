@@ -20,6 +20,7 @@ Page({
     list: [],
     page: 0,
     showMore: false,
+    typeList: ["求借", "借出"],
   },
 
   changeIndicatorDots:function (e) {
@@ -64,7 +65,9 @@ Page({
       success: res => {
         if (res.data.data.length == 0) {
           that.setData({
-            showMore: false
+            showMore: false,
+            list: null,
+            page: 0
           })
           that.showInfoToast("沒有更多了");
           wx.hideLoading();

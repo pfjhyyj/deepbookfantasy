@@ -14,6 +14,10 @@
       <label>书名:</label>
       <view class="name">{{bookInfo.name}}</view>
   </view>
+  <view class="field field-type">
+      <label>类型:</label>
+      <view class="name">{{typeList[bookInfo.type]}}</view>
+  </view>
   <view class="field field-description">
       <label>简介:</label>
       <view class="description">{{bookInfo.description}}</view>

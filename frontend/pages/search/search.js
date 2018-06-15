@@ -10,7 +10,8 @@ Page({
     list: [],
     page: 0,
     showMore: false,
-    noResult: true
+    noResult: true,
+    typeList: ["求借", "借出"],
   },
   bindInput: function (e) {
     this.setData({
@@ -28,6 +29,10 @@ Page({
   },
   wxSearchFn: function (e) {
     var that = this
+    if (that.data.wxSearchData.value.length > 20) {
+      that.showInfoToast("关键字应少于20个字");
+      return;
+    }
     WxSearch.wxSearchAddHisKey(that);
     console.log(that.data.wxSearchData);
     wx.showLoading({
@@ -46,7 +51,9 @@ Page({
       success: res => {
         if (res.data.data.length == 0) {
           this.setData({
-            showMore: false
+            showMore: false,
+            list: null,
+            page: 0
           })
           that.showInfoToast("沒有更多了");
         } else {
