@@ -22,7 +22,7 @@
     <view class="field field-gender">
       <label>性别</label>
       <picker mode="selector" range="{{genderRange}}" value="{{userInfo.gender}}" bindchange="bindGenderChange" name="gender" disabled="{{disabled}}">
-        <view>{{genderRange[userInfo.gender]}}</view>
+        <view>{{genderRange[gender]}}</view>
       </picker>
     </view>
     <view class="field field-description">

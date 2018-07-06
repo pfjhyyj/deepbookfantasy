@@ -8,7 +8,8 @@ Page({
    */
   data: {
     genderRange: ["男", "女"],
-    disabled: true
+    disabled: true,
+    gender: null
   },
 
   editProfile: function (e) {
@@ -22,7 +23,7 @@ Page({
 
   bindGenderChange: function (e) {
     this.setData({
-      index: e.detail.value
+      gender: e.detail.value
     })
   },
 
@@ -111,7 +112,8 @@ Page({
       success: res => {
         console.log(res.data.data);
         that.setData({
-          userInfo: res.data.data
+          userInfo: res.data.data,
+          gender: res.data.data.gender
         });
       }
     })

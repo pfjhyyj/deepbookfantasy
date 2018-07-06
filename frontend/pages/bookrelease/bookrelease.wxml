@@ -35,14 +35,14 @@
       <textarea name="description" maxlength="300"></textarea>
     </view>
     <view class="field field-start">
-      <picker mode="date" value="{{start}}" start="2015-09-01" end="2020-09-01" name="start" bindchange="bindStartChange">
+      <picker mode="date" value="{{start}}" start="2015-01-01" end="2100-01-01" name="start" bindchange="bindStartChange">
       <view class="time">
         <text class="time_string">开始借阅时间：{{start}}</text>
       </view>
       </picker>
     </view>
     <view class="field field-end">
-      <picker mode="date" value="{{end}}" start="2015-09-01" end="2020-09-01" name="end" bindchange="bindEndChange">
+      <picker mode="date" value="{{end}}" start="2015-01-01" end="2100-01-01" name="end" bindchange="bindEndChange">
         <view class="time">
           <text class="time_string">归还时间：{{end}}</text>
       </view>

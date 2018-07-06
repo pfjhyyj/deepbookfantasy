@@ -14,7 +14,7 @@
     <view class="field field-type">
       <label>类型</label>
       <picker mode="selector" range="{{type}}" value="{{bookInfo.type}}" bindchange="bindTypeChange" name="type">
-        <view>{{type[bookInfo.type]}}</view>
+        <view>{{type[index]}}</view>
       </picker>
     </view>
     <view class="field field-isbn">
@@ -35,13 +35,13 @@
     </view>
     <view class="field field-start">
       <label>开始借阅时间</label>
-      <picker mode="date" value="{{start}}" start="2015-09-01" end="2017-09-01" name="start" bindchange="bindStartChange">
+      <picker mode="date" value="{{bookInfo.start}}" start="2015-01-01" end="2100-01-01" name="start" bindchange="bindStartChange">
         {{start}}
       </picker>
     </view>
     <view class="field field-end">
       <label>归还时间</label>
-      <picker mode="date" value="{{end}}" start="2015-09-01" end="2017-09-01" name="end" bindchange="bindEndChange">
+      <picker mode="date" value="{{bookInfo.end}}" start="2015-01-01" end="2100-01-01" name="end" bindchange="bindEndChange">
         {{end}}
       </picker>
     </view>

@@ -124,11 +124,6 @@ Page({
       that.showErrorToast("借阅时间不能迟于归还时间");
       return false;
     }
-    var time = util.formatTime(new Date());
-    if (time > e.start) {
-      that.showErrorToast("借阅时间不能早于当前时间");
-      return false;
-    }
     return true;
   },
   showSuccessToast(message) {
@@ -183,7 +178,8 @@ Page({
           tempFile: res.data.data.image,
           imagePath: res.data.data.image,
           start: res.data.data.start,
-          end: res.data.data.end
+          end: res.data.data.end,
+          index: res.data.data.type
         })
         wx.hideLoading();
       },

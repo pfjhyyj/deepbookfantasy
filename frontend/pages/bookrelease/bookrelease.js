@@ -129,11 +129,6 @@ Page({
       that.showErrorToast("借阅时间不能迟于归还时间");
       return false;
     }
-    var time = util.formatTime(new Date());
-    if (time > e.start) {
-      that.showErrorToast("借阅时间不能早于当前时间");
-      return false;
-    }
     return true;
   },
   showSuccessToast(message) {
